@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>Security</title>
+	<meta name="author" content="Steve Bedell">
+	<meta name="description" content="Information security dashboard which pulls in content, news, and other information into one place.">
+	<meta name="keywords" content="JavaScript, Information Security, web security, cyber">
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" >
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.min.css">
+	<script type="text/javascript" src="pages/securityScripts.js"></script>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<style type="text/css">
+      body {
+		margin-left: 20px;
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">Cyber Security</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="http://cse.osu.edu/~bedell/">Home</a></li>
+              <li><a href="http://cse.osu.edu/~bedell/resume.html">Resume</a></li>
+			  <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">More Info<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+				  <li class="nav-header">Other Pages</li>
+                  <li><a href="http://cse.osu.edu/~bedell/activism.html">Activism</a></li>
+				  <li class="active"><a href="http://cse.osu.edu/~bedell/security.html">Information Security Dashboard</a></li>
+				  <li class="divider"></li>
+				  <li class="nav-header">Demo Pages</li>
+				  <li><a href="http://cse.osu.edu/~bedell/carousel.html">Carousel Demo</a></li>
+				  <li><a href="http://cse.osu.edu/~bedell/pages/gmaps.html">Google Maps Demo</a></li>
+				  <li><a href="http://cse.osu.edu/~bedell/pages/sc.html">SoundCloud Demo</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+    </div>
+</div>
+<div class="container">
+	<div class="row">
+		<h4>Internet Storm Center</h4>
+		<div class="span12">
+			<a target="blank" href="http://isc.sans.edu">
+			<img alt="ISC" title="Internet Storm Center Infocon Status" src="http://isc.sans.edu/images/status.gif"></a>
+			<a target="blank" href="http://www.dshield.org"><img border="0" src="http://isc.sans.edu/images/logos/dshield/medium.png" title="DShield (DSHIELD) website" alt="DShield"></a>
+			<!-- <iframe src="https://isc.sans.edu/rssfeed.xml"> -->
+		</div>
+	</div>
+	<div class="row">
+		<h4>DShield and ISC Data</h4>
+		<div class="span6">
+			<input id="ipaddr" type="text" value="">
+			<input class="btn" type="button" value="Search IP Address" onclick="ipSearch()"><br /><br />
+		</div>
+		<div class="span6">
+			<input id="port" type="text" value="">
+			<input class="btn" type="button" value="Search Ports" onclick="portSearch()"><br />
+			<input class="btn" type="button" value="Clear Results" onclick="clearResults()"><br /><br />
+		</div>
+	</div>
+	<div class="row">
+		<div class="span12">
+			<div id="results"></div>			
+		</div>
+	</div>
+	<hr>
+	<div>
+		<p><a href="http://arstechnica.com/tech-policy/2013/08/in-aclu-lawsuit-scientist-demolishes-nsa-its-just-metadata-excuse/">"It's just metadata"</a>, right?</p>
+        <script type="text/javascript" src="http://api.find-ip.net/widget.js?width=240&language=0&flag=0"></script><div class="findiplink">Powered by <a href="http://www.find-ip.net/" target="_blank">Find-IP.net</a></div>
+		<script type="text/javascript">document.write("User Agent: " + navigator.userAgent);</script>
+	</div>
+	<hr>
+    <footer>
+		<p>Steve Bedell 2013. Built with Twitter Bootstrap and Sans ISC APIs.</p>
+    </footer>
+</div> <!-- div container -->
+</body>
+</html>
