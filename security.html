@@ -4,12 +4,12 @@
 <title>Security</title>
 	<meta name="author" content="Steve Bedell">
 	<meta name="description" content="Information security dashboard which pulls in content, news, and other information into one place.">
-	<meta name="keywords" content="JavaScript, Information Security, web security, cyber">
+	<meta name="keywords" content="JavaScript, Information Security, web security, cyber, security">
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
 	<script type="text/javascript" src="js/securityScripts.js"></script>
 	<script src="http://code.jquery.com/jquery.js"></script>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<style type="text/css">
       body {
 		margin-left: 20px;
@@ -29,14 +29,13 @@
           </button>
           <a class="brand" href="#">Cyber Security</a>
           <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li><a href="http://cse.osu.edu/~bedell/">Home</a></li>
+            <ul class="nav navbar-nav">
+              <li><a href="http://sbedell.github.io">Home</a></li>
               <li><a href="http://cse.osu.edu/~bedell/resume.html">Resume</a></li>
 			  <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">More Info<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-				  <li class="nav-header">Other Pages</li>
-                  <li><a href="http://cse.osu.edu/~bedell/activism.html">Activism</a></li>
+				  <li class="dropdown-header">Other Pages</li>
 				  <li class="active"><a href="http://cse.osu.edu/~bedell/security.html">Information Security Dashboard</a></li>
 				  <li class="divider"></li>
 				  <li class="nav-header">Demo Pages</li>
@@ -53,7 +52,7 @@
 <div class="container">
 	<div class="row">
 		<h4>Internet Storm Center</h4>
-		<div class="span12">
+		<div class="col-md-12">
 			<a target="blank" href="http://isc.sans.edu">
 			<img alt="ISC" title="Internet Storm Center Infocon Status" src="http://isc.sans.edu/images/status.gif"></a>
 			<a target="blank" href="http://www.dshield.org"><img border="0" src="http://isc.sans.edu/images/logos/dshield/medium.png" title="DShield (DSHIELD) website" alt="DShield"></a>
@@ -62,18 +61,18 @@
 	</div>
 	<div class="row">
 		<h4>DShield and ISC Data</h4>
-		<div class="span6">
+		<div class="col-md-6">
 			<input id="ipaddr" type="text" value="">
 			<input class="btn" type="button" value="Search IP Address" onclick="ipSearch()"><br /><br />
 		</div>
-		<div class="span6">
+		<div class="col-md-6">
 			<input id="port" type="text" value="">
 			<input class="btn" type="button" value="Search Ports" onclick="portSearch()"><br />
 			<input class="btn" type="button" value="Clear Results" onclick="clearResults()"><br /><br />
 		</div>
 	</div>
 	<div class="row">
-		<div class="span12">
+		<div class="col-md-6">
 			<div id="results"></div>			
 		</div>
 	</div>
