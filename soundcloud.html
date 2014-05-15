@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>SoundCloud API Mashup</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Soundcloud API Demo where you can search for a genre of music and view the top 50 songs of that genre.">
+	<meta name="keywords" content="Soundcloud, API, CSE, OSU, EDM, Electronic" />
+	<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" >
+	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap-responsive.min.css">
+	<script type="text/javascript" src="http://connect.soundcloud.com/sdk.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="../bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="sc.js"></script>
+	<style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="http://cse.osu.edu/~bedell/">Home</a></li>
+              <li><a href="http://cse.osu.edu/~bedell/resume.html">Resume</a></li>
+			  <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">More Info<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+				  <li class="nav-header">Other Pages</li>
+                  <li><a href="http://cse.osu.edu/~bedell/activism.html">Activism</a></li>
+				  <li><a href="http://cse.osu.edu/~bedell/security.html">Information Security Dashboard</a></li>
+				  <li class="divider"></li>
+				  <li class="nav-header">Demo Pages</li>
+				  <li><a href="http://cse.osu.edu/~bedell/carousel.html">Carousel Demo</a></li>
+				  <li><a href="http://cse.osu.edu/~bedell/pages/gmaps.html">Google Maps Demo</a></li>
+				  <li class="active"><a href="http://cse.osu.edu/~bedell/pages/sc.html">SoundCloud Demo</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div> <!-- end of full navbar-->
+	<div class="container">
+		<h1>SoundCloud API Demo</h1>
+		<p>This pulls in the top 50 results from a genre search on SoundCloud.</p>
+		<span>Type a genre here</span>
+		<input id="genre" type="text" value="" >
+		<input class="btn" type="button" value="Search" onclick="setGenre()"><br /><br />
+		<h3>Title -	Playcount</h3>
+		<hr>
+		<ol id="results"></ol>
+		<footer>
+			<hr>
+			<a href="https://soundcloud.com/"><img src="http://connect.soundcloud.com/2/btn-connect-sc-l.png"></a>
+			<p>&copy; Steve Bedell 2013. Built with Twitter Bootstrap and SoundCloud's API</p>
+		 </footer>
+	</div>
+</body>
+</html>
