@@ -18,36 +18,34 @@
     </style>
 </head>
 <body>
-	<div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li><a href="http://cse.osu.edu/~bedell/">Home</a></li>
-              <li><a href="http://cse.osu.edu/~bedell/resume.html">Resume</a></li>
-			  <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">More Info<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-				  <li class="nav-header">Other Pages</li>
-                  <li><a href="http://cse.osu.edu/~bedell/activism.html">Activism</a></li>
-				  <li><a href="http://cse.osu.edu/~bedell/security.html">Information Security Dashboard</a></li>
-				  <li class="divider"></li>
-				  <li class="nav-header">Demo Pages</li>
-				  <li><a href="http://cse.osu.edu/~bedell/carousel.html">Carousel Demo</a></li>
-				  <li><a href="http://cse.osu.edu/~bedell/pages/gmaps.html">Google Maps Demo</a></li>
-				  <li class="active"><a href="http://cse.osu.edu/~bedell/pages/sc.html">SoundCloud Demo</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
         </div>
+        <div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="http://sbedell.github.io/">Home</a></li>
+				<li><a href="http://sbedell.github.io/resume.html">Resume</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">More Info<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li class="dropdown-header">Other Pages</li>
+						<li><a href="http://sbedell.github.io/security.html">Security and Privacy Info</a></li>
+						<li><a target="blank" href="http://sbedell.github.io/gmaps.html">Google Maps API webapp</a></li>
+						<li class="active"><a href="http://sbedell.github.io/soundcloud.html">Soundcloud API webapp</a></li>
+					</ul>
+				</li>
+			</ul>
+        </div><!--/.navbar-collapse -->
       </div>
-    </div> <!-- end of full navbar-->
+    </div>
+	
 	<div class="container">
 		<h1>SoundCloud API Demo</h1>
 		<p>This pulls in the top 50 results from a genre search on SoundCloud.</p>
