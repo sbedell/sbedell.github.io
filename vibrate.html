@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>HTML 5 Vibration Test</title>
+	<meta name="author" content="Steve Bedell">
+	<meta name="description" content="HTML 5 Vibration API test page.">
+	<meta name="keywords" content="HTML5, Mobile, Vibration">
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<style type="text/css">
+      body {
+		margin-left: 20px;
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+	<script>
+		var vibrateInterval;
+
+		// Starts vibration at passed in level
+		function startVibrate() {
+			var duration = document.getElementById("viblen").value;
+			navigator.vibrate(duration);
+		}
+
+		// Stops vibration
+		function stopVibrate() {
+			// Clear interval and stop persistent vibrating 
+			if(vibrateInterval) clearInterval(vibrateInterval);
+			navigator.vibrate(0);
+		}
+
+		// Start persistent vibration at given duration and interval
+		// Assumes a number value is given
+		function startPeristentVibrate(duration, interval) {
+			vibrateInterval = setInterval(function() {
+				startVibrate(duration);
+			}, interval);
+		}
+	</script>
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="http://sbedell.github.io/">Home</a></li>
+				<li><a href="http://sbedell.github.io/resume">Resume</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">More Info<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li class="dropdown-header">Other Pages</li>
+						<li class="active"><a href="http://sbedell.github.io/security">Security and Privacy Info</a></li>
+						<li><a target="blank" href="http://sbedell.github.io/gmaps">Google Maps API webapp</a></li>
+						<li><a href="http://sbedell.github.io/soundcloud">Soundcloud API webapp</a></li>
+					</ul>
+				</li>
+			</ul>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+<div class="container">
+	<div class="row">
+		<h4>DShield and ISC Data</h4>
+		<div class="col-md-6">
+			<input id="ipaddr" type="text" value="">
+			<button class="btn btn-default" type="button" onclick="">Unused</button><br /><br />
+		</div>
+		<div class="col-md-6">
+			<input id="viblen" type="text" value="">
+			<button class="btn btn-default" type="button" onclick="startVibrate()">Start Vibrate</button><br />
+			<button class="btn btn-default" type="button" onclick="stopVibrate()">Stop Vibrate</button><br /><br />
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div id="results"></div>			
+		</div>
+	</div>
+	<hr>
+    <footer>
+		<p>Steve Bedell 2013. Built with Twitter Bootstrap and Sans ISC APIs.</p>
+    </footer>
+</div> <!-- div container -->
+</body>
+</html>
