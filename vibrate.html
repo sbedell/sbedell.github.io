@@ -22,7 +22,16 @@
 		// Starts vibration at passed in level
 		function startVibrate() {
 			var duration = document.getElementById("viblen").value;
-			navigator.vibrate(duration);
+			if (duration.match(/^\d+$/)) {
+				navigator.vibrate(duration);
+			} else {
+				document.getElementById("results").innerHTML = "Error, please input a number.";
+			}
+		}
+		
+		// Vibrates Once
+		function singleVibrate() {
+			navigator.vibrate(500);
 		}
 
 		// Stops vibration
@@ -34,7 +43,15 @@
 
 		// Start persistent vibration at given duration and interval
 		// Assumes a number value is given
-		function startPeristentVibrate(duration, interval) {
+		function startPeristentVibrate() {
+			var duration = document.getElementById("viblen").value;
+			var interval = document.getElementById("vibinterval").value;
+			if (duration.match(/^\d+$/)) {
+				navigator.vibrate(duration);
+			} else {
+				document.getElementById("results").innerHTML = "Error, please input a number.";
+			}
+			
 			vibrateInterval = setInterval(function() {
 				startVibrate(duration);
 			}, interval);
@@ -71,13 +88,11 @@
     </div>
 <div class="container">
 	<div class="row">
-		<h4>DShield and ISC Data</h4>
-		<div class="col-md-6">
-			<input id="ipaddr" type="text" value="">
-			<button class="btn btn-default" type="button" onclick="">Unused</button><br /><br />
-		</div>
+		<h4>HTML 5 Vibration Test</h4>
 		<div class="col-md-6">
 			<input id="viblen" type="text" value="">
+			<input id="vibinterval" type="text" value="">
+			<button class="btn btn-default" type="button" onclick="singleVibrate()">Single Vibrate</button><br /><br />
 			<button class="btn btn-default" type="button" onclick="startVibrate()">Start Vibrate</button><br />
 			<button class="btn btn-default" type="button" onclick="stopVibrate()">Stop Vibrate</button><br /><br />
 		</div>
@@ -89,7 +104,7 @@
 	</div>
 	<hr>
     <footer>
-		<p>Steve Bedell 2013. Built with Twitter Bootstrap and Sans ISC APIs.</p>
+		<p>Steve Bedell 2014.</p>
     </footer>
 </div> <!-- div container -->
 </body>
