@@ -49,13 +49,14 @@
 			var vibArray = [];
 			var duration = document.getElementById("viblen").value;
 			var amountOfVibs = document.getElementById("vibinterval").value;
+			var pauseLength = document.getElementById("pauselen").value;
 			
 			if ((!duration.match(/^\d+$/)) || (!amountOfVibs.match(/^\d+$/))) {
 				document.getElementById("results").innerHTML = "Error, please input a number in both fields.";
 			} else {
 				for (var i = 0; i < amountOfVibs; i++) {
 					vibArray.push(duration);
-					vibArray.push(500);			//half a second pause between vibrations
+					vibArray.push(pauseLength);			//half a second pause between vibrations
 				}
 				navigator.vibrate(vibArray);
 			}
@@ -94,8 +95,11 @@
 	<div class="row">
 		<h4>HTML 5 Vibration Test</h4>
 		<div class="col-md-6">
-			<label>Vibration Duration <input id="viblen" type="text" value=""></label>
-			<label>Amount of Vibrations (only applicable for multiple vibrations)<input id="vibinterval" type="text" value=""></label> <br>
+			<p>All times are in milliseconds.</p>
+			<label>Vibration Duration<input id="viblen" type="text" value=""></label>
+			<p>For Multiple Vibrations only</p>
+			<label>Amount of Vibrations<input id="vibinterval" type="text" value=""></label> <br>
+			<label>Amount of time between vibrations<input id="pauselen" type="text" value=""></label> <br>
 			<button class="btn btn-default" type="button" onclick="singleVibrate()">Single Vibrate</button><br /><br />
 			<button class="btn btn-default" type="button" onclick="multipleVibrate()">Multiple Vibrate</button><br />
 			<button class="btn btn-default" type="button" onclick="stopVibrate()">Stop Vibrate</button><br /><br />
