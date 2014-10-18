@@ -17,44 +17,48 @@
       }
     </style>
 	<script>
-		var vibrateInterval;
-
-		// Starts vibration at passed in level
-		function startVibrate() {
+		var vibrateSupport;		//global variable
+		
+		// Checks if browser supports vibration
+		if ('vibrate' in navigator) {
+			vibrateSupport = true;
+		} else {
+			document.getElementById("results").innerHTML = "This browser does not support vibration (yet?).";
+			vibrateSupport = false;
+		}
+		
+		// Stops vibration
+		function stopVibrate() {
+			navigator.vibrate(0);
+		}
+		
+		// Vibrates once, duration determined by user.
+		function singleVibrate() {
 			var duration = document.getElementById("viblen").value;
+			// Validate user input (for numbers)
 			if (duration.match(/^\d+$/)) {
 				navigator.vibrate(duration);
 			} else {
-				document.getElementById("results").innerHTML = "Error, please input a number.";
+				document.getElementById("results").innerHTML = "Error, please input a number for Vibration Duration.";
 			}
 		}
 		
-		// Vibrates Once
-		function singleVibrate() {
-			navigator.vibrate(500);
-		}
-
-		// Stops vibration
-		function stopVibrate() {
-			// Clear interval and stop persistent vibrating 
-			if(vibrateInterval) clearInterval(vibrateInterval);
-			navigator.vibrate(0);
-		}
-
 		// Start persistent vibration at given duration and interval
 		// Assumes a number value is given
-		function startPeristentVibrate() {
+		function multipleVibrate() {
+			var vibArray = [];
 			var duration = document.getElementById("viblen").value;
-			var interval = document.getElementById("vibinterval").value;
-			if (duration.match(/^\d+$/)) {
-				navigator.vibrate(duration);
-			} else {
-				document.getElementById("results").innerHTML = "Error, please input a number.";
-			}
+			var amountOfVibs = document.getElementById("vibinterval").value;
 			
-			vibrateInterval = setInterval(function() {
-				startVibrate(duration);
-			}, interval);
+			if ((!duration.match(/^\d+$/)) || (!amountOfVibs.match(/^\d+$/))) {
+				document.getElementById("results").innerHTML = "Error, please input a number in both fields.";
+			} else {
+				for (var i = 0; i < amountOfVibs; i++) {
+					vibArray.push(duration);
+					vibArray.push(500);			//half a second pause between vibrations
+				}
+				navigator.vibrate(vibArray);
+			}
 		}
 	</script>
 </head>
@@ -90,10 +94,10 @@
 	<div class="row">
 		<h4>HTML 5 Vibration Test</h4>
 		<div class="col-md-6">
-			<input id="viblen" type="text" value="">
-			<input id="vibinterval" type="text" value="">
+			<label>Vibration Duration <input id="viblen" type="text" value=""></label>
+			<label>Amount of Vibrations (only applicable for multiple vibrations)<input id="vibinterval" type="text" value=""></label> <br>
 			<button class="btn btn-default" type="button" onclick="singleVibrate()">Single Vibrate</button><br /><br />
-			<button class="btn btn-default" type="button" onclick="startVibrate()">Start Vibrate</button><br />
+			<button class="btn btn-default" type="button" onclick="multipleVibrate()">Multiple Vibrate</button><br />
 			<button class="btn btn-default" type="button" onclick="stopVibrate()">Stop Vibrate</button><br /><br />
 		</div>
 	</div>
