@@ -94,16 +94,35 @@
 		<h2>HTML 5 Vibration Test</h2>
 		<div class="col-md-6">
 			<p>Demo page for the new HTML5 Vibration API feature. You can read more about it at the Mozilla Developer Network or at the W3.<br>
-			<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/API/Vibration">MDN - Vibration API</a>
-			<a href="http://www.w3.org/TR/vibration/">W3 Vibration API Spec</a></p>
-			<label>Vibration Duration: <input id="viblen" type="text" value="500"></label>
-			<p>Multiple Vibration Options:</p>
-			<label>Number of Vibrations: <input id="vibinterval" type="text" value="5"></label><br>
-			<label>Time Between Vibrations: <input id="pauselen" type="text" value="200"></label><br><br>
-			<button class="btn btn-default" type="button" onclick="singleVibrate()">Single Vibrate</button>
-			<button class="btn btn-default" type="button" onclick="multipleVibrate()">Multiple Vibrations</button>
-			<button class="btn btn-default" type="button" onclick="stopVibrate()">Stop Vibrate</button><br><br>
-			<p>All times are in milliseconds.</p>
+			<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/API/Vibration">MDN - Vibration API</a><br>
+			<a href="http://www.w3.org/TR/vibration/">W3 Vibration API Spec</a>
+			</p>
+			
+			<table style="width: 100%">
+				<tr>
+					<td><label for="viblen">Vibration Duration:</label></td>
+					<td><input id="viblen" type="text" value="500"></td>
+				</tr>
+				<tr>
+					<td>Multiple Vibration Options:</td>
+				</tr>
+				<tr>
+					<td><label for="vibinterval">Number of Vibrations:</label></td>
+					<td><input id="vibinterval" type="text" value="5"></td>
+				</tr>
+				<tr>
+					<td><label for="pauselen">Time Between Vibrations:</label></td>
+					<td><input id="pauselen" type="text" value="200"></td>
+				</tr>
+				<tr>
+					<td><button class="btn btn-default" type="button" onclick="singleVibrate()">Single Vibrate</button></td>
+					<td><button class="btn btn-default" type="button" onclick="multipleVibrate()">Multiple Vibrations</button></td>
+					<td><button class="btn btn-default" type="button" onclick="stopVibrate()">Stop Vibrate</button></td>
+				</tr>
+				<tr>
+					<td>All ties are in milliseconds.</td>
+				</tr>
+			</table>
 		</div>
 	</div>
 	<hr>
