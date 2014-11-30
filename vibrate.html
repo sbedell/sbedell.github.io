@@ -15,6 +15,22 @@
         padding-top: 60px;
         padding-bottom: 40px;
       }
+	  
+	  label {
+		font-weight: normal;
+	  }
+	  
+	  table {
+		border-collapse: collapse;
+	  }
+	  
+	  table, th, td {
+		border: 1px solid black;
+	  }
+	  
+	  td {
+		padding: 10px;
+	  }
     </style>
 	<script>
 		// Checks if browser supports vibration
@@ -101,18 +117,18 @@
 			<table style="width: 100%">
 				<tr>
 					<td><label for="viblen">Vibration Duration:</label></td>
-					<td><input id="viblen" type="text" value="500"></td>
+					<td><input id="viblen" type="number" value="500"></td>
 				</tr>
 				<tr>
-					<td>Multiple Vibration Options:</td>
+					<th>Multiple Vibration Options:</th>
 				</tr>
 				<tr>
 					<td><label for="vibinterval">Number of Vibrations:</label></td>
-					<td><input id="vibinterval" type="text" value="5"></td>
+					<td><input id="vibinterval" type="number" value="5"></td>
 				</tr>
 				<tr>
 					<td><label for="pauselen">Time Between Vibrations:</label></td>
-					<td><input id="pauselen" type="text" value="200"></td>
+					<td><input id="pauselen" type="number" value="200"></td>
 				</tr>
 				<tr>
 					<td><button class="btn btn-default" type="button" onclick="singleVibrate()">Single Vibrate</button></td>
@@ -120,7 +136,7 @@
 					<td><button class="btn btn-default" type="button" onclick="stopVibrate()">Stop Vibrate</button></td>
 				</tr>
 				<tr>
-					<td>All ties are in milliseconds.</td>
+					<td>All times are in milliseconds.</td>
 				</tr>
 			</table>
 		</div>
