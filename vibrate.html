@@ -20,15 +20,11 @@
 		font-weight: normal;
 	  }
 	  
-	  table {
-		border-collapse: collapse;
-	  }
-	  
 	  table, th, td {
 		border: 1px solid black;
 	  }
 	  
-	  td {
+	  td, th {
 		padding: 10px;
 	  }
     </style>
@@ -118,6 +114,7 @@
 				<tr>
 					<td><label for="viblen">Vibration Duration:</label></td>
 					<td><input id="viblen" type="number" value="500"></td>
+					<td><button class="btn btn-default" type="button" onclick="singleVibrate()">Single Vibrate</button></td>
 				</tr>
 				<tr>
 					<th>Multiple Vibration Options:</th>
@@ -125,18 +122,15 @@
 				<tr>
 					<td><label for="vibinterval">Number of Vibrations:</label></td>
 					<td><input id="vibinterval" type="number" value="5"></td>
+					<td><button class="btn btn-default" type="button" onclick="multipleVibrate()">Multiple Vibrations</button></td>
 				</tr>
 				<tr>
 					<td><label for="pauselen">Time Between Vibrations:</label></td>
 					<td><input id="pauselen" type="number" value="200"></td>
-				</tr>
-				<tr>
-					<td><button class="btn btn-default" type="button" onclick="singleVibrate()">Single Vibrate</button></td>
-					<td><button class="btn btn-default" type="button" onclick="multipleVibrate()">Multiple Vibrations</button></td>
 					<td><button class="btn btn-default" type="button" onclick="stopVibrate()">Stop Vibrate</button></td>
 				</tr>
 				<tr>
-					<td>All times are in milliseconds.</td>
+					<th>All times are in milliseconds.</th>
 				</tr>
 			</table>
 		</div>
