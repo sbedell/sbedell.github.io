@@ -17,14 +17,11 @@
       }
     </style>
 	<script>
-		var vibrateSupport;		//global variable
-		
 		// Checks if browser supports vibration
-		if ('vibrate' in navigator) {
-			vibrateSupport = true;
-		} else {
+		var supportsVibrate = "vibrate" in navigator;		//global variable
+		
+		if (!supportsVibrate) {
 			document.getElementById("results").innerHTML = "This browser does not support vibration (yet?).";
-			vibrateSupport = false;
 		}
 		
 		// Stops vibration
@@ -94,18 +91,22 @@
     </div>
 <div class="container">
 	<div class="row">
-		<h4>HTML 5 Vibration Test</h4>
+		<h2>HTML 5 Vibration Test</h2>
 		<div class="col-md-6">
+			<p>Demo page for the new HTML5 Vibration API feature. You can read more about it at the Mozilla Developer Network or at the W3.</p>
+			<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/API/Vibration">MDN - Navigator.vibrate()</a>
+			<a href="http://www.w3.org/TR/vibration/">W3 Vibration API Spec</a>
+			<label>Vibration Duration: <input id="viblen" type="text" value="500"></label>
+			<p>Multiple Vibration Options:</p>
+			<label>Number of Vibrations: <input id="vibinterval" type="text" value="5"></label><br>
+			<label>Time Between Vibrations: <input id="pauselen" type="text" value="200"></label><br><br>
+			<button class="btn btn-default" type="button" onclick="singleVibrate()">Single Vibrate</button>
+			<button class="btn btn-default" type="button" onclick="multipleVibrate()">Multiple Vibrations</button>
+			<button class="btn btn-default" type="button" onclick="stopVibrate()">Stop Vibrate</button><br><br>
 			<p>All times are in milliseconds.</p>
-			<label>Vibration Duration<input id="viblen" type="text" value=""></label>
-			<p>For Multiple Vibrations only</p>
-			<label>Amount of Vibrations<input id="vibinterval" type="text" value=""></label> <br>
-			<label>Amount of time between vibrations<input id="pauselen" type="text" value=""></label> <br>
-			<button class="btn btn-default" type="button" onclick="singleVibrate()">Single Vibrate</button><br /><br />
-			<button class="btn btn-default" type="button" onclick="multipleVibrate()">Multiple Vibrate</button><br />
-			<button class="btn btn-default" type="button" onclick="stopVibrate()">Stop Vibrate</button><br /><br />
 		</div>
 	</div>
+	<hr>
 	<div class="row">
 		<div class="col-md-6">
 			<div id="results"></div>			
