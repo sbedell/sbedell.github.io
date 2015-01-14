@@ -37,6 +37,7 @@ function clearMarkers() {
 			markersArr[i].setMap(null);
 		}
 		markersArr.length = 0; 		// resets the entire array
+		document.getElementById("address").value = "";  	// resets the form field.
 	}
 }
 		
@@ -52,7 +53,7 @@ function addMarker(location) {
 	});
 	
 	var Infowindow = new google.maps.InfoWindow( {
-		content: location.toString(),
+		content: location.toString().trim(),
 		position: location
 	} );
 	markersArr.push(marker);
@@ -67,9 +68,10 @@ function addMarker(location) {
 */
 function codeAddress() {
 	clearMarkers();
+	
 	var address = document.getElementById("address").value;
+	
 	geocoder.geocode( { 'address': address}, function(results, status) {
-		
 		if (status == google.maps.GeocoderStatus.OK && results[1] != null) {
 			map.setCenter(results[0].geometry.location);
 			
