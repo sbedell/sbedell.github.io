@@ -53,7 +53,7 @@ function addMarker(location) {
 	});
 	
 	var Infowindow = new google.maps.InfoWindow( {
-		content: location.toString().trim(),
+		content: location.toString(),
 		position: location
 	} );
 	markersArr.push(marker);
