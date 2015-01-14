@@ -37,7 +37,6 @@ function clearMarkers() {
 			markersArr[i].setMap(null);
 		}
 		markersArr.length = 0; 		// resets the entire array
-		document.getElementById("address").value = "";  	// resets the form field.
 	}
 }
 		
@@ -53,7 +52,7 @@ function addMarker(location) {
 	});
 	
 	var Infowindow = new google.maps.InfoWindow( {
-		content: location.toString(),
+		content: location.toString().trim(),
 		position: location
 	} );
 	markersArr.push(marker);
