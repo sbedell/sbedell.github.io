@@ -4,14 +4,11 @@
 var geocoder;
 var map;
 var markersArr = [];
-var directionsService = new google.maps.DirectionsService();
-var directionsDisplay = new google.maps.DirectionsRenderer();
 
 /* This initializes the Google Map. It's called on page loads 
 * and when the user clicks the "Reset Map" button.
 */
 function initializeMap() {
-	directionsDisplay.set('directions', null);
 	geocoder = new google.maps.Geocoder();
 	var caldwellLab = new google.maps.LatLng(40.002300, -83.015261);
 	var mapOptions = {
@@ -23,7 +20,7 @@ function initializeMap() {
 	
 	var marker = new google.maps.Marker({
 		map: map,
-		position: new google.maps.LatLng(40.002300, -83.015261),
+		position: caldwellLab,
 		animation: google.maps.Animation.DROP
 	});
 	markersArr.push(marker);
@@ -31,21 +28,20 @@ function initializeMap() {
 	google.maps.event.addListener(map, 'click', function(event) {
 		addMarker(event.latLng);
 	});
-	directionsDisplay.setMap(map);
 }
 
-//clears all the points and directions on the map
+// Clears all the points and directions on the map
 function clearMarkers() {
-	directionsDisplay.set('directions', null);
 	if (markersArr) {
-		for (i in markersArr) {
+		for (var i in markersArr) {
 			markersArr[i].setMap(null);
 		}
-		markersArr.length = 0;
+		markersArr.length = 0; 		// resets the entire array
 	}
 }
 		
-/* This adds a marker with lattitude and longitute coordinates
+/* 
+ * This adds a marker with lattitude and longitute coordinates
  *  wherever the user clicks on the map
  */
 function addMarker(location) {
@@ -55,15 +51,16 @@ function addMarker(location) {
 		animation: google.maps.Animation.DROP
 	});
 	
-	var Infowindow = new google.maps.InfoWindow({
+	var Infowindow = new google.maps.InfoWindow( {
 		content: location.toString(),
 		position: location
-	});
+	} );
 	markersArr.push(marker);
-	Infowindow.open(map,marker);
+	Infowindow.open(map, marker);
 }
 
-/* This gets called when the user clicks the "Search" button. 
+/* 
+* This gets called when the user clicks the "Search" button. 
 * It finds the lat and long points of the city the user types in, displays
 * up to the top 10 cities found, as well as driving directions between
 * the first two cities
@@ -76,7 +73,7 @@ function codeAddress() {
 		if (status == google.maps.GeocoderStatus.OK && results[1] != null) {
 			map.setCenter(results[0].geometry.location);
 			
-			for(i = 0; i<10; i++){
+			for(var i = 0; i < 10; i++) {
 				if (results[i] != null){
 					var Infowindow = new google.maps.InfoWindow({
 						content: results[i].formatted_address,
@@ -87,23 +84,24 @@ function codeAddress() {
 						position: results[i].geometry.location
 					});
 					markersArr.push(marker);
-					Infowindow.open(map,marker);
+					Infowindow.open(map, marker);
 				}
 			}
-			
-			var request = {
-				origin: results[0].geometry.location,
-				destination: results[1].geometry.location,
-				travelMode: google.maps.TravelMode.DRIVING
-			};
-			
-			directionsService.route(request, function(response, status) {
-			  if (status == google.maps.DirectionsStatus.OK) {
-				directionsDisplay.setDirections(response);
-			  }
-			});					
-		} else {
+		} else if (status == google.maps.GeocoderStatus.OK && results[0] != null) {
 			alert("Two locations cannot be found with that name.");
-		}				
+			map.setCenter(results[0].geometry.location);
+			var Infowindow = new google.maps.InfoWindow({
+				content: results[0].formatted_address,
+				position: results[0].geometry.location
+			});
+			var marker = new google.maps.Marker({
+				map: map,
+				position: results[0].geometry.location
+			});
+			markersArr.push(marker);
+			Infowindow.open(map, marker);
+		} else {
+			alert("No locations found.");
+		}
 	});
 }
