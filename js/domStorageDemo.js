@@ -34,9 +34,10 @@ sessionstore.addEventListener( "change", function() {
 } );
 
 bgColorSelector.addEventListener( "change", function() {
-    localStorage.setItem("bgColor", bgColorSelector.value);
-    changeBackgroundColor(BgColorSelector.value);
-    location.reload();
+    var newBG = document.getElementById("bgcolor").value;
+    localStorage.setItem("bgColor", newBG);
+    changeBackgroundColor(newBG);
+    window.location.reload(true);
 } );
 
 document.getElementById("DELETE").addEventListener("click", deleteStorage);
