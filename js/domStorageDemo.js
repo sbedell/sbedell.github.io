@@ -1,37 +1,42 @@
-// HTML5 WEB STORAGE EXAMPLES:
-
-// Session Storage:
 var sessionstore = document.getElementById("sessionstore");
+var bgColorSelector = document.getElementById("bgcolor");
 
-// See if we have an autosave value
-// (this will only happen if the page is accidentally refreshed)
-// Restores the contents of the text field
+function changeBackgroundColor( color ) {
+    if ( typeof color === "string" ) {
+        document.styleSheets[0].cssRules[4].style.backgroundColor = color;
+    } else {
+        alert("Error");
+    }
+}
+
+function deleteStorage() {
+    var confirmDelete = confirm("Are you sure you want to clear storage?");
+    if (confirmDelete) {
+        localStorage.clear();
+        sessionStorage.clear();
+    }
+}
+
+// Loading values if present: 
 if (sessionStorage.getItem("autosave")) {
     sessionstore.value = sessionStorage.getItem("autosave");
 }
 
-// Listen for changes in the text field
-// And save the results into the session storage object
+if (localStorage.getItem("bgColor")) {
+    bgColorSelector.value = localStorage.getItem("bgColor");
+    changeBackgroundColor(bgColorSelector.value);
+}
+
+// ~~~~~ Adding Event Listeners ~~~~~
+
 sessionstore.addEventListener( "change", function() {
     sessionStorage.setItem("autosave", sessionstore.value);
 } );
 
-// Localstorage stuff:
-var localstore = document.getElementById("localstore");
-if (localStorage.getItem("testing")) {
-    localstore.value = localStorage.getItem("testing");
-}
-
-document.getElementById("lsbutton").addEventListener("click", function() {
-    localStorage.setItem("testing", localstore.value);
-    //alert( localStorage.getItem("testing") );
+bgColorSelector.addEventListener( "change", function() {
+    localStorage.setItem("bgColor", bgColorSelector.value);
+    changeBackgroundColor(BgColorSelector.value);
+    location.reload();
 } );
 
-// Deleting local and session storage: 
-document.getElementById("DELETE").addEventListener("click", function() {
-    var confirmDelete = confirm("Are you sure you want to clear storage?");
-    if ( confirmDelete ) {
-        localStorage.clear();
-        sessionStorage.clear();
-    }
-} );
+document.getElementById("DELETE").addEventListener("click", deleteStorage);
