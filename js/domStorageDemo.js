@@ -1,8 +1,8 @@
 var sessionstore = document.getElementById("sessionstore");
 var bgColorSelector = document.getElementById("bgcolor");
 
-function changeBackgroundColor( color ) {
-    if ( typeof color === "string" ) {
+function changeBackgroundColor(color) {
+    if (typeof color === "string") {
         document.styleSheets[0].cssRules[4].style.backgroundColor = color;
     } else {
         alert("Error");
@@ -17,7 +17,7 @@ function deleteStorage() {
     }
 }
 
-// Loading values if present: 
+// Loading values if present:
 if (sessionStorage.getItem("autosave")) {
     sessionstore.value = sessionStorage.getItem("autosave");
 }
@@ -29,11 +29,11 @@ if (localStorage.getItem("bgColor")) {
 
 // ~~~~~ Adding Event Listeners ~~~~~
 
-sessionstore.addEventListener( "change", function() {
+sessionstore.addEventListener("change", function() {
     sessionStorage.setItem("autosave", sessionstore.value);
-} );
+});
 
-bgColorSelector.addEventListener( "change", function() {
+bgColorSelector.addEventListener("change", function() {
     var newBG = document.getElementById("bgcolor").value;
     localStorage.setItem("bgColor", newBG);
     changeBackgroundColor(newBG);
