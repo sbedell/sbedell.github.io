@@ -20,6 +20,7 @@ var gems = [
     {
         name: "Dodecahedron",
         price: 2.95,
+        shine: 4,
         description: "12 sides I think?",
         canPurchase: false,
         soldOut: false,
@@ -48,6 +49,7 @@ var gems = [
     {
         name: "Pentagonal Gem",
         price: 5.95,
+        shine: 5,
         description: "5 sided gem",
         canPurchase: true,
         soldOut: false,

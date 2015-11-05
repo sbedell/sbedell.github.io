@@ -16,13 +16,13 @@
                 </h3>
                 <section ng-init="tab = 1" ng-controller="PanelController as panel">
                     <ul class="nav nav-pills">
-                        <li ng-class="{ active: panel.isSelected(1) }">
+                        <li ng-class="{active: panel.isSelected(1)}">
                             <a href ng-click="panel.selectTab(1)">Description</a>
                         </li>
-                        <li ng-class="{ active: panel.isSelected(2) }">
+                        <li ng-class="{active: panel.isSelected(2)}">
                             <a href ng-click="panel.selectTab(2)">Specifications</a>
                         </li>
-                        <li ng-class="{ active: panel.isSelected(3) }">
+                        <li ng-class="{active: panel.isSelected(3)}">
                             <a href ng-click="panel.selectTab(3)">Reviews</a>
                         </li>
                     </ul>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="panel" ng-show="panel.isSelected(2)">
                         <h4>Specifications</h4>
-                        <blockquote>None Yet</blockquote>
+                        <blockquote>Shine: {{ product.shine }}</blockquote>
                     </div>
                     <div class="panel" ng-show="panel.isSelected(3)">
                         <h4>Reviews</h4>
