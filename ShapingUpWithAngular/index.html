@@ -10,7 +10,7 @@
             <li class="list-group-item" ng-repeat="product in store.products">
                 <h3>{{ product.name }}
                     <em class="pull-right"> {{ product.price | currency }}</em>
-                    <img width="250px" ng-src="{{product.image }}" />
+                    <img width="250px" ng-src="{{ product.image }}" />
                     <!-- <p>{{ product.description }}</p> -->
                     <!-- <button ng-show="store.product.canPurchase">Add to cart</button> -->
                 </h3>
