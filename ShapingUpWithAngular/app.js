@@ -19,8 +19,8 @@ app.controller("PanelController", function() {
 app.controller('GalleryController', function() {
     this.current = 0;
 
-    this.setCurrent = function(newGallery) {
-        this.current = newGallery || 0;
+    this.setCurrent = function(imageNumber) {
+        this.current = imageNumber || 0;
     };
 });
 
@@ -41,11 +41,46 @@ app.directive("productDescription", function() {
     };
 });
 
+app.directive("productReviews", function() {
+    return {
+        restrict: 'E',
+        templateUrl: "product-reviews.html"
+    };
+});
+
+app.directive("productSpecs", function() {
+    return {
+        restrict: 'E',
+        templateUrl: "product-specs.html"
+    };
+});
+
+app.directive("productTabs", function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'product-tabs.html',
+        controller: function() {
+            this.tab = 1;
+            this.isSet = function(checkTab) {
+                return this.tab === checkTab;
+            };
+
+            this.setTab = function(setTab) {
+                this.tab = setTab;
+            };
+        },
+        controllerAs: "tab"
+    };
+});
+
 var gems = [
     {
         name: "Dodecahedron",
         price: 2.95,
         shine: 4,
+        rarity: 7,
+        faces: 14,
+        color: "#CCC",
         description: "12 sides I think?",
         canPurchase: false,
         soldOut: false,
@@ -71,6 +106,9 @@ var gems = [
         name: "Pentagonal Gem",
         price: 5.95,
         shine: 5,
+        rarity: 6,
+        faces: 5,
+        color: "#EEE",
         description: "5 sided gem",
         canPurchase: true,
         soldOut: false,
