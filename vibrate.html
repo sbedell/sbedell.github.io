@@ -16,15 +16,15 @@
         padding-top: 60px;
         padding-bottom: 40px;
       }
-	  
+
 	  label {
 		font-weight: normal;
 	  }
-	  
+
 	  table, th, td {
 		border: 1px solid black;
 	  }
-	  
+
 	  td, th {
 		padding: 10px;
 	  }
@@ -32,16 +32,16 @@
 	<script>
 		// Checks if browser supports vibration
 		var supportsVibrate = "vibrate" in navigator;		//global variable
-		
+
 		if (!supportsVibrate) {
 			document.getElementById("results").innerHTML = "This browser does not support vibration (yet?).";
 		}
-		
+
 		// Stops vibration
 		function stopVibrate() {
 			navigator.vibrate(0);
 		}
-		
+
 		// Vibrates once, duration determined by user.
 		function singleVibrate() {
 			var duration = document.getElementById("viblen").value;
@@ -52,7 +52,7 @@
 				document.getElementById("results").innerHTML = "Error, please input a number for Vibration Duration.";
 			}
 		}
-		
+
 		// Start persistent vibration at given duration and interval
 		// Assumes a number value is given
 		function multipleVibrate() {
@@ -60,7 +60,7 @@
 			var duration = document.getElementById("viblen").value;
 			var amountOfVibs = document.getElementById("vibinterval").value;
 			var pauseLength = document.getElementById("pauselen").value;
-			
+
 			if ((!duration.match(/^\d+$/)) || (!amountOfVibs.match(/^\d+$/))) {
 				document.getElementById("results").innerHTML = "Error, please input a number in both fields.";
 			} else {
@@ -110,7 +110,7 @@
 			<a href="//developer.mozilla.org/en-US/docs/Web/Guide/API/Vibration">MDN - Vibration API</a><br>
 			<a href="//www.w3.org/TR/vibration/">W3 Vibration API Spec</a>
 			</p>
-			
+
 			<table style="width: 100%">
 				<tr>
 					<td><label for="viblen">Vibration Duration:</label></td>
@@ -132,12 +132,6 @@
 				</tr>
 			</table>
 			<p>All times are in milliseconds.<br>This feature is <em>only</em> available on Firefox or Chrome mobile browsers. Dolphin, IE, Opera, and Safari mobile browsers are not supported at this time.</p>
-		</div>
-	</div>
-	<hr>
-	<div class="row">
-		<div class="col-md-6">
-			<div id="results"></div>			
 		</div>
 	</div>
 	<hr>

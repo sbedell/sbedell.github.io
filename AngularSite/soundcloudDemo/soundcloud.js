@@ -17,9 +17,3 @@ function setGenre() {
 		});
 	});
 }
-
-/*
-
-$('#results').append($('<li></li>').html(track.title + ' - ' + track.playback_count));
-
-*/
