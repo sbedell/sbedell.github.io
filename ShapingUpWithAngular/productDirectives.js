@@ -1,28 +1,28 @@
 (function() {
-    var app = angular.module('product-directives', []);
+    angular.module('product-directives', [])
 
-    app.directive("productDescription", function() {
+    .directive("productDescription", function() {
         return {
             restrict: 'E',
             templateUrl: 'product-description.html'
         };
-    });
+    })
 
-    app.directive("productReviews", function() {
+    .directive("productReviews", function() {
         return {
             restrict: 'E',
             templateUrl: "product-reviews.html"
         };
-    });
+    })
 
-    app.directive("productSpecs", function() {
+    .directive("productSpecs", function() {
         return {
             restrict: 'E',
             templateUrl: "product-specs.html"
         };
-    });
+    })
 
-    app.directive("productTabs", function() {
+    .directive("productTabs", function() {
         return {
             restrict: 'E',
             templateUrl: 'product-tabs.html',
