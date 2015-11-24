@@ -1,33 +1,24 @@
-<!DOCTYPE html>
-<html lang="en-US">
-<head>
-<title>Security</title>
-	<meta name="author" content="Steve Bedell">
+<!-- <title>Security</title>
 	<meta name="description" content="Information security dashboard which pulls in content, news, and other information into one place.">
-	<meta name="keywords" content="JavaScript, Information Security, web security, cyber, security">
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<script type="text/javascript" src="security.js"></script>
-	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-</head>
-<body>
-<div class="container">
+	<meta name="keywords" content="JavaScript, Information Security, web security, cyber, security"> -->
+<div>
 	<div class="row">
 		<h4>Internet Storm Center</h4>
 		<div class="col-md-12">
 			<a target="blank" href="https://isc.sans.edu">
-			<img alt="ISC" title="Internet Storm Center Infocon Status" src="https://isc.sans.edu/images/status.gif"></a>
-			<a target="blank" href="https://dshield.org"><img border="0" src="https://isc.sans.edu/images/logos/dshield/medium.png" title="DShield (DSHIELD) website" alt="DShield"></a>
+			<img alt="ISC" title="Internet Storm Center Infocon Status" src="https://isc.sans.edu/images/status.gif" /></a>
+			<a target="blank" href="https://dshield.org"><img border="0" src="https://isc.sans.edu/images/logos/dshield/medium.png" title="DShield (DSHIELD) website" alt="DShield" /></a>
 		</div>
 	</div>
 	<div class="row">
 		<h4>DShield and ISC Data</h4>
+		<p>Searches using the SANS ISC API</p>
 		<div class="col-md-6">
-			<input id="ipaddr" type="text" value="">
+			<input id="ipaddr" type="text" value="" />
 			<button class="btn btn-default" type="button" onclick="ipSearch()">Search IP Address</button><br /><br />
 		</div>
 		<div class="col-md-6">
-			<input id="port" type="text" value="">
+			<input id="port" type="text" value="" />
 			<button class="btn btn-default" type="button" onclick="portSearch()">Search Ports</button><br />
 			<button class="btn btn-default" type="button" onclick="clearResults()">Clear Results</button><br /><br />
 		</div>
@@ -43,10 +34,4 @@
         <script type="text/javascript" src="http://api.find-ip.net/widget.js?width=240&language=0&flag=0"></script><div class="findiplink">Powered by <a href="http://www.find-ip.net/" target="_blank">Find-IP.net</a></div>
 		<script type="text/javascript">document.write("User Agent: " + navigator.userAgent);</script>
 	</div>
-	<hr>
-    <footer>
-		<p>Steve Bedell 2013. Built with Twitter Bootstrap and Sans ISC APIs.</p>
-    </footer>
-</div> <!-- div container -->
-</body>
-</html>
+</div>
