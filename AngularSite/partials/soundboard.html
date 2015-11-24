@@ -1,30 +1,20 @@
-<!DOCTYPE html>
-<html lang="en-US">
-<head>
-	<title>Soundboard</title>
-	<meta name="author" content="Steve Bedell">
-	<meta name="description" content="HTML 5 soundboard.">
-	<meta name="keywords" content="HTML5, Mobile, Soundboard, IBM">
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- <script src="https://code.jquery.com/jquery.js"></script> -->
-	<!-- <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script> -->
-	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="soundboard.css" />
-</head>
-<body>
+<!--
+<title>Soundboard</title>
+<meta name="author" content="Steve Bedell">
+<meta name="description" content="HTML 5 soundboard.">
+<meta name="keywords" content="HTML5, Mobile, Soundboard, IBM"> -->
 <div class="container">
 	<div class="row">
 		<h2>HTML5 Soundboard</h2>
 		<div class="col-md-6">
-			<audio id="airhorn"     src="../assets/audio/AIRHORN.mp3"></audio>
-            <audio id="multiAirhorn"  src="../assetsaudio/multiAirhorn.mp3"></audio>
-			<audio id="damnson"     src="../assets/audio/DAMN SON WHERED YOU FIND THIS.mp3"></audio>
-			<audio id="shots"       src="../assets/audio/SHOTS FIRED.mp3"></audio>
-			<audio id="smoke"       src="../assets/audio/SMOKEWEEDEVERYDAY.mp3"></audio>
-			<audio id="ahah"        src="../assets/audio/ahahah.mp3"></audio>
-			<audio id="hands"       src="../assets/audio/handsofengineers.mp3"></audio>
-			<audio id="holdon"      src="../assets/audio/holdontoyourbutts.mp3"></audio>
+			<audio id="airhorn"     src="assets/audio/AIRHORN.mp3"></audio>
+            <audio id="multiAirhorn"  src="assetsaudio/multiAirhorn.mp3"></audio>
+			<audio id="damnson"     src="assets/audio/DAMN SON WHERED YOU FIND THIS.mp3"></audio>
+			<audio id="shots"       src="assets/audio/SHOTS FIRED.mp3"></audio>
+			<audio id="smoke"       src="assets/audio/SMOKEWEEDEVERYDAY.mp3"></audio>
+			<audio id="ahah"        src="assets/audio/ahahah.mp3"></audio>
+			<audio id="hands"       src="assets/audio/handsofengineers.mp3"></audio>
+			<audio id="holdon"      src="assets/audio/holdontoyourbutts.mp3"></audio>
 
             <button class="btn btn-primary btn-lg" onclick="document.getElementById('airhorn').play()">AIRHORN</button><br>
             <button class="btn btn-primary btn-lg" onclick="document.getElementById('multiAirhorn').play()">MULTI AIRHORN</button><br>
@@ -42,5 +32,3 @@
 		<p>Steve Bedell 2015. I've only tested this with Chrome and Firefox. Both work fine on Laptop/PC but so far Chrome works better on mobile; Firefox mobile doesn't always play the sounds correctly.</p>
     </footer>
 </div> <!-- div container -->
-</body>
-</html>

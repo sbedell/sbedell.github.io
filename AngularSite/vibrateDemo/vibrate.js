@@ -1,6 +1,3 @@
-// Checks if browser supports vibration
-var supportsVibrate = "vibrate" in navigator;		//global variable
-
 // Stops vibration
 function stopVibrate() {
     navigator.vibrate(0);
