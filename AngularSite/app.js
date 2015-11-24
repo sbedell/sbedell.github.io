@@ -13,7 +13,12 @@
     })
 
     .controller("securityController", function() {
-        // rip code into here
+        // rip more code here
+        this.clearResults = function() {
+        	document.getElementById("results").innerHTML = "";
+        	document.getElementById("port").value = "";
+        	document.getElementById("ipaddr").value = "";
+        }
     })
 
     .controller("storageController", function() {
@@ -33,13 +38,20 @@
         return {
             restrict: 'E',
             templateUrl: 'templates/security.html'
-        }
+        };
     })
 
     .directive("storageDemo", function() {
         return {
             restrict: 'E',
             templateUrl: 'templates/storageDemo.html'
+        };
+    })
+
+    .directive("soundboard", function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/soundboard.html'
         };
     })
 

@@ -34,12 +34,16 @@
 			<li role="presentation" ng-class="{ active:tab.isSet(4) }">
 				<a href ng-click="tab.setTab(4)">Storage Demo</a>
 			</li>
+			<li role="presentation" ng-class="{ active:tab.isSet(5) }">
+				<a href="/#/soundboard" ng-click="tab.setTab(5)">Soundboard</a>
+			</li>
 		</ul>
 
 		<main-section ng-show="tab.isSet(1)"></main-section>
 		<resume-page ng-show="tab.isSet(2)"></resume-page>
-		<security-page ng-show="tab.isSet(3)"><security-page>
+		<security-page ng-show="tab.isSet(3)"></security-page>
 		<storage-demo ng-show="tab.isSet(4)"></storage-demo>
+		<soundboard ng-show="tab.isSet(5)"></soundboard>
 	</div>
 
 	<footer>
