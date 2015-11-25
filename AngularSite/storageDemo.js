@@ -4,14 +4,11 @@ var bgColorSelector = document.getElementById("bgcolor");
 function changeBackgroundColor(color) {
     if (typeof color === "string") {
         document.styleSheets[0].cssRules[4].style.backgroundColor = color;
-    } else {
-        alert("Error");
     }
 }
 
 function deleteStorage() {
-    var confirmDelete = confirm("Are you sure you want to clear storage?");
-    if (confirmDelete) {
+    if (confirm("Are you sure you want to clear storage?")) {
         localStorage.clear();
         sessionStorage.clear();
     }

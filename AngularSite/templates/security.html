@@ -1,7 +1,8 @@
 <!-- <title>Security</title>
 	<meta name="description" content="Information security dashboard which pulls in content, news, and other information into one place.">
 	<meta name="keywords" content="JavaScript, Information Security, web security, cyber, security"> -->
-<div>
+<div class="container">
+	<h2>Security Informational Page</h1>
 	<div class="row">
 		<h4>Internet Storm Center</h4>
 		<div class="col-md-12">
@@ -21,6 +22,7 @@
 			<input id="port" type="text" value="" />
 			<button class="btn btn-default" type="button" onclick="portSearch()">Search Ports</button><br />
 			<button class="btn btn-default" type="button" onclick="clearResults()">Clear Results</button><br /><br />
+			<button class="btn btn-default" ng-click="secCtrl.alertMe()">Alert button</button><br /><br />
 		</div>
 	</div>
 	<div class="row">
@@ -31,7 +33,7 @@
 	<hr />
 	<div>
 		<p><a href="https://arstechnica.com/tech-policy/2013/08/in-aclu-lawsuit-scientist-demolishes-nsa-its-just-metadata-excuse/">"It's just metadata"</a>, right?</p>
-        <script type="text/javascript" src="http://api.find-ip.net/widget.js?width=240&language=0&flag=0"></script><div class="findiplink">Powered by <a href="http://www.find-ip.net/" target="_blank">Find-IP.net</a></div>
+        <script type="text/javascript" src="http://api.find-ip.net/widget.js?width=240&language=0&flag=0"></script><div>Powered by <a href="http://www.find-ip.net/" target="_blank">Find-IP.net</a></div>
 		<script type="text/javascript">document.write("User Agent: " + navigator.userAgent);</script>
 	</div>
 </div>

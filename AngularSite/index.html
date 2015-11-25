@@ -12,12 +12,6 @@
 	<script type="text/javascript" src="app.js"></script>
     <link href="assets/favicon.ico" rel="icon" type="image/x-icon">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<style type="text/css">
-		/*body {
-			padding-top: 60px;
-			padding-bottom: 40px;
-		}*/
-	</style>
 </head>
 <body class="container">
 	<div ng-controller="tabController as tab">
@@ -41,7 +35,7 @@
 
 		<main-section ng-show="tab.isSet(1)"></main-section>
 		<resume-page ng-show="tab.isSet(2)"></resume-page>
-		<security-page ng-show="tab.isSet(3)"></security-page>
+		<security-page ng-controller="securityController as secCtrl" ng-show="tab.isSet(3)"></security-page>
 		<storage-demo ng-show="tab.isSet(4)"></storage-demo>
 		<soundboard ng-show="tab.isSet(5)"></soundboard>
 	</div>
