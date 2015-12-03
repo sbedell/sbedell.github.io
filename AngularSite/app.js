@@ -12,9 +12,10 @@
         };
     })
 
-    .controller("securityController", [ '$http', function($http) {
-        function alertMe() {
-            alert("YOU CLICKED IT. YOU REALY FUCKING CLICKED IT M8!");
+    .controller("securityController", [ '$scope', '$http', function($scope, $http) {
+        function alertMe($scope) {
+            $scope.alert("YOU CLICKED IT. YOU REALY FUCKING CLICKED IT M8!");
+            $scope.console.log("you clicked the alert button thing");
         }
 
         function ipSearch() {
@@ -83,25 +84,26 @@
         }
     }])
 
-    .controller("storageController", function() {
-        // rip code into here
-    })
-
     .directive("mainSection", function() {
         return {
             restrict: 'E',
-            templateUrl: 'templates/main-section.html',
-            controller: 'tabController',
-            controllerAs: 'tab'
+            templateUrl: 'templates/main-section.html'
         };
     })
 
     .directive("securityPage", function() {
         return {
             restrict: 'E',
-            templateUrl: 'templates/security.html' //,
+            templateUrl: 'templates/security.html',
             //controller: 'securityController',
-            //controllerAs: 'secCon'
+            //controllerAs: 'secCtrl',
+            //scope: {}
+            // controller: function($scope) {
+            //     $scope.alertMe = function() {
+            //         alert("YOU CLICKED IT!");
+            //     }
+            // },
+            //controllerAs: "secCtrl"
         };
     })
 
