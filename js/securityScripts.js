@@ -6,25 +6,25 @@ function ipSearch() {
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     var responseText = JSON.parse(xmlhttp.responseText);
-                    var output = "<p>Data for IP Address: " + responseText.ip.number + "</p>";
+                    var output = `<p>Data for IP Address: ${responseText.ip.number}</p>`;
                     if (responseText.ip.asname != null) {
-                        output += "<p>Name: " + responseText.ip.asname + "</p>";
+                        output += `<p>Name: ${responseText.ip.asname}</p>`;
                     }
                     if (responseText.ip.country != null) {
-                        output += "<p>Country: " + responseText.ip.country + "</p>";
+                        output += `<p>Country: ${responseText.ip.country}</p>`;
                     }
                     if (responseText.ip.mindate != null || responseText.ip.maxdate != null) {
-                        output += "<p>From Dates " + responseText.ip.mindate + " to " + responseText.ip.maxdate + "</p>";
+                        output += `<p>From Dates ${responseText.ip.mindate} to ${responseText.ip.maxdate}</p>`;
                     }
                     if (responseText.ip.attacks != null) {
-                        output += "<p>Number of Attacks (against ip): " + responseText.ip.attacks + "</p>";
+                        output += `<p>Number of Attacks (against ip): ${responseText.ip.attacks}</p>`;
                     } else {
                         output += "<p>No recorded / detected attacks against this IP address.</p>";
                     }
                     document.getElementById("results").innerHTML = output;
                 }
             }
-            var url = "https://www.dshield.org/api/ip/" + ipAddress + "?json";
+            var url = `https://www.dshield.org/api/ip/${ipAddress}?json`;
             xmlhttp.open("GET", url, true);
             xmlhttp.send();
         } else {
@@ -47,21 +47,21 @@ function portSearch() {
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     var responseText = JSON.parse(xmlhttp.responseText);
-                    var output = "<p>Data for port # : " + responseText.number + "</p>";
+                    var output = `<p>Data for port #: ${responseText.number}</p>`;
                     if ( responseText.services.tcp.name != 0){
-                        output += "<p>Port Name / Type: " + responseText.services.tcp.name + "</p>";
+                        output += `<p>Port Name / Type: ${responseText.services.tcp.name}</p>`;
                     }
                     if ( responseText.services.tcp.service != 0) {
-                        output += "<p>TCP Service: " + responseText.services.tcp.service + "</p>";
+                        output += `<p>TCP Service: ${responseText.services.tcp.service}</p>`;
                     }
-                    output += "<p>Records: " + responseText.data.records + "</p>";
-                    output += "<p>Targets: " + responseText.data.targets + "</p>";
-                    output += "<p>Sources: " + responseText.data.sources + "</p>";
+                    output += `<p>Records: ${responseText.data.records}</p>`;
+                    output += `<p>Targets: ${responseText.data.targets}</p>`;
+                    output += `<p>Sources: ${responseText.data.sources}</p>`;
                     //alert(responseText.services.udp.service);
                     document.getElementById("results").innerHTML = output;
                 }
             }
-            var url = "https://www.dshield.org/api/port/" + port + "?json";
+            var url = `https://www.dshield.org/api/port/${port}?json`;
             xmlhttp.open("GET", url, true);
             xmlhttp.send();
         } else {
@@ -69,7 +69,7 @@ function portSearch() {
         }
     } else {
         document.getElementById("results").innerHTML = "Error, invalid port number.";
-    } 
+    }
 }
 
 function clearResults() {

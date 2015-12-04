@@ -7,9 +7,10 @@
 	<meta name="keywords" content="HTML5, Mobile, Vibration">
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="//code.jquery.com/jquery.js"></script>
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="js/html5vibrate.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<style type="text/css">
       body {
 		margin-left: 20px;
@@ -29,49 +30,6 @@
 		padding: 10px;
 	  }
     </style>
-	<script>
-		// Checks if browser supports vibration
-		var supportsVibrate = "vibrate" in navigator;		//global variable
-
-		if (!supportsVibrate) {
-			document.getElementById("results").innerHTML = "This browser does not support vibration (yet?).";
-		}
-
-		// Stops vibration
-		function stopVibrate() {
-			navigator.vibrate(0);
-		}
-
-		// Vibrates once, duration determined by user.
-		function singleVibrate() {
-			var duration = document.getElementById("viblen").value;
-			// Validate user input (for numbers)
-			if (duration.match(/^\d+$/)) {
-				navigator.vibrate(duration);
-			} else {
-				document.getElementById("results").innerHTML = "Error, please input a number for Vibration Duration.";
-			}
-		}
-
-		// Start persistent vibration at given duration and interval
-		// Assumes a number value is given
-		function multipleVibrate() {
-			var vibArray = [];
-			var duration = document.getElementById("viblen").value;
-			var amountOfVibs = document.getElementById("vibinterval").value;
-			var pauseLength = document.getElementById("pauselen").value;
-
-			if ((!duration.match(/^\d+$/)) || (!amountOfVibs.match(/^\d+$/))) {
-				document.getElementById("results").innerHTML = "Error, please input a number in both fields.";
-			} else {
-				for (var i = 0; i < amountOfVibs; i++) {
-					vibArray.push(duration);
-					vibArray.push(pauseLength);			//half a second pause between vibrations
-				}
-				navigator.vibrate(vibArray);
-			}
-		}
-	</script>
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
