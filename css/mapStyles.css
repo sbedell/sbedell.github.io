@@ -17,6 +17,12 @@ h1 {
 	text-align: center;
 }
 
+input {
+  margin: 0;
+  font-size: 100%;
+  line-height: normal;
+}
+
 #map-canvas {
 	height: 90%;
 	width: 80%;
@@ -80,10 +86,4 @@ h1 {
   color: #333333;
   background-color: #e6e6e6;
   *background-color: #d9d9d9;
-}
-
-input {
-  margin: 0;
-  font-size: 100%;
-  line-height: normal;
 }

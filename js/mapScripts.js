@@ -4,11 +4,15 @@
 var geocoder;
 var map;
 var markersArr = [];
+var infowindowArr = [];
 
-/* This initializes the Google Map. It's called on page loads 
+/* This initializes the Google Map. It's called on page loads
 * and when the user clicks the "Reset Map" button.
 */
 function initializeMap() {
+	// reset the input box:
+	document.getElementById("address").value = "";
+
 	geocoder = new google.maps.Geocoder();
 	var caldwellLab = new google.maps.LatLng(40.002300, -83.015261);
 	var mapOptions = {
@@ -17,14 +21,14 @@ function initializeMap() {
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	}
 	map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-	
+
 	var marker = new google.maps.Marker({
 		map: map,
 		position: caldwellLab,
 		animation: google.maps.Animation.DROP
 	});
 	markersArr.push(marker);
-	
+
 	google.maps.event.addListener(map, 'click', function(event) {
 		addMarker(event.latLng);
 	});
@@ -39,8 +43,21 @@ function clearMarkers() {
 		markersArr.length = 0; 		// resets the entire array
 	}
 }
-		
-/* 
+
+// Supposed to close all info windows, not working yet...
+// FIXME
+/*
+function closeInfowindows() {
+	if (infowindowArr) {
+		for (var i in infowindowArr) {
+			infowindowArr[i].close();
+		}
+		infowindowArr.length = 0;
+	}
+}
+*/
+
+/*
  * This adds a marker with lattitude and longitute coordinates
  *  wherever the user clicks on the map
  */
@@ -50,7 +67,7 @@ function addMarker(location) {
 		map: map,
 		animation: google.maps.Animation.DROP
 	});
-	
+
 	var Infowindow = new google.maps.InfoWindow( {
 		content: location.toString().trim(),
 		position: location
@@ -59,27 +76,27 @@ function addMarker(location) {
 	Infowindow.open(map, marker);
 }
 
-/* 
-* This gets called when the user clicks the "Search" button. 
+/*
+* This gets called when the user clicks the "Search" button.
 * It finds the lat and long points of the city the user types in, displays
 * up to the top 10 cities found, as well as driving directions between
 * the first two cities
 */
 function codeAddress() {
 	clearMarkers();
-	
+
 	var address = document.getElementById("address").value;
-	
+
 	geocoder.geocode( { 'address': address}, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK && results[1] != null) {
 			map.setCenter(results[0].geometry.location);
-			
+
 			for(var i = 0; i < 10; i++) {
 				if (results[i] != null){
 					var Infowindow = new google.maps.InfoWindow({
 						content: results[i].formatted_address,
 						position: results[i].geometry.location
-					});						
+					});
 					var marker = new google.maps.Marker({
 						map: map,
 						position: results[i].geometry.location
