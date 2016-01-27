@@ -14,7 +14,7 @@ function initializeMap() {
 	document.getElementById("address").value = "";
 
 	geocoder = new google.maps.Geocoder();
-	var caldwellLab = new google.maps.LatLng(40.002300, -83.015261);
+	// var caldwellLab = new google.maps.LatLng(40.002300, -83.015261);
 	var clevelandOhio = new google.maps.LatLng(41.49985, -81.6938);
 	var mapOptions = {
 		zoom: 8,
@@ -25,7 +25,7 @@ function initializeMap() {
 
 	var marker = new google.maps.Marker({
 		map: map,
-		position: caldwellLab,
+		position: clevelandOhio,
 		animation: google.maps.Animation.DROP
 	});
 	markersArr.push(marker);
