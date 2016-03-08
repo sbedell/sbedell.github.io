@@ -5,7 +5,7 @@ function stopVibrate() {
 
 // Vibrates once, duration determined by user.
 function singleVibrate() {
-    let duration = document.getElementById("viblen").value;
+    var duration = document.getElementById("viblen").value;
     // Validate user input (for numbers)
     if (duration.match(/^\d+$/)) {
         navigator.vibrate(duration);
@@ -17,15 +17,15 @@ function singleVibrate() {
 // Start persistent vibration at given duration and interval
 // Assumes a number value is given
 function multipleVibrate() {
-    let vibArray = [];
-    let duration = document.getElementById("viblen").value;
-    let amountOfVibs = document.getElementById("vibinterval").value;
-    let pauseLength = document.getElementById("pauselen").value;
+    var vibArray = [];
+    var duration = document.getElementById("viblen").value;
+    var amountOfVibs = document.getElementById("vibinterval").value;
+    var pauseLength = document.getElementById("pauselen").value;
 
     if ((!duration.match(/^\d+$/)) || (!amountOfVibs.match(/^\d+$/))) {
         document.getElementById("results").innerHTML = "Error, please input a number in both fields.";
     } else {
-        for (let i = 0; i < amountOfVibs; i++) {
+        for (var i = 0; i < amountOfVibs; i++) {
             vibArray.push(duration);
             vibArray.push(pauseLength);			//half a second pause between vibrations
         }

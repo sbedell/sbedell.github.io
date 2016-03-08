@@ -9,7 +9,7 @@ $(document).ready(function() {
 });
 
 function setGenre() {
-	let genre = document.getElementById('genre').value;
+	var genre = document.getElementById('genre').value;
 	document.getElementById('results').innerHTML = '';
 	SC.get('/tracks', { genres: genre }, function(tracks) {
 		$(tracks).each(function(index, track) {

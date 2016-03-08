@@ -1,8 +1,8 @@
 // Global Variables
-let geocoder;
-let map;
-let markersArr = [];
-let infowindowArr = [];
+var geocoder;
+var map;
+var markersArr = [];
+var infowindowArr = [];
 
 /* This initializes the Google Map. It's called on page loads
 * and when the user clicks the "Reset Map" button.
@@ -12,16 +12,16 @@ function initializeMap() {
 	document.getElementById("address").value = "";
 
 	geocoder = new google.maps.Geocoder();
-	// let caldwellLab = new google.maps.LatLng(40.002300, -83.015261);
-	let clevelandOhio = new google.maps.LatLng(41.49985, -81.6938);
-	let mapOptions = {
+	// var caldwellLab = new google.maps.LatLng(40.002300, -83.015261);
+	var clevelandOhio = new google.maps.LatLng(41.49985, -81.6938);
+	var mapOptions = {
 		zoom: 8,
 		center: clevelandOhio,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	}
 	map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
-	let marker = new google.maps.Marker({
+	var marker = new google.maps.Marker({
 		map: map,
 		position: clevelandOhio,
 		animation: google.maps.Animation.DROP
@@ -36,7 +36,7 @@ function initializeMap() {
 // Clears all the points and directions on the map
 function clearMarkers() {
 	if (markersArr) {
-		for (let i in markersArr) {
+		for (var i in markersArr) {
 			markersArr[i].setMap(null);
 		}
 		markersArr.length = 0; 		// resets the entire array
@@ -48,7 +48,7 @@ function clearMarkers() {
 /*
 function closeInfowindows() {
 	if (infowindowArr) {
-		for (let i in infowindowArr) {
+		for (var i in infowindowArr) {
 			infowindowArr[i].close();
 		}
 		infowindowArr.length = 0;
@@ -67,7 +67,7 @@ function addMarker(location) {
 		animation: google.maps.Animation.DROP
 	});
 
-	let Infowindow = new google.maps.InfoWindow( {
+	var Infowindow = new google.maps.InfoWindow( {
 		content: location.toString().trim(),
 		position: location
 	} );
@@ -83,19 +83,19 @@ function addMarker(location) {
 */
 function codeAddress() {
 	clearMarkers();
-	let address = document.getElementById("address").value;
+	var address = document.getElementById("address").value;
 
 	geocoder.geocode({'address': address}, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK && results[1] != null) {
 			map.setCenter(results[0].geometry.location);
 
-			for(let i = 0; i < 10; i++) {
+			for(var i = 0; i < 10; i++) {
 				if (results[i] != null){
-					let Infowindow = new google.maps.InfoWindow({
+					var Infowindow = new google.maps.InfoWindow({
 						content: results[i].formatted_address,
 						position: results[i].geometry.location
 					});
-					let marker = new google.maps.Marker({
+					var marker = new google.maps.Marker({
 						map: map,
 						position: results[i].geometry.location
 					});
@@ -106,11 +106,11 @@ function codeAddress() {
 		} else if (status == google.maps.GeocoderStatus.OK && results[0] != null) {
 			alert("Two locations cannot be found with that name.");
 			map.setCenter(results[0].geometry.location);
-			let Infowindow = new google.maps.InfoWindow({
+			var Infowindow = new google.maps.InfoWindow({
 				content: results[0].formatted_address,
 				position: results[0].geometry.location
 			});
-			let marker = new google.maps.Marker({
+			var marker = new google.maps.Marker({
 				map: map,
 				position: results[0].geometry.location
 			});
