@@ -29,7 +29,7 @@ function ReservationsViewModel() {
     ]);
 
     self.totalSurcharge = ko.computed(function() {
-       var total = 0;
+       let total = 0;
        for (let i = 0; i < self.seats().length; i++)
            total += self.seats()[i].meal().price;
        return total;
