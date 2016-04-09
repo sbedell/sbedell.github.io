@@ -23,7 +23,7 @@
                 <td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select></td>
                 <td data-bind="text: formattedPrice"></td>
                 <!-- <a href="#" data-bind="click: $root.removeSeat">Remove</a> -->
-                <td><button type="button" data-bind="click: $root.removeSeat"></button></td>
+                <td><button type="button" data-bind="click: $root.removeSeat">Remove</button></td>
             </tr>
         </tbody>
         <button data-bind="click: addSeat, enable: seats().length < 5">Reserve another seat</button>
