@@ -1,15 +1,4 @@
 // Class to represent a row in the seat reservations grid
-// function SeatReservation(name, initialMeal) {
-//     let self = this;
-//     self.name = name;
-//     self.meal = ko.observable(initialMeal);
-//
-//     self.formattedPrice = ko.computed(function() {
-//         let price = self.meal().price;
-//         return price ? "$" + price.toFixed(2) : "None";
-//     });
-// }
-
 class SeatReservation {
   constructor(name, initialMeal) {
     let self = this;
@@ -18,7 +7,7 @@ class SeatReservation {
 
     this.formattedPrice = ko.computed(function() {
         let price = self.meal().price;
-        return price ? "$" + price.toFixed(2) : "None";
+        return price ? "$" + price.toFixed(2) : "$0.00";
     });
   }
 }

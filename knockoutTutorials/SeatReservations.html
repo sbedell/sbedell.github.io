@@ -8,7 +8,6 @@
     <h2 data-bind="visible: seats().length > 0">
         Your seat reservations (<span data-bind="text: seats().length"></span>)
     </h2>
-
     <table>
         <thead>
             <tr>
@@ -23,16 +22,15 @@
                 <td><input data-bind="value: name" /></td>
                 <td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select></td>
                 <td data-bind="text: formattedPrice"></td>
-                <td><a href="#" data-bind="click: $root.removeSeat">Remove</a></td>
+                <!-- <a href="#" data-bind="click: $root.removeSeat">Remove</a> -->
+                <td><button type="button" data-bind="click: $root.removeSeat"></button></td>
             </tr>
         </tbody>
         <button data-bind="click: addSeat, enable: seats().length < 5">Reserve another seat</button>
     </table>
-
     <h3 data-bind="visible: totalSurcharge() > 0">
         Total surcharge: $<span data-bind="text: totalSurcharge().toFixed(2)"></span>
     </h3>
-
     <footer>
         <p>Taken from the <a href="http://learn.knockoutjs.com">Knockout js tutorials</a></p>
     </footer>
