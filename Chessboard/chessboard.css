@@ -17,14 +17,12 @@ td {
     padding: 10px;
     height: 20px;
     width: 20px;
+    /*float: left;*/
 }
 
-#kingPiece {
+.chessPiece {
     color: red;
-}
-
-#queenPiece {
-    color: red;
+    font-size: 1.2em;
 }
 
 .blackSquare {
@@ -32,7 +30,6 @@ td {
 }
 
 .pieceSquare {
-    font-size: 1.2em;
     border: 1px solid black;
     width: 30px;
     height: 30px;

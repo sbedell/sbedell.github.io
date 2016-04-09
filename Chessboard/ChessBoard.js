@@ -52,23 +52,14 @@ function generateBoard() {
     }
 }
 
-function resetBoard() {
-    if (window.confirm("Are you sure you want to reset the board?")) {
-        clearBoard();
-    }
-}
+// function resetBoard() {
+//     if (window.confirm("Are you sure you want to reset the board?")) {
+//         clearBoard();
+//     }
+// }
 
 function clearBoard() {
     document.getElementById("chessboard").innerHTML = "";
-    document.getElementById("outputText").innerHTML = "";
-}
-
-function clearPieces() {
-    let tds = document.getElementsByTagName("td");
-    //console.dir(tds);
-    for (let x = 0; x < tds.length; x++) {
-        tds[x].innerText = '';
-    }
     document.getElementById("outputText").innerHTML = "";
 }
 
@@ -92,15 +83,21 @@ function kingInCheck() {
 
     // Calculate King Coordinates
     let kingSquareId = document.getElementById(kingPiece.parentElement.id).id;
-    let kingCol = parseInt(kingSquareId.split(",")[0].trim());
-    let kingRow = parseInt(kingSquareId.split(",")[1].trim());
+    let kingCol = parseInt(kingSquareId.split(",")[0]);
+    let kingRow = parseInt(kingSquareId.split(",")[1]);
     let kingCoords = [kingCol, kingRow];
 
     // Calculate Queen Coordinates
     let queenSquareId = document.getElementById(queenPiece.parentElement.id).id;
-    let queenCol = parseInt(queenSquareId.split(",")[0].trim());
-    let queenRow = parseInt(queenSquareId.split(",")[1].trim());
+    let queenCol = parseInt(queenSquareId.split(",")[0]);
+    let queenRow = parseInt(queenSquareId.split(",")[1]);
     let queenCoords = [queenCol, queenRow];
+
+    if (kingSquareId == queenSquareId
+        || kingSquareId == "queenPiece" || queenSquareId == "kingPiece") {
+        alert("King and Queen cannot be on the same square!");
+        return;
+    }
 
     if (board.isKingThreatened(kingCoords, queenCoords)) {
         document.getElementById("outputText").innerHTML = "<strong>King is in check!</strong>";
@@ -115,11 +112,11 @@ function allowDrop(ev) {
 }
 
 function drag(ev) {
-    ev.dataTransfer.setData("Text", ev.target.id);
+    ev.dataTransfer.setData("text/plain", ev.target.id);
 }
 
 function drop(ev) {
-    let data = ev.dataTransfer.getData("Text");
+    let data = ev.dataTransfer.getData("text/plain");
     ev.target.appendChild(document.getElementById(data));
     ev.preventDefault();
 }
