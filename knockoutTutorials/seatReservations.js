@@ -1,18 +1,31 @@
 // Class to represent a row in the seat reservations grid
-function SeatReservation(name, initialMeal) {
-    let self = this;
-    self.name = name;
-    self.meal = ko.observable(initialMeal);
+// function SeatReservation(name, initialMeal) {
+//     let self = this;
+//     self.name = name;
+//     self.meal = ko.observable(initialMeal);
+//
+//     self.formattedPrice = ko.computed(function() {
+//         let price = self.meal().price;
+//         return price ? "$" + price.toFixed(2) : "None";
+//     });
+// }
 
-    self.formattedPrice = ko.computed(function() {
+class SeatReservation {
+  constructor(name, initialMeal) {
+    let self = this;
+    this.name = name;
+    this.meal = ko.observable(initialMeal);
+
+    this.formattedPrice = ko.computed(function() {
         let price = self.meal().price;
         return price ? "$" + price.toFixed(2) : "None";
     });
+  }
 }
 
 // Overall viewmodel for this screen, along with initial state
 function ReservationsViewModel() {
-    var self = this;
+    let self = this;
 
     // Non-editable catalog data - would come from the server
     self.availableMeals = [
