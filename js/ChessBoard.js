@@ -2,8 +2,6 @@ class ChessBoard {
     constructor(rows, columns) {
         this.rows = rows;
         this.columns = columns;
-        this.queenPos = [];
-        this.kingPos = [];
     }
 
     // KingPos and QueenPos are both arrays of length 2,
@@ -24,18 +22,25 @@ class ChessBoard {
     }
 }
 
-let board;
+// Global variables
+let _board;
+let _initialHTML;
+// on page load, save the original positions of the pieces
+window.onload = function() {
+	_initialHTML = document.getElementById('pieces').innerHTML;
+};
+
 function generateBoard() {
     clearBoard();
     let rows = document.getElementById("rows").value;
     let cols = document.getElementById("columns").value;
     if (rows <= 0 || cols <= 0) {
         alert("Cannot have 0 or less columns or rows!");
-        clearBoard();
         return;
     }
-    board = new ChessBoard(rows, cols);
+    _board = new ChessBoard(rows, cols);
 
+    // Render the chessboard html table
     let boardElement = document.getElementById("chessboard");
     for (let x = 0; x < rows; x++) {
         let row = boardElement.insertRow();
@@ -61,6 +66,8 @@ function generateBoard() {
 function clearBoard() {
     document.getElementById("chessboard").innerHTML = "";
     document.getElementById("outputText").innerHTML = "";
+    // reset the pieces back to the starting squares
+    document.getElementById("pieces").innerHTML = _initialHTML;
 }
 
 function kingInCheck() {
@@ -98,7 +105,7 @@ function kingInCheck() {
         return;
     }
 
-    if (board.isKingThreatened(kingCoords, queenCoords)) {
+    if (_board.isKingThreatened(kingCoords, queenCoords)) {
         document.getElementById("outputText").innerHTML = "<strong>King is in check!</strong>";
     } else {
         document.getElementById("outputText").innerHTML = "King is <strong>NOT</strong> in check.";

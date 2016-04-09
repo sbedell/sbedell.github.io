@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Chessboard</title>
+    <meta charset="UTF-8">
+	<script src="js/ChessBoard.js"></script>
+	<link rel="stylesheet" href="css/chessboard.css" />
+</head>
+<body>
+	<div>
+		<input id="columns" type="text" placeholder="Enter # of Columns">
+		<input id="rows" type="text" placeholder="Enter # of Rows" />
+	    <button type="button" onclick="generateBoard();">Generate Board</button>
+	</div>
+	<div id="pieces">
+		<span id="kingSquare" class="pieceSquare" ondragover="allowDrop(event);" ondrop="drop(event);">
+			<span id="kingPiece" class="chessPiece" draggable="true" ondragstart="drag(event);">♚</span>
+		</span>
+		<span id="queenSquare" class="pieceSquare" ondragover="allowDrop(event);" ondrop="drop(event);">
+			<span id="queenPiece" class="chessPiece" draggable="true" ondragstart="drag(event);">♛</span>
+		</span>
+	</div>
+
+	<button type="button" onclick="kingInCheck();">King in Check?</button>
+	<span id="outputText"></span>
+
+	<table id="chessboard"></table>
+	<p>Drag and drop the ♚(King) and ♛(Queen) to place the king and queen. You can re-drag them around the board as you wish.</p>
+</body>
+</html>
