@@ -3,13 +3,12 @@
 <head>
     <title>Knockout JS Tutorial - Seat Reservations</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="koStyles.css" />
 </head>
 <body>
-    <h2 data-bind="visible: seats().length > 0">
-        Your seat reservations (<span data-bind="text: seats().length"></span>)
-    </h2>
+    <h1>Seat Reservations Demo</h1>
     <table>
-        <thead>
+        <thead data-bind="visible: seats().length > 0">
             <tr>
                 <th>Passenger name</th>
                 <th>Meal</th>
@@ -22,13 +21,15 @@
                 <td><input data-bind="value: name" /></td>
                 <td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select></td>
                 <td data-bind="text: formattedPrice"></td>
-                <!-- <a href="#" data-bind="click: $root.removeSeat">Remove</a> -->
                 <td><button type="button" data-bind="click: $root.removeSeat">Remove</button></td>
             </tr>
         </tbody>
         <button data-bind="click: addSeat, enable: seats().length < 5">Reserve another seat</button>
     </table>
-    <h3 data-bind="visible: totalSurcharge() > 0">
+    <h3 data-bind="visible: seats().length >= 0">
+        Total seat reservations: <span data-bind="text: seats().length"></span>
+    </h3>
+    <h3 data-bind="visible: totalSurcharge() >= 0">
         Total surcharge: $<span data-bind="text: totalSurcharge().toFixed(2)"></span>
     </h3>
     <footer>

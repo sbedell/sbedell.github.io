@@ -4,10 +4,11 @@
 <head>
     <title>Knockout JS Tutorial - Intro</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="koStyles.css" />
 </head>
 <body>
-    <p>First name: <input data-bind="value: firstName" /></p>
-    <p>Last name: <input data-bind="value: lastName" /></p>
+    <label>First name: <input data-bind="value: firstName" /></label><br /><br />
+    <label>Last name: <input data-bind="value: lastName" /></label>
     <p>Full name: <strong data-bind="text: fullName"></strong></p>
     <button data-bind="click: capitalizeLastName">Capitalize last name</button>
     <footer>
