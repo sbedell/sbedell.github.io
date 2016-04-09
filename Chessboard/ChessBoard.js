@@ -93,8 +93,7 @@ function kingInCheck() {
     let queenRow = parseInt(queenSquareId.split(",")[1]);
     let queenCoords = [queenCol, queenRow];
 
-    if (kingSquareId == queenSquareId
-        || kingSquareId == "queenPiece" || queenSquareId == "kingPiece") {
+    if (kingSquareId == queenSquareId || kingSquareId == "queenPiece" || queenSquareId == "kingPiece") {
         alert("King and Queen cannot be on the same square!");
         return;
     }
