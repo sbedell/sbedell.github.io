@@ -1,7 +1,7 @@
 class WebmailViewModel {
     constructor() {
         let self = this;
-        
+
         // Data
         this.folders = ['Inbox', 'Archive', 'Sent', 'Spam'];
         this.chosenFolderId = ko.observable();
@@ -9,7 +9,7 @@ class WebmailViewModel {
         this.chosenMailData = ko.observable();
 
         // Functions
-
+        // $.get is jQuery
         this.goToFolder = function(folder) {
             self.chosenFolderId(folder);
             self.chosenMailData(null); // Stop showing an email
