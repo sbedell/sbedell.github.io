@@ -11,19 +11,30 @@ class WebmailViewModel {
         // Functions
         // $.get is jQuery
         this.goToFolder = function(folder) {
-            self.chosenFolderId(folder);
-            self.chosenMailData(null); // Stop showing an email
-            $.get('/mail', { folder: folder }, self.chosenFolderData);
+            window.location.hash = folder;
         }
 
         this.goToMail = function(mail) {
-            self.chosenFolderId(mail.folder);
-            self.chosenFolderData(null); // Stop showing a folder
-            $.get("/mail", { mailId: mail.id }, self.chosenMailData);
+            window.location.hash = mail.folder + '/' + mail.id;
         };
 
-        // Show inbox by default
-        this.goToFolder('Inbox');
+        // Client-side routes with SammyJS
+        Sammy(function() {
+            this.get('#:folder', function() {
+                self.chosenFolderId(this.params.folder);
+                self.chosenMailData(null);
+                $.get("/mail", { folder: this.params.folder }, self.chosenFolderData);
+            });
+
+            this.get('#:folder/:mailId', function() {
+                self.chosenFolderId(this.params.folder);
+                self.chosenFolderData(null);
+                $.get("/mail", { mailId: this.params.mailId }, self.chosenMailData);
+            });
+
+            // default to Inbox on a no-hash URL (hence blank)
+            this.get('', function() { this.app.runRoute('get', '#Inbox') });
+        }).run();
     }
 };
 
