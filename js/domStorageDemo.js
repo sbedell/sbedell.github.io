@@ -2,11 +2,14 @@ var sessionstore = document.getElementById("sessionstore");
 var bgColorSelector = document.getElementById("bgcolor");
 
 function changeBackgroundColor(color) {
+    console.log("type of color = " + typeof color);
     if (typeof color === "string") {
-        document.styleSheets[0].cssRules[4].style.backgroundColor = color;
-    } else {
-        alert("Error");
-    }
+        //document.styleSheets[0].cssRules[4].style.backgroundColor = color;
+        document.getElementsByTagName("body")[0].style.backgroundColor = color;
+    } 
+    // else {
+    //     alert("Error");
+    // }
 }
 
 function deleteStorage() {
