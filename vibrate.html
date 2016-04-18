@@ -23,11 +23,15 @@
 			}
 
 			table, th, td {
-				border: 1px solid black;
+				border: none
 			}
 
 			td, th {
 				padding: 10px;
+			}
+			
+			h2 {
+				margin-left: 25px;
 			}
     </style>
 </head>
@@ -53,36 +57,42 @@
 						<li><a href="./security">Security and Privacy Info</a></li>
 						<li><a href="./soundcloud">Soundcloud API webapp</a></li>
 						<li class="active"><a href="./vibrate">HTML5 Vibration Test</a></li>
-                        <li><a href="./soundboard">HTML5 Soundboard Demo</a></li>
+            <li><a href="./soundboard">HTML5 Soundboard Demo</a></li>
 					</ul>
 				</li>
 			</ul>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </div>
+			</div><!--/.navbar-collapse -->
+		</div>
+	</div>
 <div class="container">
 	<div class="row">
 		<h2>HTML 5 Vibration Test</h2>
 		<div class="col-md-6">
-			<div>
-				<label>Vibration Duration (ms):
-					<input id="viblen" type="number" value="500">
-				</label>
-				<button class="btn btn-default" type="button" onclick="singleVibrate()">Single Vibrate</button>
-			</div>
-
-			<div>
-				<p><strong>Multiple Vibration Options:</strong></p>
-				<label>Number of Vibrations:
-					<input id="vibinterval" type="number" value="5">
-				</label>
-				<br />
-				<label>Time Between Vibrations (ms):
-					<input id="pauselen" type="number" value="200">
-				</label>
-				<button class="btn btn-default" type="button" onclick="multipleVibrate()">Multiple Vibrations</button><br /><br />
-			</div>
-			<button class="btn btn-danger" type="button" onclick="stopVibrate()">Stop Vibration(s)</button>
+			<table>
+				<tr>
+					<td><label for="viblen">Vibration Duration (ms):</label></td>
+					<td><input id="viblen" type="number" value="500"></td>
+					<td><button class="btn btn-default" type="button" onclick="singleVibrate()">Single Vibrate</button></td>
+				</tr>
+				<tr>
+					<th>Multiple Vibration Options:</th>
+				</tr>
+				<tr>
+					<td><label for="vibinterval">Number of Vibrations:</label></td>
+					<td><input id="vibinterval" type="number" value="5"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><label for="pauselen">Time Between Vibrations (ms):</label></td>
+					<td><input id="pauselen" type="number" value="200"></td>
+					<td><button class="btn btn-default" type="button" onclick="multipleVibrate()">Multiple Vibrations</button></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><button class="btn btn-danger" type="button" onclick="stopVibrate()">Stop Vibrate</button></td>
+					<td></td>
+				</tr>
+			</table>
 			<hr />
 			<p>Demo page for the new HTML5 Vibration API feature. You can read more about it at the Mozilla Developer Network or at the W3.<br>
 				<a href="//developer.mozilla.org/en-US/docs/Web/Guide/API/Vibration">MDN - Vibration API</a><br>
