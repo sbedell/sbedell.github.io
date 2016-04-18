@@ -60,11 +60,11 @@
 		<div class="row">
 			<h4>DShield and ISC Data</h4>
 			<div class="col-md-6">
-				<input id="ipaddr" type="text" value="" placeholder="IP Address">
+				<input id="ipaddr" type="text" value="" placeholder="IP Address" inputmode="numeric">
 				<button class="btn btn-default" type="button" onclick="ipSearch()">Search IP Address</button><br /><br />
 			</div>
 			<div class="col-md-6">
-				<input id="port" type="number" value="" placeholder="Port Number">
+				<input id="port" type="number" value="" placeholder="Port Number" min="0" max="65536" pattern="/^\d+$/">
 				<button class="btn btn-default" type="button" onclick="portSearch()">Search Ports</button><br />
 				<button class="btn btn-default" type="button" onclick="clearResults()">Clear Results</button><br /><br />
 			</div>
