@@ -1,0 +1,21 @@
+body {
+    margin-left: 20px;
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+label {
+    font-weight: normal;
+}
+
+table, th, td {
+    border: none
+}
+
+td, th {
+    padding: 10px;
+}
+
+input {
+    width: 30%;
+}

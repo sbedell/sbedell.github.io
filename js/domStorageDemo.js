@@ -1,20 +1,9 @@
-var sessionstore = document.getElementById("sessionstore");
+var sessionStore = document.getElementById("sessionstore");
 var bgColorSelector = document.getElementById("bgcolor");
-
-function changeBackgroundColor(color) {
-    document.getElementsByTagName("body")[0].style.backgroundColor = color;
-}
-
-function deleteStorage() {
-    if (confirm("Are you sure you want to clear storage?")) {
-        localStorage.clear();
-        sessionStorage.clear();
-    }
-}
 
 // Loading values if present:
 if (sessionStorage.getItem("autosave")) {
-    sessionstore.value = sessionStorage.getItem("autosave");
+    sessionStore.value = sessionStorage.getItem("autosave");
 }
 
 if (localStorage.getItem("bgColor")) {
@@ -22,17 +11,25 @@ if (localStorage.getItem("bgColor")) {
     changeBackgroundColor(bgColorSelector.value);
 }
 
-// ~~~~~ Adding Event Listeners ~~~~~
+function changeBackgroundColor(color) {
+    document.getElementsByTagName("body")[0].style.backgroundColor = color;
+}
 
-sessionstore.addEventListener("change", function() {
-    sessionStorage.setItem("autosave", sessionstore.value);
+// ~~~~~ Adding Event Listeners ~~~~~
+sessionStore.addEventListener("change", () => {
+    sessionStorage.setItem("autosave", sessionStore.value);
 });
 
-bgColorSelector.addEventListener("change", function() {
+bgColorSelector.addEventListener("change", () => {
     var newBG = document.getElementById("bgcolor").value;
     localStorage.setItem("bgColor", newBG);
     changeBackgroundColor(newBG);
     window.location.reload(true);
-} );
+});
 
-document.getElementById("DELETE").addEventListener("click", deleteStorage);
+document.getElementById("DELETE").addEventListener("click", () => {
+    if (confirm("Are you sure you want to clear storage?")) {
+        localStorage.clear();
+        sessionStorage.clear();
+    }
+});

@@ -90,7 +90,7 @@ function codeAddress() {
 			map.setCenter(results[0].geometry.location);
 
 			for(var i = 0; i < 10; i++) {
-				if (results[i] != null){
+				if (results[i] != null) {
 					var Infowindow = new google.maps.InfoWindow({
 						content: results[i].formatted_address,
 						position: results[i].geometry.location
