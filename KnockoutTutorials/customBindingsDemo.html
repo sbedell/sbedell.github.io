@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="koStyles.css" />
     <link rel="stylesheet" href="customBindings.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css" />
 </head>
 <body>
     <h3 data-bind="text: question"></h3>
@@ -23,15 +22,12 @@
 
     <h3 data-bind="fadeVisible: pointsUsed() > pointsBudget">You've used too many points! Please remove some.</h3>
     <p>You've got <b data-bind="text: pointsBudget - pointsUsed()"></b> points left to use.</p>
-    <button data-bind="jqButton: { enable: pointsUsed() <= pointsBudget }, click: save">Finished</button>
+    <button data-bind="enable: pointsUsed() <= pointsBudget, click: save">Finished</button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.3.min.js"
         integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
         crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"
-        integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw="
-    	crossorigin="anonymous"></script>
     <script src="customBinding.js"></script>
 </body>
 </html>
