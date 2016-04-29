@@ -7,13 +7,13 @@ ul {
 }
 
 ul li a {
-  color: Gray;
+  color: gray;
   font-size: 90%;
-  text-decoration: none
+  text-decoration: none;
 }
 
 ul li a:hover {
-  text-decoration: underline
+  text-decoration: underline;
 }
 
 input:not([type]),
@@ -23,8 +23,8 @@ input[type=text] {
 
 input[disabled] {
   text-decoration: line-through;
-  border-color: Silver;
-  background-color: Silver;
+  border-color: silver;
+  background-color: silver;
 }
 
 textarea {
