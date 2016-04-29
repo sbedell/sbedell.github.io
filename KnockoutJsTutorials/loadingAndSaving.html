@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Knockout JS Tutorial - Loading and Saving data</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="koStyles.css" />
+    <link rel="stylesheet" href="loadingsaving.css" />
+</head>
+
+<body>
+    <h3>Tasks</h3>
+
+    <form data-bind="submit: addTask">
+        <label>Add task: <input data-bind="value: newTaskText" placeholder="What needs to be done?" /></label>
+        <button type="submit">Add</button>
+    </form>
+
+    <ul data-bind="foreach: {data: tasks, includeDestroyed: false}, visible: tasks().length > 0">
+        <li>
+            <input type="checkbox" data-bind="checked: isDone" />
+            <input data-bind="value: title, disable: isDone" />
+            <button data-bind="click: $parent.removeTask">Delete</button>
+        </li>
+    </ul>
+
+    <p>You have <b data-bind="text: incompleteTasks().length"></b> incomplete task(s)
+        <span data-bind="visible: incompleteTasks().length == 0"> - it's beer time!</span>
+    </p>
+
+    <!--<form action="/tasks/saveform" method="post">-->
+        <input type="hidden" name="tasks" data-bind="value: ko.toJSON(tasks)" />
+        <textarea name="tasks" data-bind="value: ko.toJSON(tasks)"></textarea>
+        <!--<button type="submit">Save</button>-->
+    <!--</form>-->
+    <!-- <button data-bind="click: save">Save</button> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+    <script src="loadingAndSaving.js"></script>
+</body>
+
+</html>

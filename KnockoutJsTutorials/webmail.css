@@ -37,7 +37,7 @@ body {
 
 /*.folders li { *display: inline !important; } /* IE7 only */
 
-*/ .folders .selected {
+.folders .selected {
   background-color: #444 !important;
   color: white;
   text-shadow: none;
