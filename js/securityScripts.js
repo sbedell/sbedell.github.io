@@ -31,7 +31,7 @@ function ipSearch() {
             document.getElementById("results").innerHTML = "Error, this device doesn't support XML HTTP Requests.";
         }
 	} else {
-		document.getElementById("results").innerHTML = "Error, invalid IP (ipv4) address.";
+		document.getElementById("results").innerHTML = "Invalid IP (ipv4) address.";
 	}
 }
 
@@ -39,26 +39,30 @@ function portSearch() {
     var port = document.getElementById("port").value;
     // Check if device supports XML Http Requests
     if (window.XMLHttpRequest) {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                var response = JSON.parse(xmlhttp.responseText);
-                var output = `<p>Data for port #: ${response.number}</p>`;
-                if ( response.services.tcp.name != 0){
-                    output += `<p>Port Name / Type: ${response.services.tcp.name}</p>`;
+        if (port.match(/^\d+$/) && port > 0 && port < 65536) {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    var response = JSON.parse(xmlhttp.responseText);
+                    var output = `<p>Data for port #: ${response.number}</p>`;
+                    if (response.services.tcp.name != 0) {
+                        output += `<p>Port Name / Type: ${response.services.tcp.name}</p>`;
+                    }
+                    if (response.services.tcp.service != 0) {
+                        output += `<p>TCP Service: ${response.services.tcp.service}</p>`;
+                    }
+                    output += `<p>Records: ${response.data.records}</p>`;
+                    output += `<p>Targets: ${response.data.targets}</p>`;
+                    output += `<p>Sources: ${response.data.sources}</p>`;
+                    document.getElementById("results").innerHTML = output;
                 }
-                if ( response.services.tcp.service != 0) {
-                    output += `<p>TCP Service: ${response.services.tcp.service}</p>`;
-                }
-                output += `<p>Records: ${response.data.records}</p>`;
-                output += `<p>Targets: ${response.data.targets}</p>`;
-                output += `<p>Sources: ${response.data.sources}</p>`;
-                document.getElementById("results").innerHTML = output;
             }
+            var url = `https://www.dshield.org/api/port/${port}?json`;
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+        } else {
+            document.getElementById("results").innerHTML = "Invalid port number.";
         }
-        var url = `https://www.dshield.org/api/port/${port}?json`;
-        xmlhttp.open("GET", url, true);
-        xmlhttp.send();
     } else {
         document.getElementById("results").innerHTML = "Error, this device doesn't support XML HTTP Requests.";
     } 

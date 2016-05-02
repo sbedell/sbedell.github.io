@@ -58,12 +58,13 @@
                     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                         var responseText = JSON.parse(xmlhttp.responseText);
                         var output = "<p>Data for port # : " + responseText.number + "</p>";
-                        if ( responseText.services.tcp.name != 0){
+                        if (responseText.services.tcp.name != 0) {
                             output += "<p>Port Name / Type: " + responseText.services.tcp.name + "</p>";
                         }
-                        if ( responseText.services.tcp.service != 0) {
+                        if (responseText.services.tcp.service != 0) {
                             output += "<p>TCP Service: " + responseText.services.tcp.service + "</p>";
                         }
+                        
                         output += "<p>Records: " + responseText.data.records + "</p>";
                         output += "<p>Targets: " + responseText.data.targets + "</p>";
                         output += "<p>Sources: " + responseText.data.sources + "</p>";
