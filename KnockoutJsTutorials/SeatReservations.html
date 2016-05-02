@@ -6,35 +6,42 @@
     <link rel="stylesheet" href="koStyles.css" />
 </head>
 <body>
-    <h1>Seat Reservations Demo</h1>
-    <table>
-        <thead data-bind="visible: seats().length > 0">
-            <tr>
-                <th>Passenger name</th>
-                <th>Meal</th>
-                <th>Surcharge</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody data-bind="foreach: seats">
-            <tr>
-                <td><input data-bind="value: name" /></td>
-                <td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select></td>
-                <td data-bind="text: formattedPrice"></td>
-                <td><button type="button" data-bind="click: $root.removeSeat">Remove</button></td>
-            </tr>
-        </tbody>
-        <button data-bind="click: addSeat, enable: seats().length < 5">Reserve another seat</button>
-    </table>
-    <h3 data-bind="visible: seats().length >= 0">
-        Total seat reservations: <span data-bind="text: seats().length"></span>
-    </h3>
-    <h3 data-bind="visible: totalSurcharge() >= 0">
-        Total surcharge: $<span data-bind="text: totalSurcharge().toFixed(2)"></span>
-    </h3>
+    <header>
+        <h1>Seat Reservations Demo</h1>
+    </header>
+    <main>
+        <table>
+            <thead data-bind="visible: seats().length > 0">
+                <tr>
+                    <th>Passenger name</th>
+                    <th>Meal</th>
+                    <th>Surcharge</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: seats">
+                <tr>
+                    <td><input data-bind="value: name" /></td>
+                    <td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select></td>
+                    <td data-bind="text: formattedPrice"></td>
+                    <td><button type="button" data-bind="click: $root.removeSeat">Remove</button></td>
+                </tr>
+            </tbody>
+            <button data-bind="click: addSeat, enable: seats().length < 5">Reserve another seat</button>
+        </table>
+
+        <h3 data-bind="visible: seats().length >= 0">
+            Total seat reservations: <span data-bind="text: seats().length"></span>
+        </h3>
+        <h3 data-bind="visible: totalSurcharge() >= 0">
+            Total surcharge: $<span data-bind="text: totalSurcharge().toFixed(2)"></span>
+        </h3>
+    </main>
+
     <footer>
         <p>Taken from the <a href="http://learn.knockoutjs.com">Knockout js tutorials</a></p>
     </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
     <script src="seatReservations.js"></script>
 </body>
