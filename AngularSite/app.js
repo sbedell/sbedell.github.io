@@ -1,5 +1,6 @@
 (function() {
     angular.module("myWebsite", [])
+    // angular.module("myWebsite", ["component", "names", "go", "here"])
 
     .controller("tabController", function() {
         this.tab = 1;
