@@ -5,15 +5,18 @@
     .controller("tabController", function() {
         this.tab = 1;
         this.isSet = function(checkTab) {
+            //console.log("isSet hash = " + window.location.hash);
             return this.tab === checkTab;
         };
 
         this.setTab = function(newTab) {
+            //console.log("settab hash = " + window.location.hash);
             this.tab = newTab;
+            window.location.hash = newTab;
         };
     })
 
-    .controller("securityController", [ '$scope', '$http', function($scope, $http) {
+    .controller("securityController", ['$scope', '$http', function($scope, $http) {
         function alertMe($scope) {
             $scope.alert("YOU CLICKED IT. YOU REALY FUCKING CLICKED IT M8!");
             $scope.console.log("you clicked the alert button thing");

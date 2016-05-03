@@ -1,43 +1,51 @@
 <!DOCTYPE html>
 <html ng-app="myWebsite">
 <head>
-	<title>Angular Testing</title>
+	<title>Steve Bedell - Angular Site</title>
 	<meta charset="utf-8">
 	<meta name="author" content="Steve Bedell">
 	<meta name="description" content="Steve Bedell's github.io page. Contains information about Steve and various web projects he's made.">
-	<meta name="keywords" content="OSU, Ohio State, CSE, Computer Science, Home page, Github, IBM">
+	<meta name="keywords" content="OSU, Ohio State, CSE, Computer Science, Github, IBM, Acumen Solutions">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
 	<script type="text/javascript" src="app.js"></script>
-    <link href="assets/favicon.ico" rel="icon" type="image/x-icon">
+    <link href="../favicon.ico" rel="icon" type="image/x-icon">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<style>
+		a:hover {
+			cursor: pointer;
+		}	
+	</style>
 </head>
 <body class="container">
 	<div ng-controller="tabController as tab">
-		<ul class="nav nav-tabs">
-			<li role="presentation" ng-class="{ active:tab.isSet(1) }">
-				<a href ng-click="tab.setTab(1)">Home</a>
-			</li>
-			<li role="presentation" ng-class="{ active:tab.isSet(2) }">
-				<a href ng-click="tab.setTab(2)">Resume</a>
-			</li>
-			<li role="presentation" ng-class="{ active:tab.isSet(3) }">
-				<a href ng-click="tab.setTab(3)">Security</a>
-			</li>
-			<li role="presentation" ng-class="{ active:tab.isSet(4) }">
-				<a href ng-click="tab.setTab(4)">Storage Demo</a>
-			</li>
-			<li role="presentation" ng-class="{ active:tab.isSet(5) }">
-				<a href ng-click="tab.setTab(5)">Soundboard</a>
-			</li>
-		</ul>
-
-		<main-section ng-show="tab.isSet(1)"></main-section>
-		<resume-page ng-show="tab.isSet(2)"></resume-page>
-		<security-page ng-show="tab.isSet(3)"></security-page>
-		<storage-demo ng-show="tab.isSet(4)"></storage-demo>
-		<soundboard ng-show="tab.isSet(5)"></soundboard>
+		<nav>
+			<ul class="nav nav-tabs">
+				<li role="presentation" ng-class="{ active:tab.isSet(1) }">
+					<a ng-click="tab.setTab(1)">Home</a>
+				</li>
+				<li role="presentation" ng-class="{ active:tab.isSet(2) }">
+					<a ng-click="tab.setTab(2)">Resume</a>
+				</li>
+				<li role="presentation" ng-class="{ active:tab.isSet(3) }">
+					<a ng-click="tab.setTab(3)">Security</a>
+				</li>
+				<li role="presentation" ng-class="{ active:tab.isSet(4) }">
+					<a ng-click="tab.setTab(4)">Storage Demo</a>
+				</li>
+				<li role="presentation" ng-class="{ active:tab.isSet(5) }">
+					<a ng-click="tab.setTab(5)">Soundboard</a>
+				</li>
+			</ul>
+		</nav>
+		<main>
+			<main-section ng-show="tab.isSet(1)"></main-section>
+			<resume-page ng-show="tab.isSet(2)"></resume-page>
+			<security-page ng-show="tab.isSet(3)"></security-page>
+			<storage-demo ng-show="tab.isSet(4)"></storage-demo>
+			<soundboard ng-show="tab.isSet(5)"></soundboard>
+		</main>
 	</div>
 
 	<footer>
