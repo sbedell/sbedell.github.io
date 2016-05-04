@@ -19,32 +19,32 @@
 	</style>
 </head>
 <body class="container">
-	<div ng-controller="tabController as tab">
+	<div ng-controller="siteController as sc">
 		<nav>
 			<ul class="nav nav-tabs">
-				<li role="presentation" ng-class="{ active:tab.isSet(1) }">
-					<a ng-click="tab.setTab(1)">Home</a>
+				<li role="presentation" ng-class="{ active:sc.isSet(1) }">
+					<a ng-click="sc.setTab(1)">Home</a>
 				</li>
-				<li role="presentation" ng-class="{ active:tab.isSet(2) }">
-					<a ng-click="tab.setTab(2)">Resume</a>
+				<li role="presentation" ng-class="{ active:sc.isSet(2) }">
+					<a ng-click="sc.setTab(2)">Resume</a>
 				</li>
-				<li role="presentation" ng-class="{ active:tab.isSet(3) }">
-					<a ng-click="tab.setTab(3)">Security</a>
+				<li role="presentation" ng-class="{ active:sc.isSet(3) }">
+					<a ng-click="sc.setTab(3)">Security</a>
 				</li>
-				<li role="presentation" ng-class="{ active:tab.isSet(4) }">
-					<a ng-click="tab.setTab(4)">Storage Demo</a>
+				<li role="presentation" ng-class="{ active:sc.isSet(4) }">
+					<a ng-click="sc.setTab(4)">Storage Demo</a>
 				</li>
-				<li role="presentation" ng-class="{ active:tab.isSet(5) }">
-					<a ng-click="tab.setTab(5)">Soundboard</a>
+				<li role="presentation" ng-class="{ active:sc.isSet(5) }">
+					<a ng-click="sc.setTab(5)">Soundboard</a>
 				</li>
 			</ul>
 		</nav>
 		<main>
-			<main-section ng-show="tab.isSet(1)"></main-section>
-			<resume-page ng-show="tab.isSet(2)"></resume-page>
-			<security-page ng-show="tab.isSet(3)"></security-page>
-			<storage-demo ng-show="tab.isSet(4)"></storage-demo>
-			<soundboard ng-show="tab.isSet(5)"></soundboard>
+			<main-section ng-show="sc.isSet(1)"></main-section>
+			<resume-page ng-show="sc.isSet(2)"></resume-page>
+			<security-page ng-show="sc.isSet(3)"></security-page>
+			<storage-demo ng-show="sc.isSet(4)"></storage-demo>
+			<soundboard ng-show="sc.isSet(5)"></soundboard>
 		</main>
 	</div>
 

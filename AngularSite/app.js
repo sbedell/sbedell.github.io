@@ -2,8 +2,9 @@
     angular.module("myWebsite", [])
     // angular.module("myWebsite", ["component", "names", "go", "here"])
 
-    .controller("tabController", function() {
+    .controller("siteController", function() {
         this.tab = 1;
+        
         this.isSet = function(checkTab) {
             //console.log("isSet hash = " + window.location.hash);
             return this.tab === checkTab;
@@ -14,14 +15,13 @@
             this.tab = newTab;
             window.location.hash = newTab;
         };
-    })
-
-    .controller("securityController", ['$scope', '$http', function($scope, $http) {
-        function alertMe($scope) {
-            $scope.alert("YOU CLICKED IT. YOU REALY FUCKING CLICKED IT M8!");
-            $scope.console.log("you clicked the alert button thing");
+        
+        this.alertMe = function() {
+            alert("YOU CLICKED IT. YOU REALY CLICKED IT M8!");
+            console.log("you clicked the alert button thing");
         }
 
+        /*
         function ipSearch() {
             var ipAddress = document.getElementById("ipaddr").value;
         	if (ipAddress.match(/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/)) {
@@ -87,8 +87,9 @@
         	document.getElementById("port").value = "";
         	document.getElementById("ipaddr").value = "";
         }
-    }])
-
+        */
+    })
+    
     .directive("mainSection", function() {
         return {
             restrict: 'E',
@@ -99,16 +100,7 @@
     .directive("securityPage", function() {
         return {
             restrict: 'E',
-            templateUrl: 'templates/security.html',
-            //controller: 'securityController',
-            //controllerAs: 'secCtrl',
-            //scope: {}
-            // controller: function($scope) {
-            //     $scope.alertMe = function() {
-            //         alert("YOU CLICKED IT!");
-            //     }
-            // },
-            //controllerAs: "secCtrl"
+            templateUrl: 'templates/security.html'
         };
     })
 
