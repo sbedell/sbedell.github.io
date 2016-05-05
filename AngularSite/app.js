@@ -56,8 +56,7 @@
                 sessionStorage.clear();
             }
         }
-
-        /*
+        
         function ipSearch() {
             var ipAddress = document.getElementById("ipaddr").value;
         	if (ipAddress.match(/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/)) {
@@ -123,7 +122,7 @@
         	document.getElementById("port").value = "";
         	document.getElementById("ipaddr").value = "";
         }
-        */
+        
     })
     
     .directive("mainSection", function() {
