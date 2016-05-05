@@ -12,7 +12,9 @@ if (localStorage.getItem("bgColor")) {
 }
 
 function changeBackgroundColor(color) {
-    document.body.style.backgroundColor = color;
+    if (typeof color === "string") {
+        document.body.style.backgroundColor = color;
+    }
 }
 
 // ~~~~~ Adding Event Listeners ~~~~~
@@ -24,7 +26,6 @@ bgColorSelector.addEventListener("change", () => {
     var newBG = document.getElementById("bgcolor").value;
     localStorage.setItem("bgColor", newBG);
     changeBackgroundColor(newBG);
-    window.location.reload(true);
 });
 
 document.getElementById("DELETE").addEventListener("click", () => {

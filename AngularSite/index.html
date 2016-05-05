@@ -1,56 +1,107 @@
 <!DOCTYPE html>
 <html ng-app="myWebsite">
 <head>
-	<title>Steve Bedell - Angular Site</title>
+	<title>Angular Site</title>
 	<meta charset="utf-8">
 	<meta name="author" content="Steve Bedell">
 	<meta name="description" content="Steve Bedell's github.io page. Contains information about Steve and various web projects he's made.">
 	<meta name="keywords" content="OSU, Ohio State, CSE, Computer Science, Github, IBM, Acumen Solutions">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
-	<script type="text/javascript" src="app.js"></script>
-    <link href="../favicon.ico" rel="icon" type="image/x-icon">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js" defer></script>
+	<script type="text/javascript" src="app.js" defer></script>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<style>
-		a:hover {
-			cursor: pointer;
-		}	
-	</style>
+	<link rel="stylesheet" href="index.css">
 </head>
 <body class="container">
-	<div ng-controller="siteController as sc">
-		<nav>
-			<ul class="nav nav-tabs">
-				<li role="presentation" ng-class="{ active:sc.isSet(1) }">
-					<a ng-click="sc.setTab(1)">Home</a>
-				</li>
-				<li role="presentation" ng-class="{ active:sc.isSet(2) }">
-					<a ng-click="sc.setTab(2)">Resume</a>
-				</li>
-				<li role="presentation" ng-class="{ active:sc.isSet(3) }">
-					<a ng-click="sc.setTab(3)">Security</a>
-				</li>
-				<li role="presentation" ng-class="{ active:sc.isSet(4) }">
-					<a ng-click="sc.setTab(4)">Storage Demo</a>
-				</li>
-				<li role="presentation" ng-class="{ active:sc.isSet(5) }">
-					<a ng-click="sc.setTab(5)">Soundboard</a>
-				</li>
-			</ul>
-		</nav>
-		<main>
-			<main-section ng-show="sc.isSet(1)"></main-section>
-			<resume-page ng-show="sc.isSet(2)"></resume-page>
-			<security-page ng-show="sc.isSet(3)"></security-page>
-			<storage-demo ng-show="sc.isSet(4)"></storage-demo>
-			<soundboard ng-show="sc.isSet(5)"></soundboard>
-		</main>
-	</div>
+	<div class="mainpage">
+		<div ng-controller="siteController as sc">
+			<nav>
+				<ul class="nav nav-tabs">
+					<li role="presentation" ng-class="{ active:sc.isSet(1) }">
+						<a ng-click="sc.setTab(1)">Home</a>
+					</li>
+					<li role="presentation" ng-class="{ active:sc.isSet(2) }">
+						<a ng-click="sc.setTab(2)">Resume</a>
+					</li>
+					<li role="presentation" ng-class="{ active:sc.isSet(3) }">
+						<a ng-click="sc.setTab(3)">Security</a>
+					</li>
+					<li role="presentation" ng-class="{ active:sc.isSet(4) }">
+						<a ng-click="sc.setTab(4)">Storage Demo</a>
+					</li>
+					<li role="presentation" ng-class="{ active:sc.isSet(5) }">
+						<a ng-click="sc.setTab(5)">Soundboard</a>
+					</li>
+				</ul>
+			</nav>
+			<main>
+				<main-section ng-show="sc.isSet(1)"></main-section>
+				<resume-page ng-show="sc.isSet(2)"></resume-page>
+				<div class="container" id="securityPage" ng-show="sc.isSet(3)">
+					<main>
+						<div class="row">
+							<h4>Internet Storm Center</h4>
+							<div class="col-md-12">
+								<a target="blank" href="//isc.sans.edu">
+								<img alt="ISC" title="Internet Storm Center Infocon Status" src="//isc.sans.edu/images/status.gif"></a>
+								<a target="blank" href="//dshield.org"><img border="0" src="//isc.sans.edu/images/logos/dshield/medium.png" title="DShield (DSHIELD) website" alt="DShield"></a>
+							</div>
+						</div>
+						<div class="row">
+							<h4>DShield and ISC Data</h4>
+							<div class="col-md-6">
+								<input id="ipaddr" type="text" value="" placeholder="IP Address" inputmode="numeric">
+								<button class="btn btn-default" type="button" onclick="ipSearch()">Search IP Address</button><br /><br />
+							</div>
+							<div class="col-md-6">
+								<input id="port" type="number" value="" placeholder="Port Number" min="0" max="65536" pattern="/^\d+$/">
+								<button class="btn btn-default" type="button" onclick="portSearch()">Search Ports</button><br />
+								<button class="btn btn-default" type="button" onclick="clearResults()">Clear Results</button><br /><br />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div id="results"></div>
+							</div>
+						</div>
+						<hr />
+						<div>
+							<p><a href="//arstechnica.com/tech-policy/2013/08/in-aclu-lawsuit-scientist-demolishes-nsa-its-just-metadata-excuse/">"It's just metadata"</a>, right?</p>
+						<script src="https://api.find-ip.net/widget.js?width=240&language=0&flag=0"></script>
+							<p>Powered by <a href="https://www.find-ip.net/" target="_blank">Find-IP.net</a></p>
+						<div id="browserSection"></div>
+						</div>
+					</main>
+				</div>
+				<div id="WebStorageDemo" ng-show="sc.isSet(4)">
+					<h3>Web storage</h3>
+					<div>
+						<label for="bgcolor">Choose color:</label>
+						<input type="color" id="colorPicker" value="#FF0000" />
+					</div>
+					<div>
+						<label for="font">Session Storage textbox (autosaves):</label>
+						<input type="text" id="sessionStore" value="" />
+					</div>
+					<div>
+						<button type="button" id="deleteButton">Clear Local & Session Storage</button>
+					</div>
+					<p>Pick a color for the background of this form and it will be saved in local storage. Anything you type in the textbox will be saved in session storage.</p>
+					
+					<footer>
+						<p>Demo page built with code from <a href="https://developer.mozilla.org/en-US/">Mozilla's MDN pages.</a></p>
+					</footer>
+				</div>
+				<soundboard ng-show="sc.isSet(5)"></soundboard>
+			</main>
+		</div>
 
-	<footer>
-	  <hr>
-	  <p>Steve Bedell 2015. Built using Twitter Boostrap and AngularJS</p>
-	</footer>
+		<footer>
+			<hr />
+			<p>Steve Bedell 2015. Built using Twitter Boostrap and AngularJS</p>
+		</footer>
+	</div>
 </body>
 </html>

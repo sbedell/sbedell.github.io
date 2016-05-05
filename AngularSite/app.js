@@ -5,6 +5,33 @@
     .controller("siteController", function() {
         this.tab = 1;
         
+        var sessionStore = document.getElementById("sessionStore"); 
+        var colorPickerSelector = document.getElementById("colorPicker");
+        
+        // Adding event listeners: 
+        colorPickerSelector.addEventListener("change", () => {
+            var newColor = document.getElementById("colorPicker").value;
+            localStorage.setItem("pageColor", newColor);
+            changePageColor(newColor);
+        });
+        
+        sessionStore.addEventListener("change", () => {
+            sessionStorage.setItem("autosave", sessionstore.value);
+        });
+        
+        document.getElementById("deleteButton").addEventListener("click", deleteStorage);
+        
+        // Loading values if present
+        if (sessionStorage.getItem("autosave")) {
+            sessionStore.value = sessionStorage.getItem("autosave");
+        }
+
+        if (localStorage.getItem("pageColor")) {
+            colorPickerSelector.value = localStorage.getItem("pageColor");
+            changePageColor(colorPickerSelector.value);
+        }
+        
+        // Controller Functions:
         this.isSet = function(checkTab) {
             //console.log("isSet hash = " + window.location.hash);
             return this.tab === checkTab;
@@ -16,9 +43,18 @@
             window.location.hash = newTab;
         };
         
-        this.alertMe = function() {
-            alert("YOU CLICKED IT. YOU REALY CLICKED IT M8!");
-            console.log("you clicked the alert button thing");
+        function changePageColor(color) {
+            if (typeof color === "string") {
+                document.body.style.backgroundColor = color;
+                //document.getElementById("WebStorageDemo").style.backgroundColor = color;
+            }
+        }
+        
+        function deleteStorage() {
+            if (confirm("Are you sure you want to clear storage?")) {
+                localStorage.clear();
+                sessionStorage.clear();
+            }
         }
 
         /*
@@ -94,20 +130,6 @@
         return {
             restrict: 'E',
             templateUrl: 'templates/main-section.html'
-        };
-    })
-
-    .directive("securityPage", function() {
-        return {
-            restrict: 'E',
-            templateUrl: 'templates/security.html'
-        };
-    })
-
-    .directive("storageDemo", function() {
-        return {
-            restrict: 'E',
-            templateUrl: 'templates/storageDemo.html'
         };
     })
 
