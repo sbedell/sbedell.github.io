@@ -47,7 +47,7 @@
 		<div class="row">
 			<div class="col-md-4 col-xs-12">
 				<label>Vibration Duration (ms):
-					<input id="viblen" type="number" value="500" required="true" />
+					<input id="viblen" type="number" value="500" required="true" min="0" />
 				</label>
 			</div>
 			<div class="col-md-4 col-xs-12">
@@ -60,14 +60,14 @@
 		<div class="row">
 			<div class="col-md-12 col-xs-12">
 				<label>Number of Vibrations:
-					<input id="vibinterval" type="number" value="5">
+					<input id="vibinterval" type="number" value="5" min="0" required="true"/>
 				</label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-4 col-xs-12">
 				<label>Time Between Vibrations (ms):
-					<input id="pauselen" type="number" value="200">
+					<input id="pauselen" type="number" value="200" min="0" required="true">
 				</label>
 			</div>
 			<div class="col-md-4 col-xs-12">
