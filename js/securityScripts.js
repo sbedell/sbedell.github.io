@@ -65,7 +65,7 @@ function portSearch() {
         }
     } else {
         document.getElementById("results").innerHTML = "Error, this device doesn't support XML HTTP Requests.";
-    } 
+    }
 }
 
 function clearResults() {
@@ -73,3 +73,10 @@ function clearResults() {
 	document.getElementById("port").value = "";
 	document.getElementById("ipaddr").value = "";
 }
+
+$(document).ready(() => {
+    document.getElementById("browserSection").innerText = `User Agent: ${navigator.userAgent}\n` +
+            `Monitor Resultion: ${window.screen.availWidth} x ${window.screen.availHeight}\n` +
+            `Current browser Resolution: ${window.innerWidth} x ${window.innerHeight}\n` +
+            `Current battery charge: ${navigator.battery.level * 100}%`;
+});
