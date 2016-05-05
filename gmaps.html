@@ -7,10 +7,10 @@
 	<meta name="description" content="Google Map search page where you can search for a city name and see all the cities in the world that share that name.">
 	<meta name="keywords" content="Google Maps, API, CSE, OSU" />
 	<link rel="stylesheet" type="text/css" href="css/mapStyles.css">
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbvL3IwEPqmH67NYRAjPAdTAma380jSuM&sensor=false" defer></script>
-	<script type="text/javascript" src="js/mapScripts.js" defer></script>
+	<script type="text/javascript" src="js/mapScripts.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbvL3IwEPqmH67NYRAjPAdTAma380jSuM&callback=initializeMap" async defer></script>
 </head>
-<body onload="initializeMap()">
+<body>
 	<div id="textContent">
 		<h1>City Locations</h1>
 		<input id="address" type="text" placeholder="Enter City Name" >

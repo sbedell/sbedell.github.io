@@ -10,7 +10,7 @@ function singleVibrate() {
     if (duration.match(/^\d+$/)) {
         navigator.vibrate(duration);
     } else {
-        document.getElementById("results").innerHTML = "Error, please input a number for Vibration Duration.";
+        document.getElementById("results").innerText = "Error, please input a number for Vibration Duration.";
     }
 }
 
@@ -23,7 +23,7 @@ function multipleVibrate() {
     var pauseLength = document.getElementById("pauselen").value;
 
     if ((!duration.match(/^\d+$/)) || (!amountOfVibs.match(/^\d+$/))) {
-        document.getElementById("results").innerHTML = "Error, please input a number in both fields.";
+        document.getElementById("results").innerText = "Error, please input a number in both fields.";
     } else {
         for (var i = 0; i < amountOfVibs; i++) {
             vibArray.push(duration);
