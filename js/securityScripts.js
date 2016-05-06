@@ -77,6 +77,8 @@ function clearResults() {
 $(document).ready(() => {
     document.getElementById("browserSection").innerText = `User Agent: ${navigator.userAgent}\n` +
             `Monitor Resultion: ${window.screen.availWidth} x ${window.screen.availHeight}\n` +
-            `Current browser Resolution: ${window.innerWidth} x ${window.innerHeight}\n` +
-            `Current battery charge: ${navigator.battery.level * 100}%`;
+            `Current browser Resolution: ${window.innerWidth} x ${window.innerHeight}`;
+    if (navigator.battery) {
+        document.getElementById("browserSection").innerText += `\nCurrent battery charge: ${navigator.battery.level * 100}%`;
+    }
 });
