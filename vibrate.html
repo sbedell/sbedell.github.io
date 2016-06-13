@@ -45,40 +45,42 @@
 		</div>
 	</nav>
 	<div class="container">
-		<h2>HTML 5 Vibration Demo</h2>
-		<div class="row">
-			<div class="form-group">
-				<label for="viblen">Vibration Duration (ms):</label>
-				<input class="form-control" id="viblen" value="500" required="true" min="0" type="number">
+		<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+			<h2>HTML 5 Vibration Demo</h2>
+			<div class="row">
+				<div class="form-group">
+					<label for="viblen">Vibration Duration (ms):</label>
+					<input class="form-control" id="viblen" value="500" required="true" min="0" type="number">
+				</div>
+				<button class="btn btn-primary btn-block" type="button" onclick="singleVibrate()">Single Vibrate</button>
 			</div>
-			<button class="btn btn-primary btn-block" type="button" onclick="singleVibrate()">Single Vibrate</button>
-		</div>
-		<br /><strong>Multiple Vibration Options:</strong><br /><br />
-		<div class="row">
-			<div class="form-group">
-				<label for="vibinterval">Number of Vibrations:</label>
-				<input id="vibinterval" class="form-control" type="number" value="5" min="0" required="true" />
+			<br /><strong>Multiple Vibration Options:</strong><br /><br />
+			<div class="row">
+				<div class="form-group">
+					<label for="vibinterval">Number of Vibrations:</label>
+					<input id="vibinterval" class="form-control" type="number" value="5" min="0" required="true" />
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="form-group">
-				<label for="pauselen">Time Between Vibrations (ms):</label>
-				<input id="pauselen" class="form-control" type="number" value="200" min="0" required="true">
+			<div class="row">
+				<div class="form-group">
+					<label for="pauselen">Time Between Vibrations (ms):</label>
+					<input id="pauselen" class="form-control" type="number" value="200" min="0" required="true">
+				</div>
+				<button class="btn btn-primary btn-block" type="button" onclick="multipleVibrate()">Multiple Vibrations</button><br /><br />
+				<button class="btn btn-danger btn-block" type="button" onclick="stopVibrate()">Stop Vibrate</button>
 			</div>
-			<button class="btn btn-primary btn-block" type="button" onclick="multipleVibrate()">Multiple Vibrations</button><br /><br />
-			<button class="btn btn-danger btn-block" type="button" onclick="stopVibrate()">Stop Vibrate</button>
-		</div>
 
-		<hr />
-		<p>Demo page for the new HTML5 Vibration API feature. You can read more about it at the Mozilla Developer Network or at the W3. <br />
-			<a href="//developer.mozilla.org/en-US/docs/Web/Guide/API/Vibration">MDN - Vibration API</a><br />
-			<a href="//www.w3.org/TR/vibration/">W3 Vibration API Spec</a>
-		</p>
-		<p>This feature is <em>only</em> available on Firefox or Chrome mobile browsers. Dolphin, IE, Opera, and Safari mobile browsers are not supported at this time.</p>
-		<hr />
-		<footer>
-			<p>Steve Bedell 2014.</p>
-		</footer>
+			<hr />
+			<p>Demo page for the new HTML5 Vibration API feature. You can read more about it at the Mozilla Developer Network or at the W3. <br />
+				<a href="//developer.mozilla.org/en-US/docs/Web/Guide/API/Vibration">MDN - Vibration API</a><br />
+				<a href="//www.w3.org/TR/vibration/">W3 Vibration API Spec</a>
+			</p>
+			<p>This feature is <em>only</em> available on Firefox or Chrome mobile browsers. Dolphin, IE, Opera, and Safari mobile browsers are not supported at this time.</p>
+			<hr />
+			<footer>
+				<p>Steve Bedell 2014.</p>
+			</footer>
+		</div>
 	</div> <!-- div container -->
 </body>
 </html>

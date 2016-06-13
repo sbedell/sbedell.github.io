@@ -51,21 +51,23 @@
 	</nav>
 
 	<div class="container">
-		<h1>SoundCloud API Demo</h1>
-		<p>This pulls in the top 50 results from a genre search on SoundCloud.</p>
-		<div class="form-group">
-			<label for="genre">Type a genre here</label>
-			<input id="genre" class="form-control" type="text" value="" placeholder="Genre">
-		</div>
-		<button class="btn btn-primary btn-block" type="button" onclick="setGenre()">Search</button><br /><br />
-		<h3>Title -	Playcount</h3>
-		<hr>
-		<ol id="results"></ol>
-		<footer>
+		<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+			<h1>SoundCloud API Demo</h1>
+			<p>This pulls in the top 50 results from a genre search on SoundCloud.</p>
+			<div class="form-group">
+				<label for="genre">Type a genre here</label>
+				<input id="genre" class="form-control" type="text" value="" placeholder="Genre">
+			</div>
+			<button class="btn btn-primary btn-block" type="button" onclick="setGenre()">Search</button><br /><br />
+			<h3>Title -	Playcount</h3>
 			<hr>
-			<a href="https://soundcloud.com/"><img src="//connect.soundcloud.com/2/btn-connect-sc-l.png"></a>
-			<p>&copy; Steve Bedell 2016. Built with Twitter Bootstrap and SoundCloud's API</p>
-		</footer>
+			<ol id="results"></ol>
+			<footer>
+				<hr>
+				<a href="https://soundcloud.com/"><img src="//connect.soundcloud.com/2/btn-connect-sc-l.png"></a>
+				<p>&copy; Steve Bedell 2016. Built with Twitter Bootstrap and SoundCloud's API</p>
+			</footer>
+		</div>
 	</div>
 </body>
 </html>
