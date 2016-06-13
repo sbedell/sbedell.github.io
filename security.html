@@ -42,7 +42,7 @@
 							<li class="active"><a href="./security">Security and Privacy Info</a></li>
 							<li><a href="./soundcloud">Soundcloud API webapp</a></li>
 							<li><a href="./vibrate">HTML5 Vibration Test</a></li>
-	                        <li><a href="./soundboard">HTML5 Soundboard Demo</a></li>
+	          	<li><a href="./soundboard">HTML5 Soundboard Demo</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -51,44 +51,39 @@
 	    </div>
 	</nav>
 	<div class="container">
-		<main>
-			<div class="row">
+		<div class="col-xs-12 col-sm-8">
+			<main>
 				<h4>Internet Storm Center</h4>
-				<div class="col-md-12">
-					<a target="blank" href="//isc.sans.edu">
-					<img alt="ISC" title="Internet Storm Center Infocon Status" src="//isc.sans.edu/images/status.gif"></a>
-					<a target="blank" href="//dshield.org"><img border="0" src="//isc.sans.edu/images/logos/dshield/medium.png" title="DShield (DSHIELD) website" alt="DShield"></a>
-				</div>
-			</div>
-			<div class="row">
+				<a target="blank" href="//isc.sans.edu">
+					<img alt="ISC" title="Internet Storm Center Infocon Status" alt="Internet Storm Center Infocon Status" src="//isc.sans.edu/images/status.gif">
+				</a>
+				<a target="blank" href="//dshield.org">
+					<img border="0" src="//isc.sans.edu/images/logos/dshield/medium.png" title="DShield (DSHIELD) website" alt="DShield">
+				</a>
+
 				<h4>DShield and ISC Data</h4>
-				<div class="col-md-6">
-					<input id="ipaddr" type="text" value="" placeholder="IP Address" inputmode="numeric">
-					<button class="btn btn-default" type="button" onclick="ipSearch()">Search IP Address</button><br /><br />
+
+				<input id="ipaddr" type="text" value="" placeholder="IP Address" inputmode="numeric">
+				<button class="btn btn-default" type="button" onclick="ipSearch()">Search IP Address</button><br /><br />
+
+				<input id="port" type="number" value="" placeholder="Port Number" min="0" max="65536" pattern="/^\d+$/">
+				<button class="btn btn-default" type="button" onclick="portSearch()">Search Ports</button><br />
+				<button class="btn btn-default" type="button" onclick="clearResults()">Clear Results</button><br /><br />
+
+				<div id="results"></div>
+				<hr />
+				<div>
+					<p><a href="//arstechnica.com/tech-policy/2013/08/in-aclu-lawsuit-scientist-demolishes-nsa-its-just-metadata-excuse/">"It's just metadata"</a>, right?</p>
+					<script src="https://api.find-ip.net/widget.js?width=240&language=0&flag=0"></script>
+					<p>Powered by <a href="https://www.find-ip.net/" target="_blank">Find-IP.net</a></p>
+					<div id="browserSection"></div>
 				</div>
-				<div class="col-md-6">
-					<input id="port" type="number" value="" placeholder="Port Number" min="0" max="65536" pattern="/^\d+$/">
-					<button class="btn btn-default" type="button" onclick="portSearch()">Search Ports</button><br />
-					<button class="btn btn-default" type="button" onclick="clearResults()">Clear Results</button><br /><br />
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<div id="results"></div>
-				</div>
-			</div>
-			<hr />
-			<div>
-				<p><a href="//arstechnica.com/tech-policy/2013/08/in-aclu-lawsuit-scientist-demolishes-nsa-its-just-metadata-excuse/">"It's just metadata"</a>, right?</p>
-		    <script src="https://api.find-ip.net/widget.js?width=240&language=0&flag=0"></script>
-				<p>Powered by <a href="https://www.find-ip.net/" target="_blank">Find-IP.net</a></p>
-		    <div id="browserSection"></div>
-			</div>
-		</main>
-		<footer>
-			<hr />
-			<p>Steve Bedell 2013. Built with Twitter Bootstrap and Sans ISC APIs.</p>
-	    </footer>
+			</main>
+			<footer>
+				<hr />
+				<p>Steve Bedell 2013. Built with Twitter Bootstrap and Sans ISC APIs.</p>
+			</footer>
+		</div>
 	</div> <!-- div container -->
 </body>
 </html>
