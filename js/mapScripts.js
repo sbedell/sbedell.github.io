@@ -86,11 +86,11 @@ function codeAddress() {
 	var address = document.getElementById("address").value;
 
 	geocoder.geocode({'address': address}, function(results, status) {
-		if (status == google.maps.GeocoderStatus.OK && results[1] != null) {
+		if (status == google.maps.GeocoderStatus.OK && results[1] !== null) {
 			map.setCenter(results[0].geometry.location);
 
 			for(var i = 0; i < 10; i++) {
-				if (results[i] != null) {
+				if (results[i] !== null) {
 					var Infowindow = new google.maps.InfoWindow({
 						content: results[i].formatted_address,
 						position: results[i].geometry.location
@@ -103,7 +103,7 @@ function codeAddress() {
 					Infowindow.open(map, marker);
 				}
 			}
-		} else if (status == google.maps.GeocoderStatus.OK && results[0] != null) {
+		} else if (status == google.maps.GeocoderStatus.OK && results[0] !== null) {
 			alert("Two locations cannot be found with that name.");
 			map.setCenter(results[0].geometry.location);
 			var Infowindow = new google.maps.InfoWindow({

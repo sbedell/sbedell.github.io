@@ -7,23 +7,23 @@ function ipSearch() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     var response = JSON.parse(xmlhttp.responseText);
                     var output = `<p>Data for IP Address: ${response.ip.number}</p>`;
-                    if (response.ip.asname != null) {
+                    if (response.ip.asname !== null) {
                         output += `<p>Name: ${response.ip.asname}</p>`;
                     }
-                    if (response.ip.country != null) {
+                    if (response.ip.country !== null) {
                         output += `<p>Country: ${response.ip.country}</p>`;
                     }
-                    if (response.ip.mindate != null || response.ip.maxdate != null) {
+                    if (response.ip.mindate !== null || response.ip.maxdate !== null) {
                         output += `<p>From Dates ${response.ip.mindate} to ${response.ip.maxdate}</p>`;
                     }
-                    if (response.ip.attacks != null) {
+                    if (response.ip.attacks !== null) {
                         output += `<p>Number of Attacks (against ip): ${response.ip.attacks}</p>`;
                     } else {
                         output += "<p>No recorded / detected attacks against this IP address.</p>";
                     }
                     document.getElementById("results").innerHTML = output;
                 }
-            }
+            };
             var url = `https://www.dshield.org/api/ip/${ipAddress}?json`;
             xmlhttp.open("GET", url, true);
             xmlhttp.send();
@@ -45,10 +45,10 @@ function portSearch() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     var response = JSON.parse(xmlhttp.responseText);
                     var output = `<p>Data for port #: ${response.number}</p>`;
-                    if (response.services.tcp.name != 0) {
+                    if (response.services.tcp.name !== 0) {
                         output += `<p>Port Name / Type: ${response.services.tcp.name}</p>`;
                     }
-                    if (response.services.tcp.service != 0) {
+                    if (response.services.tcp.service !== 0) {
                         output += `<p>TCP Service: ${response.services.tcp.service}</p>`;
                     }
                     output += `<p>Records: ${response.data.records}</p>`;
@@ -56,7 +56,7 @@ function portSearch() {
                     output += `<p>Sources: ${response.data.sources}</p>`;
                     document.getElementById("results").innerHTML = output;
                 }
-            }
+            };
             var url = `https://www.dshield.org/api/port/${port}?json`;
             xmlhttp.open("GET", url, true);
             xmlhttp.send();
