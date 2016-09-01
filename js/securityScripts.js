@@ -78,7 +78,27 @@ $(document).ready(() => {
     document.getElementById("browserSection").innerText = `User Agent: ${navigator.userAgent}\n` +
             `Monitor Resultion: ${window.screen.availWidth} x ${window.screen.availHeight}\n` +
             `Current browser Resolution: ${window.innerWidth} x ${window.innerHeight}`;
-    if (navigator.battery) {
-        document.getElementById("browserSection").innerText += `\nCurrent battery charge: ${navigator.battery.level * 100}%`;
-    }
+
+    navigator.getBattery().then(battery => {
+        updateLevelInfo();
+        updateChargeInfo();
+
+        // Add battery event listeners
+        battery.addEventListener('levelchange', function() {
+            updateLevelInfo();
+        });
+
+        battery.addEventListener('chargingchange', function() {
+            updateChargeInfo();
+        });
+
+        // Battery functions to update the scope variables
+        function updateLevelInfo() {
+            document.getElementById("batteryLevel").innerText = "Current Battery Level: " + ((battery.level * 100) + "%");
+        }
+
+        function updateChargeInfo() {
+            document.getElementById("batteryCharging").innerText = "Battery Charging: " + (battery.charging ? "Yes" : "No");
+        }
+    });
 });
