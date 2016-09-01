@@ -1,16 +1,4 @@
 $(document).ready(() => {
-    toastr.options = {
-        "progressBar": true,
-        "positionClass": "toast-top-center",
-        "showDuration": "1000",
-        "hideDuration": "1000",
-        "timeOut": "5000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-    };
-
     document.getElementById("browserSection").innerText = `User Agent: ${navigator.userAgent}\n` +
             `Monitor Resultion: ${window.screen.availWidth} x ${window.screen.availHeight}\n` +
             `Current browser Resolution: ${window.innerWidth} x ${window.innerHeight}`;
@@ -43,7 +31,6 @@ function ipSearch() {
     var ipAddress = document.getElementById("ipaddr").value;
 	if (ipAddress.match(/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/)) {
 		if (window.XMLHttpRequest) {    // code for IE7+, Firefox, Chrome, Opera, Safari
-            toastr.info("Searching...");
 			var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -64,7 +51,6 @@ function ipSearch() {
                         output += "<p>No recorded / detected attacks against this IP address.</p>";
                     }
                     document.getElementById("results").innerHTML = output;
-                    toastr.clear();
                 }
             };
             var url = `https://www.dshield.org/api/ip/${ipAddress}?json`;
@@ -83,7 +69,6 @@ function portSearch() {
     // Check if device supports XML Http Requests
     if (window.XMLHttpRequest) {
         if (port.match(/^\d+$/) && port > 0 && port < 65536) {
-            toastr.info("Searching...");
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -99,7 +84,6 @@ function portSearch() {
                     output += `<p>Targets: ${response.data.targets}</p>`;
                     output += `<p>Sources: ${response.data.sources}</p>`;
                     document.getElementById("results").innerHTML = output;
-                    toastr.clear();
                 }
             };
             var url = `https://www.dshield.org/api/port/${port}?json`;
