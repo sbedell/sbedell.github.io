@@ -1,30 +1,25 @@
 $(document).ready(() => {
+    toastr.options = {
+        "progressBar": true,
+        "positionClass": "toast-top-center",
+        "showDuration": "1000",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+
     document.getElementById("browserSection").innerText = `User Agent: ${navigator.userAgent}\n` +
             `Monitor Resultion: ${window.screen.availWidth} x ${window.screen.availHeight}\n` +
             `Current browser Resolution: ${window.innerWidth} x ${window.innerHeight}`;
 
-    navigator.getBattery().then(battery => {
-        updateLevelInfo();
-        updateChargeInfo();
+    if (navigator.battery) {
+        document.getElementById("batteryLevel").innerText = `Current battery charge: ${navigator.battery.level * 100}%`;
+        document.getElementById("batteryCharging").innerText = "Battery Charging: " + (navigator.battery.charging? "Yes" : "No");
+    }
 
-        // Add battery event listeners
-        battery.addEventListener('levelchange', function() {
-            updateLevelInfo();
-        });
-
-        battery.addEventListener('chargingchange', function() {
-            updateChargeInfo();
-        });
-
-        // Battery functions to update the scope variables
-        function updateLevelInfo() {
-            document.getElementById("batteryLevel").innerText = "Current Battery Level: " + ((battery.level * 100) + "%");
-        }
-
-        function updateChargeInfo() {
-            document.getElementById("batteryCharging").innerText = "Battery Charging: " + (battery.charging ? "Yes" : "No");
-        }
-    });
 });
 
 function ipSearch() {
@@ -32,6 +27,7 @@ function ipSearch() {
 	if (ipAddress.match(/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/)) {
 		if (window.XMLHttpRequest) {    // code for IE7+, Firefox, Chrome, Opera, Safari
 			var xmlhttp = new XMLHttpRequest();
+            toastr.info("Searching...");
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     var response = JSON.parse(xmlhttp.responseText);
@@ -51,6 +47,7 @@ function ipSearch() {
                         output += "<p>No recorded / detected attacks against this IP address.</p>";
                     }
                     document.getElementById("results").innerHTML = output;
+                    toastr.clear();
                 }
             };
             var url = `https://www.dshield.org/api/ip/${ipAddress}?json`;
@@ -70,6 +67,7 @@ function portSearch() {
     if (window.XMLHttpRequest) {
         if (port.match(/^\d+$/) && port > 0 && port < 65536) {
             var xmlhttp = new XMLHttpRequest();
+            toastr.info("Searching...");
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     var response = JSON.parse(xmlhttp.responseText);
@@ -84,6 +82,7 @@ function portSearch() {
                     output += `<p>Targets: ${response.data.targets}</p>`;
                     output += `<p>Sources: ${response.data.sources}</p>`;
                     document.getElementById("results").innerHTML = output;
+                    toastr.clear();
                 }
             };
             var url = `https://www.dshield.org/api/port/${port}?json`;
