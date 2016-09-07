@@ -1,10 +1,7 @@
-$(document).ready(() => {
+$(document).ready(function() {
     toastr.options = {
         "progressBar": true,
         "positionClass": "toast-top-center",
-        "showDuration": "1000",
-        "hideDuration": "1000",
-        "timeOut": "5000",
         "showEasing": "swing",
         "hideEasing": "linear",
         "showMethod": "fadeIn",
@@ -27,7 +24,7 @@ function ipSearch() {
 	if (ipAddress.match(/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/)) {
 		if (window.XMLHttpRequest) {    // code for IE7+, Firefox, Chrome, Opera, Safari
 			var xmlhttp = new XMLHttpRequest();
-            toastr.info("Searching...");
+            toastr.info("Searching IP Address...");
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     var response = JSON.parse(xmlhttp.responseText);
@@ -67,7 +64,7 @@ function portSearch() {
     if (window.XMLHttpRequest) {
         if (port.match(/^\d+$/) && port > 0 && port < 65536) {
             var xmlhttp = new XMLHttpRequest();
-            toastr.info("Searching...");
+            toastr.info("Searching Port...");
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     var response = JSON.parse(xmlhttp.responseText);
