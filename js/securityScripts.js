@@ -12,10 +12,10 @@ $(document).ready(function() {
             `Monitor Resultion: ${window.screen.availWidth} x ${window.screen.availHeight}\n` +
             `Current browser Resolution: ${window.innerWidth} x ${window.innerHeight}`;
 
-    if (navigator.battery) {
-        document.getElementById("batteryLevel").innerText = `Current battery charge: ${navigator.battery.level * 100}%`;
+    navigator.getBattery().then(function(battery) {
+        document.getElementById("batteryLevel").innerText = `Current battery charge: ${battery.level * 100}%`;
         document.getElementById("batteryCharging").innerText = "Battery Charging: " + (navigator.battery.charging? "Yes" : "No");
-    }
+    });
 
 });
 
