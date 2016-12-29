@@ -2,23 +2,22 @@
 var geocoder;
 var map;
 var markersArr = [];
-var infowindowArr = [];
 
-/* This initializes the Google Map. It's called on page loads
-* and when the user clicks the "Reset Map" button.
-*/
+/**
+ *  This initializes the Google Map. It's called on page loads
+ * and when the user clicks the "Reset Map" button.
+ */
 function initializeMap() {
 	// reset the input box:
 	document.getElementById("address").value = "";
 
 	geocoder = new google.maps.Geocoder();
-	// var caldwellLab = new google.maps.LatLng(40.002300, -83.015261);
 	var clevelandOhio = new google.maps.LatLng(41.49985, -81.6938);
 	var mapOptions = {
 		zoom: 8,
 		center: clevelandOhio,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
-	}
+	};
 	map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
 	var marker = new google.maps.Marker({
@@ -36,27 +35,15 @@ function initializeMap() {
 // Clears all the points and directions on the map
 function clearMarkers() {
 	if (markersArr) {
-		for (var i in markersArr) {
-			markersArr[i].setMap(null);
-		}
-		markersArr.length = 0; 		// resets the entire array
+		markersArr.forEach(function(marker) {
+			marker.setMap(null);
+		});
+		// reset the array:
+		markersArr.length = 0;
 	}
 }
 
-// Supposed to close all info windows, not working yet...
-// FIXME
-/*
-function closeInfowindows() {
-	if (infowindowArr) {
-		for (var i in infowindowArr) {
-			infowindowArr[i].close();
-		}
-		infowindowArr.length = 0;
-	}
-}
-*/
-
-/*
+/**
  * This adds a marker with lattitude and longitute coordinates
  *  wherever the user clicks on the map
  */
@@ -67,10 +54,10 @@ function addMarker(location) {
 		animation: google.maps.Animation.DROP
 	});
 
-	var Infowindow = new google.maps.InfoWindow( {
+	var Infowindow = new google.maps.InfoWindow({
 		content: location.toString().trim(),
 		position: location
-	} );
+	});
 	markersArr.push(marker);
 	Infowindow.open(map, marker);
 }
@@ -86,36 +73,25 @@ function codeAddress() {
 	var address = document.getElementById("address").value;
 
 	geocoder.geocode({'address': address}, function(results, status) {
-		if (status == google.maps.GeocoderStatus.OK && results[1] !== null) {
-			map.setCenter(results[0].geometry.location);
+		if (status == google.maps.GeocoderStatus.OK && results) {
+			if (results[0]) {
+				map.setCenter(results[0].geometry.location);
+			}
 
-			for(var i = 0; i < 10; i++) {
-				if (results[i] !== null) {
+			results.forEach(function(result) {
+				if (result) {
 					var Infowindow = new google.maps.InfoWindow({
-						content: results[i].formatted_address,
-						position: results[i].geometry.location
+						content: result.formatted_address,
+						position: result.geometry.location
 					});
 					var marker = new google.maps.Marker({
 						map: map,
-						position: results[i].geometry.location
+						position: result.geometry.location
 					});
 					markersArr.push(marker);
 					Infowindow.open(map, marker);
 				}
-			}
-		} else if (status == google.maps.GeocoderStatus.OK && results[0] !== null) {
-			alert("Two locations cannot be found with that name.");
-			map.setCenter(results[0].geometry.location);
-			var Infowindow = new google.maps.InfoWindow({
-				content: results[0].formatted_address,
-				position: results[0].geometry.location
 			});
-			var marker = new google.maps.Marker({
-				map: map,
-				position: results[0].geometry.location
-			});
-			markersArr.push(marker);
-			Infowindow.open(map, marker);
 		} else {
 			alert("No locations found.");
 		}
