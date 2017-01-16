@@ -48,25 +48,24 @@ function clearMarkers() {
  *  wherever the user clicks on the map
  */
 function addMarker(location) {
-	marker = new google.maps.Marker({
+	var marker = new google.maps.Marker({
 		position: location,
 		map: map,
 		animation: google.maps.Animation.DROP
 	});
 
-	var Infowindow = new google.maps.InfoWindow({
-		content: location.toString().trim(),
+	var infoWindow = new google.maps.InfoWindow({
+		content: location.lat().toFixed(4) + ", " + location.lng().toFixed(4),
 		position: location
 	});
 	markersArr.push(marker);
-	Infowindow.open(map, marker);
+	infoWindow.open(map, marker);
 }
 
 /*
 * This gets called when the user clicks the "Search" button.
-* It finds the lat and long points of the city the user types in, displays
-* up to the top 10 cities found, as well as driving directions between
-* the first two cities
+* It finds the lat and long points of the city the user types in and displays
+* up to the top 10 cities found,
 */
 function codeAddress() {
 	clearMarkers();
@@ -80,7 +79,7 @@ function codeAddress() {
 
 			results.forEach(function(result) {
 				if (result) {
-					var Infowindow = new google.maps.InfoWindow({
+					var infoWindow = new google.maps.InfoWindow({
 						content: result.formatted_address,
 						position: result.geometry.location
 					});
@@ -89,7 +88,7 @@ function codeAddress() {
 						position: result.geometry.location
 					});
 					markersArr.push(marker);
-					Infowindow.open(map, marker);
+					infoWindow.open(map, marker);
 				}
 			});
 		} else {
