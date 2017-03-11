@@ -11,12 +11,6 @@ $(document).ready(function() {
     document.getElementById("browserSection").innerText = `User Agent: ${navigator.userAgent}\n` +
             `Monitor Resultion: ${window.screen.availWidth} x ${window.screen.availHeight}\n` +
             `Current browser Resolution: ${window.innerWidth} x ${window.innerHeight}`;
-
-    navigator.getBattery().then(function(battery) {
-        document.getElementById("batteryLevel").innerText = `Current battery charge: ${battery.level * 100}%`;
-        document.getElementById("batteryCharging").innerText = "Battery Charging: " + (navigator.battery.charging? "Yes" : "No");
-    });
-
 });
 
 function ipSearch() {
