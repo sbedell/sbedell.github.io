@@ -14,7 +14,7 @@ $(document).ready(function() {
 });
 
 function ipSearch() {
-    var ipAddress = document.getElementById("ipaddr").value;
+    var ipAddress = document.getElementById("ipaddr").value.trim();
 	if (ipAddress.match(/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/)) {
 		if (window.XMLHttpRequest) {    // code for IE7+, Firefox, Chrome, Opera, Safari
 			var xmlhttp = new XMLHttpRequest();
@@ -53,7 +53,7 @@ function ipSearch() {
 }
 
 function portSearch() {
-    var port = document.getElementById("port").value;
+    var port = document.getElementById("port").value.trim();
     // Check if device supports XML Http Requests
     if (window.XMLHttpRequest) {
         if (port.match(/^\d+$/) && port > 0 && port < 65536) {
