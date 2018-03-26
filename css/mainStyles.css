@@ -1,0 +1,9 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+.navbar-toggle {
+    float: left;
+    margin-left: 15px;
+}
