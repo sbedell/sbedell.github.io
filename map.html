@@ -5,10 +5,10 @@
     <title>Leaflet Map Demo</title>
 
     <meta charset="utf-8">
-    <!-- <meta name="author" content="Author Name">
-    <meta name="description" content="Description goes here">
-    <meta name="keywords" content="Comma, separated, keywords"> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta name="author" content="Author Name"> -->
+    <meta name="description" content="Leaflet js demo using OpenStreetMap (OSM)">
+    <meta name="keywords" content="Maps, OpenStreetMap, OSM, Leaflet, Javascript, HTML5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
       integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
@@ -19,17 +19,29 @@
       crossorigin=""></script>
 
     <style>
-      #mapid { 
+      /* #map { 
         width: 1000px;
         height: 700px;
+      } */
+
+      body {
+        padding: 0;
+        margin: 0;
+      }
+
+      html, body, #myMap {
+        height: 100vh;
+        width: 100vw;
       }
     </style>
   </head>
 
   <body>
-    <div id="mapid"></div>
+    <div id="myMap"></div>
     <script>
-      var mymap = L.map('mapid').setView([41.49985, -81.6938], 11);
+      //var mymap = L.map('myMap').fitWorld();
+      var mymap = L.map('myMap').setView([41.49985, -81.6938], 10);
+      mymap.locate({setView: true, maxZoom: 16}); // using geolocation
       
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors. BTW Fuck Google Maps!',
@@ -39,12 +51,30 @@
       var marker = L.marker([41.49985, -81.6938]).addTo(mymap);
       
       var popup = L.popup();
-      mymap.on('click', onMapClick);
 
+      // Adding Event Listeners:
+      mymap.on('click', onMapClick);
+      mymap.on('locationfound', onLocationFound);
+      map.on('locationerror', onLocationError);
+
+      // Functions:
       function onMapClick(e) {
-        popup.setLatLng(e.latlng)
-          .setContent(e.latlng.toString())
-          .openOn(mymap);
+        popup.setLatLng(e.latlng).setContent(e.latlng.toString()).openOn(mymap);
+      }
+
+      function onLocationFound(e) {
+        // console.log(e);
+        var radius = e.accuracy / 3;
+
+        L.marker(e.latlng).addTo(mymap)
+          .bindPopup("You are within " + radius + " meters from this point")
+          .openPopup();
+
+        L.circle(e.latlng, radius).addTo(mymap);
+      }
+
+      function onLocationError(e) {
+        alert(e.message);
       }
     </script>
   </body>
