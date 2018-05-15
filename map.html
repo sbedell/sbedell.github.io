@@ -19,11 +19,6 @@
       crossorigin=""></script>
 
     <style>
-      /* #map { 
-        width: 1000px;
-        height: 700px;
-      } */
-
       body {
         padding: 0;
         margin: 0;
@@ -39,8 +34,7 @@
   <body>
     <div id="myMap"></div>
     <script>
-      //var mymap = L.map('myMap').fitWorld();
-      var mymap = L.map('myMap').setView([41.49985, -81.6938], 10);
+      var mymap = L.map('myMap').setView([41.49985, -81.6938], 11);
       mymap.locate({setView: true, maxZoom: 16}); // using geolocation
       
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -48,14 +42,17 @@
         maxZoom: 18
       }).addTo(mymap);
 
-      var marker = L.marker([41.49985, -81.6938]).addTo(mymap);
-      
+      var clevelandMarker = L.marker([41.49985, -81.6938]).addTo(mymap);
+      var testMarker = L.marker([41.219857, -81.698456]).addTo(mymap);
+      testMarker.bindPopup("<b>Whipps Ledges</b><br>Cleveland Metroparks").openPopup();
+
+      // popups object for clicking on the map, used in onMapClick
       var popup = L.popup();
 
       // Adding Event Listeners:
       mymap.on('click', onMapClick);
       mymap.on('locationfound', onLocationFound);
-      map.on('locationerror', onLocationError);
+      mymap.on('locationerror', onLocationError);
 
       // Functions:
       function onMapClick(e) {
