@@ -1,0 +1,16 @@
+{
+    "name": "Steve's HTML5 Soundboard",
+    "short_name": "Soundboard",
+    "start_url": "/soundboard/index.html",
+    "display": "fullscreen",
+    "background_color": "#fff",
+    "description": "A soundboard built for mobile and desktop using HTML5 audio",
+    "lang": "en-US",
+    "icons": [
+        {
+            "src": "icons/music-player.png",
+            "sizes": "64x64",
+            "type": "image/png"
+        }
+    ]
+  }

@@ -1,0 +1,22 @@
+body {
+    margin-left: 20px;
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+.navbar-toggle {
+    float: left;
+    margin-left: 15px;
+}
+
+label {
+    font-weight: normal;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+td, th {
+    padding: 10px;
+}
