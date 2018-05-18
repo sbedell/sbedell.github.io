@@ -4,19 +4,10 @@ body {
     padding-bottom: 40px;
 }
 
-.navbar-toggle {
-    float: left;
-    margin-left: 15px;
-}
-
-label {
-    font-weight: normal;
-}
-
-table, th, td {
-    border: 1px solid black;
-}
-
-td, th {
-    padding: 10px;
+@media all and (display-mode: fullscreen) {
+    body {
+        margin: 10px;
+        height: 100vh;
+        width: 100vw;
+    }
 }
