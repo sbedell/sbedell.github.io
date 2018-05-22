@@ -1,0 +1,48 @@
+var mymap = L.map('myMap').setView([41.49985, -81.6938], 11);
+mymap.locate({setView: true, maxZoom: 16});
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors. BTW Fuck Google Maps!',
+    maxZoom: 18
+}).addTo(mymap);
+
+var clevelandMarker = L.marker([41.49985, -81.6938]).addTo(mymap);
+var testMarker = L.marker([41.219857, -81.698456]).addTo(mymap);
+testMarker.bindPopup("<b>Whipps Ledges</b><br>Cleveland Metroparks", {'autoClose': false, closeOnClick: false}).openPopup();
+
+var testMarker2 = L.marker([41.318818, -81.617775]).addTo(mymap);
+testMarker2.bindPopup("<b>Brecksville</b><br>Cleveland Metroparks", {'autoClose': false, closeOnClick: false}).openPopup();
+
+var testMarker3 = L.marker([41.318818, -81.617775]).addTo(mymap);
+testMarker3.bindPopup("<b>Brecksville</b><br>Cleveland Metroparks", {'autoClose': false, closeOnClick: false}).openPopup();
+
+var testMarker3 = L.marker([41.222891, -81.510701]).addTo(mymap);
+testMarker3.bindPopup("<b>Virginia Kendall and Ritchie Ledges</b><br>Cuyahoga Valley National Park", {'autoClose': false, closeOnClick: false}).openPopup();
+
+// Adding Event Listeners:
+mymap.on('click', onMapClick);
+mymap.on('locationfound', onLocationFound);
+mymap.on('locationerror', onLocationError);
+
+// popups object for clicking on the map, used in onMapClick
+var popup = L.popup();
+
+// Functions:
+function onMapClick(e) {
+    popup.setLatLng(e.latlng).setContent(e.latlng.toString()).openOn(mymap);
+}
+
+function onLocationFound(e) {
+    // console.log(e);
+    var radius = e.accuracy / 3;
+
+    L.marker(e.latlng).addTo(mymap)
+        .bindPopup("You are within " + radius + " meters from this point", {'autoClose': false, closeOnClick: false})
+        .openPopup();
+
+    L.circle(e.latlng, radius).addTo(mymap);
+}
+
+function onLocationError(e) {
+    alert(e.message);
+}
