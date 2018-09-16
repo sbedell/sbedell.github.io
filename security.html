@@ -65,10 +65,10 @@
 
 				<h4>SANS DShield and ISC Data</h4>
 
-				<input id="ipaddr" class="form-control" type="text" value="" placeholder="IP Address" inputmode="numeric"><br />
+				<input id="ipaddr" class="form-control" type="text" value="" placeholder="IP Address" inputmode="numeric" aria-label="IP Address"><br />
 				<button class="btn btn-primary btn-block" type="button" onclick="ipSearch()">Search IP Address</button><br /><br />
 
-				<input id="port" class="form-control" type="number" value="" placeholder="Port Number" min="0" max="65536"><br />
+				<input id="port" class="form-control" type="number" value="" placeholder="Port Number" min="0" max="65536" aria-label="Port Number"><br />
 				<button class="btn btn-primary btn-block" type="button" onclick="portSearch()">Search Ports</button><br />
 				<button class="btn btn-danger btn-block" type="button" onclick="clearResults()">Clear Results</button><br /><br />
 
@@ -80,7 +80,7 @@
 				<div>
 					<p><a href="//arstechnica.com/tech-policy/2013/08/in-aclu-lawsuit-scientist-demolishes-nsa-its-just-metadata-excuse/">"It's just metadata"</a>, right?</p>
 					<script src="https://api.find-ip.net/widget.js?width=240&language=0&flag=0"></script>
-					<p>Powered by <a href="https://www.find-ip.net/" target="_blank">Find-IP.net</a></p>
+					<p>Powered by <a href="https://www.find-ip.net/" target="_blank" rel="noopener">Find-IP.net</a></p>
 					<h4>Browser Info</h4>
 					<div id="browserSection"></div>
 				</div>
