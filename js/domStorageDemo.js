@@ -18,17 +18,17 @@ function changeBackgroundColor(color) {
 }
 
 // ~~~~~ Adding Event Listeners ~~~~~
-sessionStore.addEventListener("change", () => {
+sessionStore.addEventListener("change", function() {
     sessionStorage.setItem("autosave", sessionStore.value);
 });
 
-bgColorSelector.addEventListener("change", () => {
+bgColorSelector.addEventListener("change", function() {
     var newBG = document.getElementById("bgcolor").value;
     localStorage.setItem("bgColor", newBG);
     changeBackgroundColor(newBG);
 });
 
-document.getElementById("DELETE").addEventListener("click", () => {
+document.getElementById("DELETE").addEventListener("click", function() {
     if (confirm("Are you sure you want to clear storage?")) {
         localStorage.clear();
         sessionStorage.clear();
