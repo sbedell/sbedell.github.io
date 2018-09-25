@@ -1,79 +1,26 @@
-/* Typography */
-h1 {
-	font-size: 6rem;
-}
-
-p, form, li {
-	font-size: 1.6rem;
-	font-family: 'Open Sans Condensed', sans-serif;
-}
-
-/* Layout and styles  */
-html {
-	height: 100%;
-}
-
-footer {
-    font-size: inherit;
-    font-family: sans-serif;
-}
-
 body {
-	display: box;
-	display: flex;
-	justify-content: center;
-    align-items: center;
-    height: inherit;
+	margin: auto;
+	padding: 20px;
+	font-family: sans-serif;
 }
 
-body > .wrapper {
-    width: 75%;
+.wrapper {
+	margin: auto;
+	width: 80%;
 	max-width: 800px;
 	background-color: rgb(250,250,250);
-	padding: 2rem;
-	position: relative;
+	padding: 1rem;
 	border: 5px solid black;
 }
 
-body > div > div {
-	width: 300px;
-}
-
-h1 {
-	margin: 0;
-	padding: 0;
-	font-family: sans-serif;
-	position: absolute;
-	left: 2rem;
-	top: -4.6rem;
-	color: rgb(50, 100, 250);
-	text-shadow: 0px -1px 1px black,
-	             0px -2px 1px black,
-	             0px -3px 1px black,
-	             0px -4px 1px black,
-	             0px -5px 1px black;
-}
-
 form div label {
-  float: left;
-  width: 45%;
-  text-align: right;
-}
-
-form div input, form div select {
-	float: right;
+	float: left;
+	width: 45%;
 }
 
 form div input {
-	width: 49%;
-}
-
-form div select {
-	width: 50%;
-}
-
-form div option {
-    height: 2rem;
+	float: right;
+	width: 45%;
 }
 
 form div {
@@ -84,46 +31,24 @@ form div {
 }
 
 input[type="text"] {
-    height: 100px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-input[type="button"] {
-    clear: both;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-/* Media "at-rule" - page resizing*/
-@media (max-width: 800px) {
-	body > div {
-	  width: 100%;
-	}
+	height: 75px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 @media (max-width: 600px) {
-    h1 {
-      font-size: 3rem;
-      top: -2.2rem;
-    }
-
 	form div label {
-      float: none;
-      width: 100%;
-      text-align: left;
-    }
+		float: none;
+		width: 100%;
+		text-align: left;
+	}
 
-    form div input, form div select {
-	  float: none;
-	  width: 100%;
-    }
+	form div input {
+		float: none;
+		width: 100%;
+	}
 
-    form div {
-	  padding-bottom: 1.5rem;
-    }
-
-    img {
-	  bottom: -4rem;
-    }
+	form div {
+		padding-bottom: 1.5rem;
+	}
 }
