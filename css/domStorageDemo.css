@@ -4,6 +4,10 @@ body {
 	font-family: sans-serif;
 }
 
+h1 {
+	text-align: center;
+}
+
 .wrapper {
 	margin: auto;
 	width: 80%;
