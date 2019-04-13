@@ -2,6 +2,8 @@ body {
     margin-left: 20px;
     padding-top: 60px;
     padding-bottom: 40px;
+
+    overflow-x: hidden;
 }
 
 .navbar-toggle {
@@ -15,4 +17,26 @@ label {
 
 input {
     width: 30%;
+}
+
+/* Going for mobile-first widths here */
+.my-container {
+    width: 80vw;
+    margin: 5px auto;
+}
+
+/* Media queries for tablets */
+@media (min-width: 600px)  {
+    .my-container {
+        width: 75vw;
+        margin: 5px auto;
+    }
+}
+
+/* Media query for landscape tablets or laptops / PC */
+@media (min-width: 1000px)  {
+    .my-container {
+        width: 80vw;
+        margin: 5px auto;
+    }
 }
