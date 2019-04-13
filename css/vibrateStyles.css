@@ -13,14 +13,6 @@ label {
     font-weight: normal;
 }
 
-table, th, td {
-    border: none
-}
-
-td, th {
-    padding: 10px;
-}
-
 input {
     width: 30%;
 }

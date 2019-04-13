@@ -30,7 +30,7 @@ mymap.on('locationerror', onLocationError);
 
 // Listener Functions:
 function onMapClick(e) {
-    var popup = L.popup();  // popup object for clicking on the map, used in onMapClick
+    var popup = L.popup();
     popup.setLatLng(e.latlng).setContent(e.latlng.toString()).openOn(mymap);
 }
 
