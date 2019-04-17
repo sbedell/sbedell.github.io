@@ -31,7 +31,7 @@ td, th {
 @media (min-width: 600px)  {
     body {
         width: 60vw;
-        margin: 8px auto;
+        margin: 8px auto 55px auto;
     }
 }
 
@@ -39,6 +39,6 @@ td, th {
 @media (min-width: 1000px)  {
     body {
         width: 50vw;
-        margin: 8px auto;
+        margin: 8px auto 55px auto;
     }
 }
