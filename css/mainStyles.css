@@ -3,10 +3,10 @@ body {
     margin-bottom: 50px;
 }
 
-.navbar-toggle {
+/* .navbar-toggle {
     float: left;
     margin-left: 15px;
-}
+} */
 
 .rainbow-anim { 
     background: linear-gradient(124deg, #69c478, #2ba53f, #1ddde8, #4374be);

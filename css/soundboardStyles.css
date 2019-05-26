@@ -1,26 +1,17 @@
 body {
     margin-left: 20px;
-    padding-top: 60px;
     padding-bottom: 40px;
 
     overflow-x: hidden;
-}
-
-.navbar-toggle {
-    float: left;
-    margin-left: 15px;
 }
 
 label {
     font-weight: normal;
 }
 
-table, th, td {
-    border: 1px solid black;
-}
-
-td, th {
-    padding: 10px;
+h1, h2, h3 {
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 .btn {

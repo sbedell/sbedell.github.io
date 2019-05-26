@@ -1,14 +1,7 @@
 body {
-    margin-left: 20px;
-    padding-top: 60px;
     padding-bottom: 40px;
 
     overflow-x: hidden;
-}
-
-.navbar-toggle {
-    float: left;
-    margin-left: 15px;
 }
 
 label {
@@ -17,6 +10,10 @@ label {
 
 input {
     width: 30%;
+}
+
+.btn {
+    margin-top: 15px;
 }
 
 /* Going for mobile-first widths here */
@@ -28,7 +25,7 @@ input {
 /* Media queries for tablets */
 @media (min-width: 600px)  {
     .my-container {
-        width: 75vw;
+        width: 70vw;
         margin: 5px auto;
     }
 }
@@ -36,7 +33,7 @@ input {
 /* Media query for landscape tablets or laptops / PC */
 @media (min-width: 1000px)  {
     .my-container {
-        width: 80vw;
+        width: 50vw;
         margin: 5px auto;
     }
 }
