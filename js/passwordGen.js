@@ -48,11 +48,46 @@ function generateRandomPassword(options) {
   const mySpecialChars = "!@#$%^&*-_=+?";
   // const govSpecials = "!@#$*_+";
   
-  const all = numbers + lowercase + uppercase + mySpecialChars;
+  // const allChars = numbers + lowercase + uppercase + mySpecialChars;
+
+  let allChars = "";
+  let password = "";
+  let totalOptions = 0;
+
+  // for (opt in options) {
+  //   console.log(`${opt}: ${options[opt]}`);
+  // }
+
+  // Add lowercase to set of all characters, and pick at least 1 for the pw
+  if (options.useLower) {
+    allChars += lowercase;
+    password += lowercase.pick(1);
+    totalOptions++;
+  }
+
+  if (options.useUpper) {
+    allChars += uppercase;
+    password += uppercase.pick(1);
+    totalOptions++;
+  }
+
+  if (options.useNumbers) {
+    allChars += numbers;
+    password += numbers.pick(1);
+    totalOptions++;
+  }
+
+  if (options.useSpecialChars) {
+    allChars += mySpecialChars;
+    password += mySpecialChars.pick(1);
+    totalOptions++;
+  }
 
   console.log(options);
   let len = (options.passLength) ? options.passLength : 8;
-  let password = (lowercase.pick(1) + uppercase.pick(1) + numbers.pick(1) + mySpecialChars.pick(1) + all.pick(len - 4)).shuffle();
+  //let password = (lowercase.pick(1) + uppercase.pick(1) + numbers.pick(1) + mySpecialChars.pick(1) + all.pick(len - 4)).shuffle();
+  password += allChars.pick(len - totalOptions);
+  password = password.shuffle();
 
   return password;
 }
@@ -61,7 +96,7 @@ function passwordGen() {
   let passLen = parseInt(document.getElementById("passLength").value);
   let useUppercase = document.getElementById("uppercaseCb").checked;
   let useLowercase = document.getElementById("lowercaseCb").checked;
-  let useNumbers = document.getElementById("numbersCb").checked;
+  let useNums = document.getElementById("numbersCb").checked;
   let useSpecials = document.getElementById("specialCharsCb").checked;
   
   // use the above values to set an options object, use that to conditionally set the pw values
@@ -69,7 +104,7 @@ function passwordGen() {
     passLength: passLen,
     useUpper: useUppercase,
     useLower: useLowercase,
-    useNums: useNumbers,
+    useNumbers: useNums,
     useSpecialChars: useSpecials
   };
 
