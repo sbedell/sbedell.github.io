@@ -8,6 +8,10 @@ body {
     margin-left: 15px;
 } */
 
+.jumbotron {
+    background: linear-gradient(315deg, #8FCDFF 20%, #1A91ED 100%);
+}
+
 .rainbow-anim { 
     background: linear-gradient(124deg, #69c478, #2ba53f, #1ddde8, #4374be);
     background-size: 1800% 1800%;
