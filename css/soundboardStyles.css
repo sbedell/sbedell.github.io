@@ -13,22 +13,25 @@ h1, h2, h3 {
     margin-bottom: 15px;
 }
 
+.main-container {
+    width: 85vw;
+    margin: 8px auto 55px auto;
+}
+
 .btn {
     white-space: normal;
 }
 
 /* Media queries for tablets */
 @media (min-width: 600px)  {
-    body {
-        width: 60vw;
-        margin: 8px auto 55px auto;
+    .main-container {
+        width: 55vw;
     }
 }
 
 /* Media query for landscape tablets or laptops / PC */
 @media (min-width: 1000px)  {
-    body {
-        width: 50vw;
-        margin: 8px auto 55px auto;
+    .main-container {
+        width: 45vw;
     }
 }

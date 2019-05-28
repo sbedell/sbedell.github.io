@@ -56,15 +56,13 @@ h1, h2, h3 {
 /* Media queries for tablets */
 @media (min-width: 600px)  {
     .main-container {
-        width: 50vw;
-        margin: 8px auto 55px auto;
+        width: 55vw;
     }
 }
 
 /* Media query for landscape tablets or laptops / PC */
 @media (min-width: 1000px)  {
     .main-container {
-        width: 33vw;
-        margin: 8px auto 55px auto;
+        width: 45vw;
     }
 }
