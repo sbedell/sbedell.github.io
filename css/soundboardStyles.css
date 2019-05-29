@@ -22,6 +22,10 @@ h1, h2, h3 {
     white-space: normal;
 }
 
+.home-link {
+    font-size: 1.3em;
+}
+
 /* Media queries for tablets */
 @media (min-width: 600px)  {
     .main-container {
