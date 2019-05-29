@@ -83,7 +83,13 @@ function generateRandomPassword(options) {
     totalOptions++;
   }
 
-  console.log(options);
+  // if (options.avoidAmbiguous) {
+  //   let myreg = /[l|1|O|0]+/g;
+  //    // Strip out l, 1, O, 0 from the allChars string
+  //    allChars.replace(myreg, "");
+  // }
+
+  // console.log(options);
   let len = (options.passLength) ? options.passLength : 8;
   //let password = (lowercase.pick(1) + uppercase.pick(1) + numbers.pick(1) + mySpecialChars.pick(1) + all.pick(len - 4)).shuffle();
   password += allChars.pick(len - totalOptions);
@@ -93,7 +99,7 @@ function generateRandomPassword(options) {
 }
 
 function passwordGen() {
-  let passLen = parseInt(document.getElementById("passLength").value);
+  let passLen = parseInt(document.getElementById("pass-length").value);
   let useUppercase = document.getElementById("uppercaseCb").checked;
   let useLowercase = document.getElementById("lowercaseCb").checked;
   let useNums = document.getElementById("numbersCb").checked;
