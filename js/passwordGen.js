@@ -39,17 +39,15 @@ String.prototype.shuffle = function() {
 };
 
 function generateRandomPassword(options) {
-  const lowercase = "abcdefghijklmnopqrstuvwxyz";
-  const uppercase = lowercase.toUpperCase();
-  const numbers = '0123456789';
+  let lowercase = "abcdefghijklmnopqrstuvwxyz";
+  let uppercase = lowercase.toUpperCase();
+  let numbers = '0123456789';
+  let specialChars = "!@#$%^&*-_=+?";
 
-  // const allSpecialChars = '~!@#$%^&*()_+=-"|\/<>.,?';
+  // const specialCharsExtra = '~!@#$%^&*()_+=-"|\/<>.,?';
   // const trimmedListOfSpecials = "!@#$%*?_-=.:|";
-  const mySpecialChars = "!@#$%^&*-_=+?";
   // const govSpecials = "!@#$*_+";
   
-  // const allChars = numbers + lowercase + uppercase + mySpecialChars;
-
   let allChars = "";
   let password = "";
   let totalOptions = 0;
@@ -78,20 +76,23 @@ function generateRandomPassword(options) {
   }
 
   if (options.useSpecialChars) {
-    allChars += mySpecialChars;
-    password += mySpecialChars.pick(1);
+    allChars += specialChars;
+    password += specialChars.pick(1);
     totalOptions++;
   }
 
   // if (options.avoidAmbiguous) {
-  //   let myreg = /[l|1|O|0]+/g;
+  //   let myreg = /[l|1|I|o|O|0]+/g;
   //    // Strip out l, 1, O, 0 from the allChars string
   //    allChars.replace(myreg, "");
+  //    numbers.replace("0", "");
+  //    lowercase.replace(myreg, "");
+  //    console.log("Uppercase: ", uppercase);
   // }
 
   // console.log(options);
   let len = (options.passLength) ? options.passLength : 8;
-  //let password = (lowercase.pick(1) + uppercase.pick(1) + numbers.pick(1) + mySpecialChars.pick(1) + all.pick(len - 4)).shuffle();
+  //let password = (lowercase.pick(1) + uppercase.pick(1) + numbers.pick(1) + specialChars.pick(1) + all.pick(len - 4)).shuffle();
   password += allChars.pick(len - totalOptions);
   password = password.shuffle();
 
