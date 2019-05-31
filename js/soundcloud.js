@@ -15,7 +15,7 @@ function setGenre() {
 		console.log("tracks: ", tracks);
 		let results = "";
 		tracks.forEach(track => {
-			results += `<li><a target="blank" href="${track.permalink_url}">${track.title}</a>: ${track.playback_count.toLocaleString()}</li>`;
+			results += `<li><img width="25px" height="25px" src="${track.artwork_url}"><a target="blank" href="${track.permalink_url}">${track.title}</a></li>`;
 		});
 		document.getElementById("results").innerHTML = results;
 
