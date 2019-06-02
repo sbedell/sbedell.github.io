@@ -17,6 +17,10 @@ h1 {
 	border: 5px solid black;
 }
 
+.my-btn {
+	margin-top: 20px;
+}
+
 form div label {
 	float: left;
 	width: 45%;
