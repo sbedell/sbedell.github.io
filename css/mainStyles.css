@@ -1,15 +1,108 @@
 body {
-    /* padding-top: 60px; */
+    font-family: Arial, sans-serif;
     margin-bottom: 50px;
 }
 
-/* .navbar-toggle {
-    float: left;
-    margin-left: 15px;
-} */
+h2 {
+    text-align: center;
+}
+
+.info-para {
+    margin: 5px 15px;
+    text-align: center;
+}
+
+.container-centered {
+    width: 80%;
+    margin: auto;
+}
+
+.container-flex {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
 
 .jumbotron {
     background: linear-gradient(315deg, #8FCDFF 20%, #1A91ED 100%);
+    text-align: center;
+}
+
+.jumbotron h1 {
+    color: white;
+}
+
+.home-link {
+    font-size: 1.3em;
+}
+
+.main-footer {
+    margin: 10px;
+}
+
+.my-svg {
+    display: block;
+    height: 35px;
+    width: 35px;
+    margin: 5px auto;
+}
+
+.my-btn {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 8px grey;
+    color: #292929;
+    background-color: white;
+    display: inline-block;
+    margin: 10px auto;
+    padding: 6px 12px;
+    text-align: center;
+    width: 90%;
+}
+
+.my-btn:hover, 
+.my-btn:focus {
+    /* background-color: #e6e6e6; */
+    opacity: 0.8;
+    border-color: #adadad;
+    color: inherit;
+    text-decoration: none;
+    transform: scale(0.95);
+}
+
+.my-btn:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}
+
+/* Pulled these gradients from Polymer's website */
+.gradient-blue {
+    background: linear-gradient(315deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%), linear-gradient(315deg, #3FC7FF 0%, #00A3E6 100%);
+}
+
+.gradient-purple {
+    background: linear-gradient(315deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%), linear-gradient(315deg, #AF6AFF 0%, #6700DF 100%);
+}
+
+.gradient-orange {
+    background: linear-gradient(315deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%), linear-gradient(315deg, rgb(250, 149, 90) 0%, rgb(250, 112, 21) 100%);
+}
+
+.gradient-green {
+    background: linear-gradient(315deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%), linear-gradient(315deg, #20FFA7 0%, #00D67C 100%);
+}
+
+.gradient-grey {
+    background: linear-gradient(315deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%), linear-gradient(315deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 100%);
+}
+
+.contact {
+    text-align: center;
+}
+
+.contact h2 {
+    text-align: center;
+    text-decoration: underline;
 }
 
 .rainbow-anim { 
@@ -24,4 +117,35 @@ body {
     0% { background-position: 0% 82% }
     50% { background-position: 100% 19% }
     100% { background-position: 0% 82% }
+}
+
+@media (min-width: 600px)  {
+    .my-btn {
+        width: 45%;        
+    }
+    
+    .my-svg {
+        height: 40px;
+        width: 40px;
+    }
+
+    .container-flex {
+        flex-direction: row;
+    }
+}
+
+/* Media query for landscape tablets or laptops / PC */
+@media (min-width: 1000px)  {
+    .my-svg {
+        height: 50px;
+        width: 50px;
+    }
+
+    .my-btn {
+        width: 30%;
+    }
+
+    .container-flex {
+        flex-direction: row;
+    }
 }

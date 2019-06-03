@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Steve Bedell's Homepage</title>
     
@@ -12,63 +12,87 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
+
     <link href="/favicon.ico" rel="icon" type="image/x-icon">
     
     <link rel="stylesheet" href="./css/mainStyles.css">
 </head>
-<body>    
+<body>
     <header>
         <div class="jumbotron">
-            <div class="container">
-                <h1>Steve Bedell</h1>
-                <p>Web Developer</p>
-                <p>Ohio State University class of 2014 - Computer &amp; Information Science</p>
-            </div>
+            <h1>Steve Bedell</h1>
+            <p>Web Developer</p>
         </div>
     </header>
 
-    <div class="container">
-        <main>
-            <div class="row">
-                <div class="col-md-4">
-                    <h2>HTML5 &amp; js Demos</h2>
-                    <p><a class="btn btn-default" role="button" href="./passwordGenerator">Secure Password Generator</a></p>
-                    <p><a class="btn btn-default" role="button" href="./soundboard">Soundboard (HTML5 Audio)</a></p>
-                    <p><a class="btn btn-default" role="button" href="./security">Security and Privacy Demo</a></p>
-                    <p><a class="btn btn-default" role="button" href="./vibrate">Vibrate API Demo (HTML5)</a></p>
-                    <p><a class="btn btn-default" role="button" href="./soundcloud">Soundcloud API Demo</a></p>
-                    <p><a class="btn btn-default" role="button" href="./StorageDemo">LocalStorage Demo (HTML5)</a></p>
-                    <p><a class="btn btn-default" role="button" href="./map" target="blank">OpenStreetMap &amp; Leaflet Map Demo &raquo;</a></p>
-                    <p><a class="btn btn-default" role="button" href="./chessboard" target="blank" >HTML5 Drag N Drop Chessboard Demo &raquo;</a></p>
-                    <p>Check out my <a target="blank" href="//github.com/sbedell/">Github page</a> for more of my work.</p>
-                </div>
-                <!-- TODO - Make boxes with all this stuff instead of boring buttons, maybe add some screenshots? -->
-                <div class="col-md-4">
-                    <h2>Progressive Web Apps</h2>
-                    <p><a href="https://en.wikipedia.org/wiki/Progressive_web_applications">PWAs</a> are installable to home screens of Android and iOS mobile devices.</p>
-                    <p><a class="btn btn-default" role="button" href="./soundboardPWA" target="blank">Soundboard PWA &raquo;</a></p>
+    <main>
+        <h2>Progressive Web Apps</h2>
+        <p class="info-para"><a href="https://en.wikipedia.org/wiki/Progressive_web_applications">Progressive Web Apps</a> are installable to home screens of Android and iOS mobile devices.</p>
+        <div class="container-flex">
+            <a class="my-btn gradient-blue" role="button" href="./soundboardPWA" target="blank">
+                <img class="my-svg" alt="music note icon" src="./img/pageIcons/music-player.svg">
+                Soundboard PWA &raquo;
+            </a>
+        </div>
 
-                    <h2>Browser Extensions</h2>
-                    <p><a class="btn btn-default" role="button" href="https://github.com/sbedell/web-extensions/tree/master/queryParamsRemover" target="blank">FBClid and UTM Query Params Remover &raquo;</a></p>
-                </div>
-                <div class="col-md-4">
-                    <h2>Contact</h2>
-                    <div>Email: bedell.369 @ osu dot edu</div>
-                    <div><a target="blank" href="https://www.linkedin.com/in/stevebedell">LinkedIn</a></div>
-                </div>
-            </div>
-        </main>
-        <footer>
-            <hr />
-            <p>&copy; Steve Bedell 2013-2019.</p>
-        </footer>
-    </div>
+        <h2>Browser Extensions</h2>
+        <div class="container-flex">
+            <a class="my-btn gradient-blue" role="button" href="https://github.com/sbedell/web-extensions/tree/master/queryParamsRemover" target="blank">
+                <img class="my-svg" alt="cross x icon" src="img/pageIcons/cross.svg">
+                FBClid and UTM Query Params Remover &raquo;
+            </a>
+        </div>
 
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
-        crossorigin="anonymous"></script> -->
+        <h2>Web Pages / Apps</h2>
+        <div class="container-flex">    
+            <a class="my-btn gradient-green" role="button" href="./passwordGenerator">
+                <img class="my-svg" alt="password icon" src="img/pageIcons/pin-code-light.svg">
+                Secure Password Generator
+            </a>
+            <a class="my-btn gradient-orange" role="button" href="./security">
+                <img class="my-svg" alt="shield icon" src="./img/pageIcons/shield.svg">
+                Security and Privacy
+            </a>
+            <a class="my-btn gradient-blue" role="button" href="./soundboard">
+                <img class="my-svg" alt="music note icon" src="./img/pageIcons/music-player.svg">
+                Soundboard (HTML5 Audio)
+            </a>
+            <a class="my-btn gradient-purple" role="button" href="./vibrate">
+                <img class="my-svg" alt="phone icon" src="./img/pageIcons/smartphone-call.svg">
+                Vibrate API Demo (HTML5)
+            </a>
+            <a class="my-btn gradient-blue" role="button" href="./StorageDemo">
+                <img class="my-svg" alt="database icon" src="./img/pageIcons/database.svg">
+                LocalStorage Demo (HTML5)
+            </a>
+            <a class="my-btn gradient-orange" role="button" href="./soundcloud">
+                <img class="my-svg" alt="chess icon" src="./img/pageIcons/cloud.svg">
+                Soundcloud API Demo</a>
+            <a class="my-btn gradient-green" role="button" href="./map" target="blank">
+                <img class="my-svg" alt="map icon" src="./img/pageIcons/map-location.svg">
+                OpenStreetMap &amp; Leaflet Map Demo &raquo;
+            </a>
+            <a class="my-btn gradient-grey" role="button" href="./chessboard" target="blank">
+                <img class="my-svg" alt="chess icon" src="./img/pageIcons/chess-piece.svg">
+                HTML5 Drag &amp; Drop Chessboard Demo &raquo;
+            </a>
+        </div>
+
+        <div class="contact">
+            <h2>Contact</h2>
+            <div>Email: bedell.369 @ osu dot edu</div>
+            <a target="blank" href="https://www.linkedin.com/in/stevebedell">LinkedIn</a> 
+            <br>
+            <a target="blank" href="//github.com/sbedell/">Github</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <hr />
+        <p>&copy; Steve Bedell 2013-2019.</p>
+        <br>
+        <p>The color scheme of the buttons is just random colors ;).</p>
+        <div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+    </footer>
 </body>
 </html>
