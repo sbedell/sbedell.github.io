@@ -16,7 +16,11 @@ function setGenre() {
 		let results = "";
 		
 		tracks.forEach(track => {
-			results += `<li><img class="album-art" src="${track.artwork_url}"><a target="blank" href="${track.permalink_url}">${track.title}</a></li>`;
+			results += "<li>";
+			if (track.artwork_url) {
+				results += `<img class="album-art" src="${track.artwork_url}">`;
+			}
+			results += `<a target="blank" href="${track.permalink_url}">${track.title}</a></li>`;
 		});
 		
 		document.getElementById("results").innerHTML = results;
