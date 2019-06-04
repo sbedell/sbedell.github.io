@@ -1,6 +1,7 @@
 body {
     padding: 10px;
-    font-family: sans-serif;
+    font-family: Arial, sans-serif;
+    font-size: 1.2em;
 }
 
 button {
@@ -23,7 +24,8 @@ td {
     /*float: left;*/
 }
 
-main {
+main,
+section {
     margin: 10px auto;
     width: 75%;
 }
@@ -43,4 +45,22 @@ main {
     height: 30px;
     margin: 10px;
     padding: 5px;
+}
+
+.mobile-warning {
+    display: none;
+    
+}
+
+/* Smartphones and (most?) tablets */
+@media (max-width: 800px) {
+    .mobile-warning { 
+        display: block;
+        font-size: 1.3em;
+        color: red;
+    }
+
+    .mobile-hide {
+        display: none;
+    }
 }
