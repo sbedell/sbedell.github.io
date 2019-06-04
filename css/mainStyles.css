@@ -47,7 +47,8 @@ h2 {
     margin: 5px auto;
 }
 
-.my-btn {
+.my-btn,
+.btn-link {
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 2px 2px 8px grey;
@@ -60,18 +61,30 @@ h2 {
     width: 90%;
 }
 
-.my-btn:hover, 
-.my-btn:focus {
-    /* background-color: #e6e6e6; */
-    opacity: 0.8;
-    border-color: #adadad;
+.my-btn:focus,
+.btn-link:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}
+
+.btn-link:hover,
+.btn-link:focus {
     color: inherit;
+    opacity: 0.8;
     text-decoration: none;
     transform: scale(0.95);
 }
 
+.my-btn:hover, 
 .my-btn:focus {
-    outline: 1px solid #fff;
+    background-color: #e6e6e6;
+    transform: scale(0.95);
+}
+
+.my-btn:active,
+.btn-link:active {
+    transform: scale(0.9);
+    outline: 1px solid lightgrey;
     outline-offset: -4px;
 }
 
@@ -120,7 +133,8 @@ h2 {
 }
 
 @media (min-width: 600px)  {
-    .my-btn {
+    .my-btn,
+    .btn-link {
         width: 45%;        
     }
     
@@ -137,11 +151,12 @@ h2 {
 /* Media query for landscape tablets or laptops / PC */
 @media (min-width: 1000px)  {
     .my-svg {
-        height: 50px;
-        width: 50px;
+        height: 60px;
+        width: 60px;
     }
 
-    .my-btn {
+    .my-btn,
+    .btn-link {
         width: 30%;
     }
 
