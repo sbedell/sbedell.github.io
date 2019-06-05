@@ -8,8 +8,8 @@ $(document).ready(function() {
         "hideMethod": "fadeOut"
     };
 
-    document.getElementById("browserSection").innerText = `User Agent: ${navigator.userAgent}\n` +
-            `Monitor Resultion: ${window.screen.availWidth} x ${window.screen.availHeight}\n` +
+    document.getElementById("browserSection").innerText = `User Agent: ${navigator.userAgent}\n\n` +
+            `Monitor Resultion: ${window.screen.availWidth} x ${window.screen.availHeight}\n\n` +
             `Current browser Resolution: ${window.innerWidth} x ${window.innerHeight}`;
 });
 

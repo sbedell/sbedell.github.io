@@ -1,20 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin-bottom: 50px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
 }
 
 h2 {
     text-align: center;
 }
 
-.info-para {
-    margin: 5px 15px;
-    text-align: center;
-}
-
 .container-centered {
     width: 80%;
     margin: auto;
+}
+
+.info-para {
+    margin: 5px 15px;
+    text-align: center;
 }
 
 .container-flex {
@@ -36,8 +44,13 @@ h2 {
     font-size: 1.3em;
 }
 
+.main-container {
+    margin: 0 auto;
+    padding: 5px 20px;
+}
+
 .main-footer {
-    margin: 10px;
+    margin: 10px 25px;
 }
 
 .my-svg {
@@ -59,6 +72,12 @@ h2 {
     padding: 6px 12px;
     text-align: center;
     width: 90%;
+    transition: opacity ease-in-out .15s, transform ease-in-out .10s;
+}
+
+.btn-lrg {
+    min-height: 40px;
+    font-size: inherit;
 }
 
 .my-btn:focus,
@@ -90,7 +109,8 @@ h2 {
 
 /* Pulled these gradients from Polymer's website */
 .gradient-blue {
-    background: linear-gradient(315deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%), linear-gradient(315deg, #3FC7FF 0%, #00A3E6 100%);
+    background: linear-gradient(315deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%), 
+                linear-gradient(315deg, #3FC7FF 0%, #00A3E6 100%);
 }
 
 .gradient-purple {
@@ -107,6 +127,11 @@ h2 {
 
 .gradient-grey {
     background: linear-gradient(315deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%), linear-gradient(315deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 100%);
+}
+
+.gradient-red {
+    background: linear-gradient(315deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%), linear-gradient(315deg, #FA5A5A 0%, #FF2F2F 100%);
+    color: white;
 }
 
 .contact {
@@ -133,6 +158,14 @@ h2 {
 }
 
 @media (min-width: 600px)  {
+    .container-flex {
+        flex-direction: row;
+    }
+
+    .main-container {
+        width: 55vw;
+    }
+
     .my-btn,
     .btn-link {
         width: 45%;        
@@ -142,14 +175,18 @@ h2 {
         height: 40px;
         width: 40px;
     }
-
-    .container-flex {
-        flex-direction: row;
-    }
 }
 
 /* Media query for landscape tablets or laptops / PC */
 @media (min-width: 1000px)  {
+    .container-flex {
+        flex-direction: row;
+    }
+    
+    .main-container {
+        width: 45vw;
+    }
+    
     .my-svg {
         height: 60px;
         width: 60px;
@@ -158,9 +195,5 @@ h2 {
     .my-btn,
     .btn-link {
         width: 30%;
-    }
-
-    .container-flex {
-        flex-direction: row;
     }
 }
