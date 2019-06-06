@@ -29,7 +29,7 @@ h1, h2, h3 {
 /* Media queries for tablets */
 @media (min-width: 600px)  {
     .main-container {
-        width: 55vw;
+        width: 60vw;
     }
 }
 
