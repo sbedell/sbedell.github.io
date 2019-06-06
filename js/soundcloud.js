@@ -8,9 +8,11 @@ $(document).ready(function() {
     });
 });
 
-function setGenre() {
-	var genre = document.getElementById('genre').value;
+function searchGenre() {
+	let genre = document.getElementById('genre').value;
+
 	document.getElementById('results').innerHTML = '';
+	
 	SC.get('/tracks', { genres: genre }, tracks => {
 		console.log("tracks: ", tracks);
 		let results = "";

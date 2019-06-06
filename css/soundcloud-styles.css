@@ -1,0 +1,13 @@
+li {
+  margin-bottom: 8px;
+}
+
+.album-art {
+  margin-right: 8px;
+  height: 35px;
+  width: 35px;
+}
+
+.my-btn {
+  width: 100%;
+}
