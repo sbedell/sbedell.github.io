@@ -16,6 +16,15 @@ input {
     margin-top: 15px;
 }
 
+.my-btn {
+    width: 100%;
+}
+
+.input-box {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
 /* Going for mobile-first widths here */
 .my-container {
     width: 80vw;

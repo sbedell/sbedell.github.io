@@ -9,44 +9,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	
 	<script src="js/html5Vibrate.js"></script>
-	
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
-		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
-		crossorigin="anonymous">
+
+	<link rel="stylesheet" href="css/mainStyles.css">
 	<link rel="stylesheet" href="css/vibrateStyles.css">
 </head>
 <body>	
-	<div class="my-container">
-			<h2>HTML 5 Vibration Demo</h2>
-			<div>
-				<label for="viblen">Vibration Duration (ms):</label>
-				<input class="form-control" id="viblen" value="500" min="0" type="number" required />
-				<button class="btn btn-primary btn-block" type="button" onclick="singleVibrate()">Single Vibrate</button>
-			</div>
-			<br /><strong>Multiple Vibration Options:</strong><br /><br />
-			<div>
-				<label for="vibinterval">Number of Vibrations:</label>
-				<input id="vibinterval" class="form-control" type="number" value="5" min="0" required />
-			</div>
-			<div>
-				<label for="pauselen">Time Between Vibrations (ms):</label>
-				<input id="pauselen" class="form-control" type="number" value="200" min="0" required />
-				<button class="btn btn-primary btn-block" type="button" onclick="multipleVibrate()">Multiple Vibrations</button>
-				<br />
-				<button class="btn btn-danger btn-block" type="button" onclick="stopVibrate()">Stop Vibrate</button>
-			</div>
+	<div class="main-container">
+		<h2>HTML 5 Vibration Demo</h2>
 
-			<hr />
-			<p>Demo page for the new HTML5 Vibration API feature. You can read more about it at the Mozilla Developer Network or at the W3. <br />
-				<a href="//developer.mozilla.org/en-US/docs/Web/Guide/API/Vibration">MDN - Vibration API</a><br />
-				<a href="//www.w3.org/TR/vibration/">W3 Vibration API Spec</a>
-			</p>
+		<div>
+			<label for="viblen">Vibration Duration (ms):</label>
+			<input id="viblen" class="input-box" type="number" value="500" min="0" required />
+			<button class="my-btn btn-lrg gradient-green" type="button" onclick="singleVibrate()">Single Vibrate</button>
+		</div>
+		
+		<p><strong>Multiple Vibration Options:</strong></p>
+		
+		<div>
+			<label for="vibinterval">Number of Vibrations:</label>
+			<input id="vibinterval" class="input-box" type="number" value="5" min="0" required />
+		</div>
+		
+		<div>
+			<label for="pauselen">Time Between Vibrations (ms):</label>
+			<input id="pauselen" class="input-box" type="number" value="200" min="0" required />
+			<button class="my-btn btn-lrg gradient-green" type="button" onclick="multipleVibrate()">Multiple Vibrations</button>
+			<br />
+			<button class="my-btn btn-lrg gradient-red" type="button" onclick="stopVibrate()">Stop Vibration(s)</button>
+		</div>
+
+		<hr />
+		<p>Demo page for the new HTML5 Vibration API feature.</p>
+		<p>This only works on phones and tablets, not PC (obviously?).</p> 
+		<p>You can read more about it at the Mozilla Developer Network or at the W3. <br />
+			<a href="//developer.mozilla.org/en-US/docs/Web/Guide/API/Vibration">MDN - Vibration API</a><br />
+			<a href="//www.w3.org/TR/vibration/">W3 Vibration API Spec</a>
+		</p>
 			
-			<footer>
-				<hr />
-				<p>Steve Bedell 2014-2019.</p>
-				<p class="home-link"><a href="./index">Back to Home</a></p>
-			</footer>
+		<footer class="main-footer">
+			<hr />
+			<p>Steve Bedell 2014-2019.</p>
+			<p class="home-link"><a href="./index">Back to Home</a></p>
+		</footer>
 	</div>
 </body>
 </html>
