@@ -8,45 +8,44 @@
 	<meta name="keywords" content="HTML5, Mobile, Soundboard, IBM">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
-		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
-		crossorigin="anonymous">
-	
+	<link rel="stylesheet" href="./css/mainStyles.css">
 	<link rel="stylesheet" href="./css/soundboardStyles.css">
+
+	<script src="js/soundboard.js"></script>
 </head>
 <body>
 	<div class="main-container">
 		<main>
 			<h1>Soundboard</h1>
 			<audio id="airhorn" src="audio/AIRHORN.mp3"></audio>
-			<audio id="multiAirhorn" src="audio/multiAirhorn.mp3"></audio>
+			<audio id="multi-airhorn" src="audio/multiAirhorn.mp3"></audio>
 			<audio id="complicated" src="audio/SometimesThingsGetComplicated.mp3"></audio>
 			<audio id="damnson" src="audio/DAMN SON WHERED YOU FIND THIS.mp3"></audio>
 			<audio id="shots" src="audio/SHOTS FIRED.mp3"></audio>
 			<audio id="smoke" src="audio/SMOKEWEEDEVERYDAY.mp3"></audio>
-			<audio id="ahah" src="audio/ahahah.mp3"></audio>
+			<audio id="ahahah" src="audio/ahahah.mp3"></audio>
 			<audio id="hands" src="audio/handsofengineers.mp3"></audio>
 			<audio id="holdon" src="audio/holdontoyourbutts.mp3"></audio>
 			<audio id="niceme" src="audio/nicememe.mp3"></audio>
 			<audio id="pocket" src="audio/PocketFullOfDubs.mp3"></audio>
-			<audio id="steamMachine" src="audio/Steam-Machine.mp3"></audio>
+			<audio id="steam-machine" src="audio/Steam-Machine.mp3"></audio>
 
-			<button class="btn btn-primary btn-lg btn-block" onclick="document.getElementById('airhorn').play()">AIRHORN</button><br />
-			<button class="btn btn-primary btn-lg btn-block" onclick="document.getElementById('multiAirhorn').play()">MULTI AIRHORN</button><br />
-			<button class="btn btn-primary btn-lg btn-block" onclick="document.getElementById('complicated').play()">COMPLICATED</button><br />
-			<button class="btn btn-primary btn-lg btn-block" onclick="document.getElementById('damnson').play()">DAMN SON WHERED YOU FIND THIS</button><br />
-			<button class="btn btn-primary btn-lg btn-block" onclick="document.getElementById('smoke').play()">SMOKE WEED EVERY DAY</button><br />
-			<button class="btn btn-primary btn-lg btn-block" onclick="document.getElementById('shots').play()">SHOTS FIRED</button><br />
-			<button class="btn btn-primary btn-lg btn-block" onclick="document.getElementById('niceme').play()">NICE MEME</button><br />
-			<button class="btn btn-primary btn-lg btn-block" onclick="document.getElementById('pocket').play()">POCKET FULL OF DUBS</button><br />
-			<button class="btn btn-primary btn-lg btn-block" onclick="document.getElementById('steamMachine').play()">STEAM MACHINE</button><br />
+			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('airhorn')">AIRHORN</button><br />
+			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('multi-airhorn')">MULTI AIRHORN</button><br />
+			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('complicated')">COMPLICATED</button><br />
+			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('damnson')">DAMN SON WHERED YOU FIND THIS</button><br />
+			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('smoke')">SMOKE WEED EVERY DAY</button><br />
+			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('shots')">SHOTS FIRED</button><br />
+			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('niceme')">NICE MEME</button><br />
+			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('pocket')">POCKET FULL OF DUBS</button><br />
+			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('steam-machine')">STEAM MACHINE</button><br />
 			<h3>Jurassic Park soundbytes</h3>
-			<button class="btn btn-primary btn-lg btn-block" onclick="document.getElementById('ahah').play()">AH AH AH YOU DIDNT SAY THE MAGIC WORD</button><br />
-			<button class="btn btn-primary btn-lg btn-block" onclick="document.getElementById('hands').play()">GOD HELP US</button><br />
-			<button class="btn btn-primary btn-lg btn-block" onclick="document.getElementById('holdon').play()">HOLD ON TO YOUR BUTTS</button><br />
+			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('ahahah')">AH AH AH YOU DIDNT SAY THE MAGIC WORD</button><br />
+			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('hands')">GOD HELP US</button><br />
+			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('holdon')">HOLD ON TO YOUR BUTTS</button><br />
 		</main>
 		
-		<footer>
+		<footer class="main-footer">
 				<hr>
 				<p>&copy; Steve Bedell 2016-2019.</p>
 				<p>This page uses HTML5 audio and runs on Firefox, Brave, and Chrome mobile and desktop browsers.</p>
