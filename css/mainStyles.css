@@ -1,10 +1,23 @@
 * {
     box-sizing: border-box;
     font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+a {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #23527c;
+    text-decoration: underline;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 h2 {
@@ -15,6 +28,11 @@ hr {
     margin-top: 20px;
     margin-bottom: 20px;
     border-top: 1px solid #eee;
+}
+
+p {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .container-flex {
@@ -40,11 +58,21 @@ hr {
 
 .jumbotron {
     background: linear-gradient(315deg, #8FCDFF 20%, #1A91ED 100%);
+    color: inherit;
     text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 .jumbotron h1 {
     color: white;
+}
+
+.jumbotron p {
+    margin-bottom: 15px;
+    font-size: 21px;
+    font-weight: 200;
 }
 
 .home-link {
@@ -187,6 +215,11 @@ hr {
         flex-direction: row;
     }
 
+    .jumbotron {
+        padding-top: 48px;
+        padding-bottom: 48px;
+    }
+
     .main-container {
         width: 60vw;
     }
@@ -206,6 +239,10 @@ hr {
 @media (min-width: 1000px)  {
     .container-flex {
         flex-direction: row;
+    }
+
+    .jumbotron h1 {
+        font-size: 63px;
     }
     
     .main-container {
