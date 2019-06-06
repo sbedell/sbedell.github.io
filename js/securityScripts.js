@@ -8,15 +8,15 @@ $(document).ready(function() {
         "hideMethod": "fadeOut"
     };
 
-    document.getElementById("browserSection").innerText = `User Agent: ${navigator.userAgent}\n\n` +
-            `Monitor Resultion: ${window.screen.availWidth} x ${window.screen.availHeight}\n\n` +
-            `Current browser Resolution: ${window.innerWidth} x ${window.innerHeight}`;
+    document.getElementById("browserSection").innerHTML = `<div><b>User Agent:</b> ${navigator.userAgent}</div><br>` +
+            `<div><b>Monitor Resultion:</b> ${window.screen.availWidth} x ${window.screen.availHeight}</div><br>` +
+            `<div><b>Browser Resolution:</b> ${window.innerWidth} x ${window.innerHeight}</div><br>`;
 });
 
 function ipSearch() {
     var ipAddress = document.getElementById("ipaddr").value.trim();
 	if (ipAddress.match(/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/)) {
-		if (window.XMLHttpRequest) {    // code for IE7+, Firefox, Chrome, Opera, Safari
+		if (window.XMLHttpRequest) {
 			var xmlhttp = new XMLHttpRequest();
             toastr.info("Searching IP Address...");
             xmlhttp.onreadystatechange = function() {
