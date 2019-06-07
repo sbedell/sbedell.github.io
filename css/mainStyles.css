@@ -14,6 +14,10 @@ a:hover {
     text-decoration: underline;
 }
 
+a:focus {
+    text-decoration: underline;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
     margin-top: 10px;
@@ -110,9 +114,23 @@ p {
     transition: opacity ease-in .15s, transform ease-in .10s;
 }
 
-.btn-lrg {
-    min-height: 40px;
-    font-size: inherit;
+.btn-link:hover {
+    color: inherit;
+    opacity: 0.8;
+    text-decoration: none;
+    transform: scale(0.95);
+}
+
+.my-btn:hover {
+    background-color: #e6e6e6;
+    transform: scale(0.95);
+}
+
+.my-btn:active,
+.btn-link:active {
+    /* transform: scale(0.9); */
+    outline: 1px solid lightgrey;
+    outline-offset: -4px;
 }
 
 .my-btn:focus,
@@ -121,25 +139,9 @@ p {
     outline-offset: -4px;
 }
 
-.btn-link:hover,
-.btn-link:focus {
-    color: inherit;
-    opacity: 0.8;
-    text-decoration: none;
-    transform: scale(0.95);
-}
-
-.my-btn:hover, 
-.my-btn:focus {
-    background-color: #e6e6e6;
-    transform: scale(0.95);
-}
-
-.my-btn:active,
-.btn-link:active {
-    transform: scale(0.9);
-    outline: 1px solid lightgrey;
-    outline-offset: -4px;
+.btn-lrg {
+    min-height: 40px;
+    font-size: inherit;
 }
 
 /* Pulled these gradients from Polymer's website */
@@ -171,6 +173,10 @@ p {
 
 .contact {
     text-align: center;
+}
+
+.contact a {
+    line-height: 1.2;
 }
 
 .contact h2 {
