@@ -18,6 +18,21 @@ a:focus {
     text-decoration: underline;
 }
 
+/**
+ * Reset button styles.
+ * It takes a bit of work to achieve a neutral look.
+ */
+ button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    /* show a hand cursor on hover; some argue that we
+    should keep the default arrow cursor for buttons */
+    cursor: pointer;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
     margin-top: 10px;
@@ -111,32 +126,22 @@ p {
     padding: 6px 12px;
     text-align: center;
     width: 90%;
-    transition: opacity ease-in .15s, transform ease-in .10s;
 }
 
-.btn-link:hover {
-    color: inherit;
+.btn-link:hover,
+.my-btn:hover,
+.my-btn:focus,
+.btn-link:focus {
     opacity: 0.8;
     text-decoration: none;
-    transform: scale(0.95);
-}
-
-.my-btn:hover {
-    background-color: #e6e6e6;
-    transform: scale(0.95);
+    box-shadow: 2px 2px 5px black;
 }
 
 .my-btn:active,
 .btn-link:active {
-    /* transform: scale(0.9); */
-    outline: 1px solid lightgrey;
-    outline-offset: -4px;
-}
-
-.my-btn:focus,
-.btn-link:focus {
-    outline: 1px solid #fff;
-    outline-offset: -4px;
+    transform: translate(1px, 1px);
+    filter: saturate(150%);
+    outline: none;
 }
 
 .btn-lrg {
