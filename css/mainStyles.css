@@ -128,14 +128,21 @@ p {
     width: 90%;
 }
 
-.btn-link:hover,
 .my-btn:hover,
-.my-btn:focus,
-.btn-link:focus {
+.my-btn:focus {
     opacity: 0.8;
     text-decoration: none;
     box-shadow: 2px 2px 5px black;
 }
+
+.btn-link:hover,
+.btn-link:focus {
+    opacity: 0.8;
+    text-decoration: none;
+    box-shadow: 2px 2px 5px black;
+    color: inherit;
+}
+
 
 .my-btn:active,
 .btn-link:active {
