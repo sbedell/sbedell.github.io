@@ -1,14 +1,5 @@
 SC.initialize({client_id:'75579df892fafb681bb657af3fe524b6'});
 
-// $(document).ready(function() {
-// 		console.log("document ready");
-//     SC.get('/tracks', { genres: 'dubstep' }, tracks => {
-//         $(tracks).each(function(index, track) {
-//             $('#results').append($('<li></li>').html(`<img class="album-art" alt="album art" src="${track.artwork_url}"><a target="blank" href="${track.permalink_url}">${track.title}</a>`));
-//         });
-//     });
-// });
-
 // Load / Search dubstep tracks on load
 document.addEventListener("DOMContentLoaded", () => {
 	getAndPopulateTracks('dubstep');
