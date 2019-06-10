@@ -118,7 +118,7 @@ p {
 .btn-link {
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-shadow: 2px 2px 8px grey;
+    box-shadow: 2px 2px 4px grey;
     color: #292929;
     background-color: white;
     display: inline-block;
@@ -138,6 +138,8 @@ p {
 .btn-link:hover,
 .btn-link:focus {
     opacity: 0.8;
+    /* filter: saturate(150%); */
+    /* filter: drop-shadow(3px 3px 5px); */
     text-decoration: none;
     box-shadow: 2px 2px 5px black;
     color: inherit;
