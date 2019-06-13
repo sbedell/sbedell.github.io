@@ -1,7 +1,7 @@
 body {
 	margin: auto;
 	padding: 20px;
-	font-family: sans-serif;
+	font-family: Arial, sans-serif;
 }
 
 h1 {
@@ -10,33 +10,30 @@ h1 {
 
 .wrapper {
 	margin: auto;
-	width: 80%;
+	width: 90%;
 	max-width: 800px;
-	background-color: rgb(250,250,250);
+	background-color: white;
 	padding: 1rem;
 	border: 5px solid black;
 }
 
 .my-btn {
-	margin-top: 20px;
+	margin: 20px auto;
 	width: 100%;
 }
 
-form div label {
-	float: left;
-	width: 45%;
-}
-
-form div input {
-	float: right;
-	width: 45%;
-}
-
-form div {
+.wrapper div {
+	display: flex;
 	clear: both;
 	margin: 0 auto;
 	width: 70%;
-	padding-bottom: 4rem;
+	padding-top: 0.8rem;
+	padding-bottom: 2rem;
+}
+
+.wrapper div label,
+.wrapper div input {
+	width: 45%;
 }
 
 input[type="text"] {
@@ -46,18 +43,19 @@ input[type="text"] {
 }
 
 @media (max-width: 600px) {
-	form div label {
+	.wrapper div label {
 		float: none;
 		width: 100%;
 		text-align: left;
 	}
 
-	form div input {
+	.wrapper div input {
 		float: none;
 		width: 100%;
 	}
 
-	form div {
+	.wrapper div {
 		padding-bottom: 1.5rem;
+		display: block;
 	}
 }

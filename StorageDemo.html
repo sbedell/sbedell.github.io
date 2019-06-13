@@ -13,29 +13,34 @@
 	</head>
 <body>
 	<div class="wrapper">
-		<h1>Web storage</h1>
-		<form>
-			<div>
-				<label for="bgcolor">Choose color:</label>
-				<input type="color" id="bgcolor" value="#FF0000">
-			</div>
-			<div>
-				<label for="sessionstore">Session Storage textbox (autosaves):</label>
-				<input type="text" id="sessionstore" value="">
-			</div>
-			<div>
-				<button class="my-btn btn-lrg gradient-red" type="button" id="deleteButton">Clear Local & Session Storage</button>
-			</div>
-		</form>
+		<h1>Web Storage Demo</h1>
+
+		<div>
+			<label for="bgcolor">Choose color:</label>
+			<input type="color" id="bgcolor" value="#FF0000">
+		</div>
+		
+		<div>
+			<label for="sessionstore">Session Storage textbox (autosaves):</label>
+			<input type="text" id="sessionstore" value="">
+		</div>
+
+		<div>
+			<button class="my-btn btn-lrg gradient-red" type="button" id="deleteButton">Clear Local & Session Storage</button>
+		</div>
 		
 		<p>Pick a color for the background of this form and it will be saved in local storage.
 			Anything you type in the textbox will be saved in session storage.</p>
 		
 		<footer>
 			<hr>
-			<div>Demo page built with code from <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API">Mozilla's MDN pages.</a></div>
-			<p><a href="./index">Back to Home page</a></p>
-        </footer>
+			<p>Demo page built with code from 
+				<a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API">Mozilla's MDN pages.</a>
+			</p>
+			<p class="home-link">
+				<a href="./index">Back to Home page</a>
+			</p>
+    </footer>
 	</div>
 	<script src="js/domStorageDemo.js"></script>
 </body>
