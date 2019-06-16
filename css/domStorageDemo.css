@@ -43,14 +43,8 @@ input[type="text"] {
 }
 
 @media (max-width: 600px) {
-	.wrapper div label {
-		float: none;
-		width: 100%;
-		text-align: left;
-	}
-
-	.wrapper div input {
-		float: none;
+	.wrapper div label,
+    .wrapper div input {
 		width: 100%;
 	}
 
