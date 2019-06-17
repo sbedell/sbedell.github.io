@@ -36,6 +36,8 @@ h1, h2, h3 {
     line-height: 1.4;
     text-align: center;
     touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
     user-select: none;
     border: 1px solid transparent;
     border-radius: 4px;
