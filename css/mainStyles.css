@@ -125,26 +125,27 @@ p {
     margin: 10px auto;
     padding: 6px 12px;
     text-align: center;
-    width: 90%;
+    width: 100%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 }
 
 .my-btn:hover,
-.my-btn:focus {
+.btn-link:hover {
     opacity: 0.8;
     text-decoration: none;
     box-shadow: 2px 2px 5px black;
 }
 
-.btn-link:hover,
-.btn-link:focus {
-    opacity: 0.8;
-    /* filter: saturate(150%); */
-    /* filter: drop-shadow(3px 3px 5px); */
-    text-decoration: none;
-    box-shadow: 2px 2px 5px black;
+.btn-link:hover {
     color: inherit;
 }
 
+.my-btn:focus,
+.btn-link:focus {
+    text-decoration: none;
+}
 
 .my-btn:active,
 .btn-link:active {
