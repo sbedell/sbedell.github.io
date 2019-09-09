@@ -20,32 +20,40 @@
 		<main>
 			<h1>Web Security Informational Page</h1>
 			<a target="blank" href="//isc.sans.edu">
-				<img class="img-responsive" title="Internet Storm Center Infocon Status" alt="Internet Storm Center Infocon Status" src="//isc.sans.edu/images/status.gif">
+				<img class="img-responsive" title="Internet Storm Center Infocon Status" 
+					alt="Internet Storm Center Infocon Status" src="//isc.sans.edu/images/status.gif">
 			</a>
 
 			<h3>SANS DShield and ISC Data</h3>
 
 			<p>Search IP address for potential attacks against that IP address.</p>
 
-			<input id="ipaddr" class="input-box" type="text" value="" placeholder="IP Address" aria-label="IP Address"><br />
-			<button class="my-btn btn-lrg gradient-blue" type="button" onclick="ipSearch()">Search IP Address</button><br /><br />
+			<section id="search-section">
+				<input id="ipaddr" class="input-box" type="text" value="" placeholder="IP Address" aria-label="IP Address"><br />
+				<button class="my-btn btn-lrg gradient-blue" type="button" onclick="ipSearch()">Search IP Address</button><br /><br />
 
-			<p>Search for port numbers to find out more information on that port.</p>
-			<input id="port" class="input-box" type="number" value="" placeholder="Port Number" min="0" max="65536" aria-label="Port Number"><br />
-			<button class="my-btn btn-lrg gradient-blue" type="button" onclick="portSearch()">Search Ports</button><br />
-			
-			<button class="my-btn btn-lrg gradient-red" type="button" onclick="clearResults()">Clear Results</button><br /><br />
+				<p>Search for port numbers to find out more information on that port.</p>
+				<input id="port" class="input-box" type="number" value="" placeholder="Port Number" min="0" max="65536" aria-label="Port Number"><br />
+				<button class="my-btn btn-lrg gradient-blue" type="button" onclick="portSearch()">Search Ports</button><br />
+				
+				<button class="my-btn btn-lrg gradient-red" type="button" onclick="clearResults()">Clear Results</button><br /><br />
 
-			<div id="results"></div>
+				<div id="results"></div>
+			</section>
 			<hr>
 			
 			<div>
 				<h3>Browser Info</h3>
+
+				<div id="findipwidget"></div>
+				<div class="findiplink" id="findipurl">Powered by <a href="http://www.find-ip.net/" target="_blank">Find-IP.net</a></div>
+				<script defer src="https://api.find-ip.net/widget.js?width=240"></script>
 				
-				<script src="https://api.find-ip.net/widget.js?width=240&language=0&flag=0"></script>
-				<p>Powered by <a href="https://www.find-ip.net/" target="_blank" rel="noopener">Find-IP.net</a></p>
-				
-				<div id="browserSection"></div>
+				<section id="browser-section">
+					<div><b>User Agent:</b> {{ userAgent }}</div>
+					<div><b>Monitor Resultion:</b> {{ monitorResolution }}</div>
+					<div><b>Browser Resolution:</b> {{ browserResolution }}</div>
+				</section>
 
 				<p><a href="//arstechnica.com/tech-policy/2013/08/in-aclu-lawsuit-scientist-demolishes-nsa-its-just-metadata-excuse/">"It's just metadata"</a>, right?</p>
 			</div>
@@ -66,6 +74,14 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.js" 
 		integrity="sha384-VDls8ImYGI8SwVxpmjX2Bn27U2TcNodzTNROTusVEWO55+lmL+H9NczoQJk6mwZR" 
 		crossorigin="anonymous" defer></script>
+
+		<!-- development version, includes helpful console warnings -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" crossorigin="anonymous"
+			integrity="sha384-9u9lzb/hr8e14GLHe5TEOrTiH3Qtw5DX2Zw9X/g7cqj81W2McEMx5CKOszxdb8jg"></script> -->
+
+		<!-- production version, optimized for size and speed -->
+		<script src="https://cdn.jsdelivr.net/npm/vue" crossorigin="anonymous"
+			integrity="sha384-8t+aLluUVnn5SPPG/NbeZCH6TWIvaXIm/gDbutRvtEeElzxxWaZN+G/ZIEdI/f+y"></script>
 		
 	<script src="js/securityScripts.js"></script>
 </body>

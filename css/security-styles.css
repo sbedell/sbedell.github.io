@@ -1,3 +1,8 @@
 .my-btn {
   width: 100%;
 }
+
+#browser-section {
+  margin-top: 20px;
+  line-height: 1.3em;
+}

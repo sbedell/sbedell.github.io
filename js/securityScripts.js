@@ -7,10 +7,31 @@ $(document).ready(function() {
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     };
+});
 
-    document.getElementById("browserSection").innerHTML = `<div><b>User Agent:</b> ${navigator.userAgent}</div><br>` +
-            `<div><b>Monitor Resultion:</b> ${window.screen.availWidth} x ${window.screen.availHeight}</div><br>` +
-            `<div><b>Browser Resolution:</b> ${window.innerWidth} x ${window.innerHeight}</div><br>`;
+let vueBrowserSection = new Vue({
+    el: "#browser-section",
+    data: {
+        // could / should make these computed properties??? maybe??
+        userAgent: navigator.userAgent,
+        monitorResolution: `${window.screen.availWidth} x ${window.screen.availHeight}`,
+        browserResolution: `${window.innerWidth} x ${window.innerHeight}`
+    }
+});
+
+let vueSearchSection = new Vue({
+    el: '#search-section',
+    data: {
+        outputText: ""
+    },
+    methods: {
+        searchIpAddress: function() {
+        },
+        searchPortVue: function() {
+        },
+        clearResultsVue: function() {
+        }
+    }
 });
 
 function ipSearch() {
@@ -50,14 +71,15 @@ function ipSearch() {
 }
 
 function portSearch() {
-    var port = document.getElementById("port").value.trim();
+    let port = document.getElementById("port").value.trim();
+
     if (port.match(/^\d+$/) && port > 0 && port < 65536) {
-        var xmlhttp = new XMLHttpRequest();
+        let xmlhttp = new XMLHttpRequest();
         toastr.info("Searching Port...");
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                var response = JSON.parse(xmlhttp.responseText);
-                var output = `<p>Data for port #: ${response.number}</p>`;
+                let response = JSON.parse(xmlhttp.responseText);
+                let output = `<p>Data for port #: ${response.number}</p>`;
                 if (response.services.tcp.name !== 0) {
                     output += `<p>Port Name / Type: ${response.services.tcp.name}</p>`;
                 }
@@ -71,11 +93,11 @@ function portSearch() {
                 toastr.clear();
             }
         };
-        var url = `https://www.dshield.org/api/port/${port}?json`;
+        let url = `https://www.dshield.org/api/port/${port}?json`;
         xmlhttp.open("GET", url, true);
         xmlhttp.send();
     } else {
-        document.getElementById("results").innerHTML = "Error, this device doesn't support XML HTTP Requests.";
+        document.getElementById("results").innerHTML = "Error, invalid port number. Valid ports are 0-65536.";
     }
 }
 
