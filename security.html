@@ -26,19 +26,39 @@
 
 			<h3>SANS DShield and ISC Data</h3>
 
-			<p>Search IP address for potential attacks against that IP address.</p>
-
-			<section id="search-section">
+			<section id="search-section-vue">
+				<p>Search IP address for potential attacks against that IP address.</p>
 				<input id="ipaddr" class="input-box" type="text" value="" placeholder="IP Address" aria-label="IP Address"><br />
-				<button class="my-btn btn-lrg gradient-blue" type="button" onclick="ipSearch()">Search IP Address</button><br /><br />
+				<button class="my-btn btn-lrg gradient-blue" type="button" v-on:click="searchIpAddressVue">Search IP Address</button><br /><br />
 
 				<p>Search for port numbers to find out more information on that port.</p>
 				<input id="port" class="input-box" type="number" value="" placeholder="Port Number" min="0" max="65536" aria-label="Port Number"><br />
-				<button class="my-btn btn-lrg gradient-blue" type="button" onclick="portSearch()">Search Ports</button><br />
+				<button class="my-btn btn-lrg gradient-blue" type="button" v-on:click="searchPortVue">Search Ports</button><br />
 				
-				<button class="my-btn btn-lrg gradient-red" type="button" onclick="clearResults()">Clear Results</button><br /><br />
+				<button class="my-btn btn-lrg gradient-red" type="button" v-on:click="clearResults">Clear Results</button><br /><br />
 
-				<div id="results"></div>
+				<section v-if="apiResponsePort" id="port-results-section">
+					<p><b>Port #:</b> {{ apiResponsePort.number}}</p>
+					<p v-if="apiResponsePort.services.tcp.name"><b>TCP Port Name / Type:</b> {{ apiResponsePort.services.tcp.name }}</p>
+					<p v-if="apiResponsePort.services.tcp.service"><b>TCP Service:</b> {{ apiResponsePort.services.tcp.service }}</p>
+					<p v-if="apiResponsePort.services.udp.name"><b>UDP Port Name / Type:</b> {{ apiResponsePort.services.udp.name }}</p>
+					<p v-if="apiResponsePort.services.udp.service"><b>UDP Service:</b> {{ apiResponsePort.services.udp.service }}</p>
+				</section>
+
+				<section v-if="apiResponseIpAddr">
+					<p><b>IP Address:</b> {{ apiResponseIpAddr.ip.number }}</p>
+					<p><b>Name:</b> {{ apiResponseIpAddr.ip.asname }}</p>
+					<p v-if="apiResponseIpAddr.ip.ascountry"><b>Country:</b> {{ apiResponseIpAddr.ip.ascountry }}</p>
+					<p v-if="apiResponseIpAddr.ip.attacks"><b>Security:</b> {{ apiResponseIpAddr.ip.attacks }} attacks against this IP addr
+						<span v-if="apiResponseIpAddr.ip.mindate && apiResponseIpAddr.ip.maxdate">
+							from {{apiResponseIpAddr.ip.mindate}} to {{ apiResponseIpAddr.ip.maxdate}}
+						</span>
+					</p>
+					<p v-else><b>Security:</b> No recorded / detected attacks against this IP address.</p>
+					<p v-if="apiResponseIpAddr.ip.asabusecontact"><b>Abuse Contact:</b> {{ apiResponseIpAddr.ip.asabusecontact}}</p>
+				</section>
+
+				<p v-if="errorText" class="error-text">{{ errorText }}</p>
 			</section>
 			<hr>
 			
@@ -75,11 +95,11 @@
 		integrity="sha384-VDls8ImYGI8SwVxpmjX2Bn27U2TcNodzTNROTusVEWO55+lmL+H9NczoQJk6mwZR" 
 		crossorigin="anonymous" defer></script>
 
-		<!-- development version, includes helpful console warnings -->
+		<!-- Vue development version, includes helpful console warnings -->
 		<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" crossorigin="anonymous"
 			integrity="sha384-9u9lzb/hr8e14GLHe5TEOrTiH3Qtw5DX2Zw9X/g7cqj81W2McEMx5CKOszxdb8jg"></script> -->
 
-		<!-- production version, optimized for size and speed -->
+		<!-- Vue production version, optimized for size and speed -->
 		<script src="https://cdn.jsdelivr.net/npm/vue" crossorigin="anonymous"
 			integrity="sha384-8t+aLluUVnn5SPPG/NbeZCH6TWIvaXIm/gDbutRvtEeElzxxWaZN+G/ZIEdI/f+y"></script>
 		
