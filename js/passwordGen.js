@@ -19,7 +19,7 @@ String.prototype.pick = function(min, max = min) {
 
 /**
 * Shuffle a string, basically implementation of Fisher–Yates shuffle
-* Credit to @Christoph: http://stackoverflow.com/a/962890/464744
+* Credit to @Christoph: https://stackoverflow.com/a/962890/464744
 */
 String.prototype.shuffle = function() {
   let splitString = this.split('');
