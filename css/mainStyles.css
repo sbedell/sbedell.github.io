@@ -18,18 +18,13 @@ a:focus {
     text-decoration: underline;
 }
 
-/**
- * Reset button styles.
- * It takes a bit of work to achieve a neutral look.
- */
- button {
+/* Reset button styles. */
+button {
     padding: 0;
     border: none;
     font: inherit;
     color: inherit;
     background-color: transparent;
-    /* show a hand cursor on hover; some argue that we
-    should keep the default arrow cursor for buttons */
     cursor: pointer;
 }
 
@@ -77,21 +72,15 @@ p {
 
 .jumbotron {
     background: linear-gradient(315deg, #8FCDFF 20%, #1A91ED 100%);
-    color: inherit;
+    color: #f4f4f4;
     text-align: center;
     padding-top: 30px;
     padding-bottom: 30px;
     margin-bottom: 30px;
 }
 
-.jumbotron h1 {
-    color: white;
-}
-
 .jumbotron p {
-    margin-bottom: 15px;
     font-size: 21px;
-    font-weight: 200;
 }
 
 .home-link {
