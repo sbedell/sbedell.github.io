@@ -16,6 +16,7 @@ h1, h2, h3 {
 .main-container {
     width: 85vw;
     margin: 8px auto 55px auto;
+    padding: 0px;
 }
 
 .btn {
