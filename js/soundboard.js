@@ -20,7 +20,6 @@ function playRandomClips() {
   for (let i = 0; i < 5; i++) {
     window.setTimeout(() => {
       let rand = Math.floor(Math.random() * len);
-      // console.log("Playing clip: ", allAudioClips[rand]);
       allAudioClips[rand].play();
     }, 350 * i);
   }
