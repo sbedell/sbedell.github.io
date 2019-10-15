@@ -3,11 +3,12 @@
  * Taken from: https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/caches
  */ 
 
-var cacheName = 'soundboardPwaCache-v1';
+var cacheName = 'soundboardPwaCache-v1.2';
 var appFiles = [
   '/soundboardPWA/',
   '/soundboardPWA/index.html',
   '/soundboardPWA/index.js',
+  '/soundboardPWA/soundboard.js',
   '/soundboardPWA/styles.css',
   '/soundboardPWA/icons/music-note64.png',
   '/soundboardPWA/icons/music-note256.png'
