@@ -9,7 +9,7 @@ $(document).ready(function() {
     };
 });
 
-let vueBrowserSection = new Vue({
+new Vue({
     el: "#browser-section",
     data: {
         userAgent: navigator.userAgent,
@@ -18,7 +18,7 @@ let vueBrowserSection = new Vue({
     }
 });
 
-let vueSearchSection = new Vue({
+new Vue({
     el: '#search-section-vue',
     data: {
         apiResponsePort: null,
