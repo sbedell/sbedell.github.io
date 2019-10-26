@@ -1,5 +1,5 @@
-var sessionStore = document.getElementById("sessionstore");
-var bgColorSelector = document.getElementById("bgcolor");
+let sessionStore = document.getElementById("sessionstore");
+let bgColorSelector = document.getElementById("bgcolor");
 
 function changeBackgroundColor(color) {
     if (typeof color === "string") {
@@ -24,7 +24,7 @@ sessionStore.addEventListener("change", function() {
 });
 
 bgColorSelector.addEventListener("change", function() {
-    var newBgColor = document.getElementById("bgcolor").value;
+    let newBgColor = document.getElementById("bgcolor").value;
     window.localStorage.setItem("bgColor", newBgColor);
     changeBackgroundColor(newBgColor);
 });
