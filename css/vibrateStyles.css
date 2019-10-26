@@ -4,10 +4,6 @@ body {
     overflow-x: hidden;
 }
 
-label {
-    font-weight: normal;
-}
-
 input {
     width: 30%;
 }
@@ -37,6 +33,10 @@ input {
         width: 70vw;
         margin: 5px auto;
     }
+
+    .my-btn {
+        width: 45%;
+    }
 }
 
 /* Media query for landscape tablets or laptops / PC */
@@ -44,5 +44,9 @@ input {
     .my-container {
         width: 50vw;
         margin: 5px auto;
+    }
+
+    .my-btn {
+        width: 45%;
     }
 }

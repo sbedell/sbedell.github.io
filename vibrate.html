@@ -19,8 +19,7 @@
 
 		<div>
 			<label for="viblen">Vibration Duration (ms):</label>
-			<input id="viblen" class="input-box" type="number" value="500" min="0" required />
-			<button class="my-btn btn-lrg gradient-green" type="button" onclick="singleVibrate()">Single Vibrate</button>
+			<input id="viblen" class="input-box" type="number" value="500" min="0" required />	
 		</div>
 		
 		<p><strong>Multiple Vibration Options:</strong></p>
@@ -33,8 +32,8 @@
 		<div>
 			<label for="pauselen">Time Between Vibrations (ms):</label>
 			<input id="pauselen" class="input-box" type="number" value="200" min="0" required />
+			<button class="my-btn btn-lrg gradient-green" type="button" onclick="singleVibrate()">Single Vibrate</button>
 			<button class="my-btn btn-lrg gradient-green" type="button" onclick="multipleVibrate()">Multiple Vibrations</button>
-			<br />
 			<button class="my-btn btn-lrg gradient-red" type="button" onclick="stopVibrate()">Stop Vibration(s)</button>
 		</div>
 
