@@ -15,12 +15,18 @@ function playAllAudio() {
 
 function playRandomClips() {
   let allAudioClips = document.getElementsByTagName("audio");
-  let len = allAudioClips.length || 0;
+  let alreadyPlayed = new Set();
 
-  for (let i = 0; i < 5; i++) {
-    window.setTimeout(() => {
-      let rand = Math.floor(Math.random() * len);
-      allAudioClips[rand].play();
-    }, 350 * i);
+  while (alreadyPlayed.size < 5) {
+    // Pick a random number from 0 to allAudioClips.length (11 right now)
+    let rand = Math.floor(Math.random() * allAudioClips.length);
+   
+    if (!alreadyPlayed.has(rand)) {
+      window.setTimeout(() => {
+        //console.log("Playing clip: ", allAudioClips[rand]);
+        allAudioClips[rand].play();
+      }, 350 * alreadyPlayed.size);
+      alreadyPlayed.add(rand);
+    }
   }
 }
