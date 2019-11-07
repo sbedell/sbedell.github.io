@@ -27,7 +27,7 @@ function multipleVibrate() {
     } else {
         for (let i = 0; i < amountOfVibs; i++) {
             vibArray.push(duration);
-            vibArray.push(pauseLength);			//half a second pause between vibrations
+            vibArray.push(pauseLength);
         }
         navigator.vibrate(vibArray);
     }
