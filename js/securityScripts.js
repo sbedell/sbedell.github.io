@@ -18,6 +18,13 @@ new Vue({
     }
 });
 
+let copysection = new Vue({
+    el: "#copyright-section",
+    data: {
+        copyrightDates: `2013-${new Date().getFullYear()}`
+    }
+});
+
 new Vue({
     el: '#search-section-vue',
     data: {
