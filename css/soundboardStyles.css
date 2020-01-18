@@ -73,6 +73,10 @@ h1, h2, h3 {
     font-size: 1.3em;
 }
 
+.gradient-red {
+    color: white;
+}
+
 /* Media queries for tablets */
 @media (min-width: 600px)  {
     .main-container {
