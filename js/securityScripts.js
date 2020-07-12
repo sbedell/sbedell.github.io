@@ -9,7 +9,7 @@ $(document).ready(function() {
     };
 });
 
-new Vue({
+let browserSection = new Vue({
     el: "#browser-section",
     data: {
         userAgent: navigator.userAgent,
@@ -18,14 +18,14 @@ new Vue({
     }
 });
 
-let copysection = new Vue({
+let copySection = new Vue({
     el: "#copyright-section",
     data: {
-        copyrightDates: `2013-${new Date().getFullYear()}`
+        copyrightDates: `2013 - ${new Date().getFullYear()}`
     }
 });
 
-new Vue({
+let searchSection = new Vue({
     el: '#search-section-vue',
     data: {
         apiResponsePort: null,
@@ -51,7 +51,7 @@ new Vue({
                         toastr.clear();
                     });
             } else {
-                this.errorText = "Error: Invalid IP (ipv4) address."
+                this.errorText = "Error: Invalid IP (ipv4) address.";
             }
         },
         searchPortVue: function() {
