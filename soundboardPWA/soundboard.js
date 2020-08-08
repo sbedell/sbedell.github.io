@@ -23,7 +23,6 @@ function playRandomClips() {
    
     if (!alreadyPlayed.has(rand)) {
       window.setTimeout(() => {
-        //console.log("Playing clip: ", allAudioClips[rand]);
         allAudioClips[rand].play();
       }, 350 * alreadyPlayed.size);
       alreadyPlayed.add(rand);
