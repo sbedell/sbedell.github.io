@@ -26,9 +26,7 @@ let audioFiles = [
   '/soundboardPWA/audio/multiAirhorn.mp3',
   '/soundboardPWA/audio/nicememe.mp3',
   '/soundboardPWA/audio/PocketFullOfDubs.mp3',
-  '/soundboardPWA/audio/shotsFired.mp3',
   '/soundboardPWA/audio/SMOKEWEEDEVERYDAY.mp3',
-  '/soundboardPWA/audio/SometimesThingsGetComplicated.mp3',
   '/soundboardPWA/audio/Steam-Machine.mp3'
 ];
 
