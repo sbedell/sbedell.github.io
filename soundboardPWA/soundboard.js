@@ -29,3 +29,9 @@ function playRandomClips() {
     }
   }
 }
+
+// Lol this is dumb and silly but it works
+function playFourTwenty() {
+  playAudio("smoke");
+  playAudio("multi-airhorn");
+}
