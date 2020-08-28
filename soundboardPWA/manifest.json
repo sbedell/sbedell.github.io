@@ -21,5 +21,12 @@
             "sizes": "512x512",
             "type": "image/png"
         }
-    ]
+    ],
+    "shortcuts" : [
+        {
+          "name": "Airhorn",
+          "url": "audio/multiAirhorn.mp3",
+          "description": "List of events planned for today"
+        }
+      ]
   }
