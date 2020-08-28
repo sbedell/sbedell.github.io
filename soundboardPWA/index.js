@@ -2,11 +2,11 @@
 
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/soundboardPWA/serviceWorker.js')
-    .then((reg) => { 
+    .then(reg => { 
         console.log("[index.js] Service Worker Registered.");
         console.log("Registration: ", reg); 
     })
-    .catch((err) => {
+    .catch(err => {
         console.error("[!] Error: Registration failed - ", err);
     });
 }

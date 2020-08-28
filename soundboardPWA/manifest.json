@@ -3,7 +3,6 @@
     "short_name": "Soundboard",
     "start_url": "/soundboardPWA/index.html",
     "display": "fullscreen",
-    "background_color": "#0033ff",
     "description": "A soundboard built for mobile and desktop using HTML5 audio",
     "lang": "en-US",
     "icons": [
