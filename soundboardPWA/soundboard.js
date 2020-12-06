@@ -18,7 +18,7 @@ function playRandomClips() {
   let alreadyPlayed = new Set();
 
   while (alreadyPlayed.size < 5) {
-    // Pick a random number from 0 to allAudioClips.length (11 right now)
+    // Pick a random number from 0 to allAudioClips.length
     let rand = Math.floor(Math.random() * allAudioClips.length);
    
     if (!alreadyPlayed.has(rand)) {
@@ -28,10 +28,4 @@ function playRandomClips() {
       alreadyPlayed.add(rand);
     }
   }
-}
-
-// Lol this is dumb and silly but it works
-function playFourTwenty() {
-  playAudio("smoke");
-  playAudio("multi-airhorn");
 }
