@@ -1,5 +1,6 @@
 /**
  * Leaflet and OpenStreetMap demo
+ * https://leafletjs.com/reference-1.7.1.html
  */
 
 let mymap = L.map('myMap').setView([41.49985, -81.6938], 11);
@@ -12,7 +13,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(mymap);
 
 // Addings some markers to the map, some with popups 
-let clevelandMarker = L.marker([41.49985, -81.6938]).addTo(mymap);
+let clevelandMarker = L.marker([41.49985, -81.6938], {riseOnHover: true}).addTo(mymap);
 
 // let testMarker = L.marker([41.219857, -81.698456]).addTo(mymap);
 // testMarker.bindPopup("<b>Whipps Ledges</b><br>Cleveland Metroparks", {'autoClose': false, closeOnClick: false}).openPopup();
@@ -21,28 +22,26 @@ let clevelandMarker = L.marker([41.49985, -81.6938]).addTo(mymap);
 // testMarker2.bindPopup("<b>Brecksville</b><br>Cleveland Metroparks", {'autoClose': false, closeOnClick: false}).openPopup();
 
 let testMarker3 = L.marker([41.222891, -81.510701]).addTo(mymap);
-testMarker3.bindPopup("<b>Virginia Kendall and Ritchie Ledges</b><br>Cuyahoga Valley National Park", {'autoClose': false, closeOnClick: false}).openPopup();
+testMarker3.bindPopup("<b>Virginia Kendall and Ritchie Ledges</b><br>Cuyahoga Valley National Park", 
+    {'autoClose': false, closeOnClick: false})
+    .openPopup();
 
-// Adding Event Listeners:
 mymap.on('click', onMapClick);
 mymap.on('locationfound', onLocationFound);
 mymap.on('locationerror', onLocationError);
 
-// Listener Functions:
 function onMapClick(e) {
-    let popup = L.popup();
-    popup.setLatLng(e.latlng).setContent(e.latlng.toString()).openOn(mymap);
+    L.popup().setLatLng(e.latlng).setContent(e.latlng.toString()).openOn(mymap);
 }
 
 function onLocationFound(e) {
-    // console.log(e);
-    let radius = Math.round(e.accuracy / 2);
+    const circleRadius = Math.round(e.accuracy / 2);
 
     L.marker(e.latlng).addTo(mymap)
-        .bindPopup("You are within " + radius + " meters from this point", {'autoClose': false, closeOnClick: false})
+        .bindPopup("You are within " + circleRadius + " meters from this point", {'autoClose': false, closeOnClick: false})
         .openPopup();
 
-    L.circle(e.latlng, radius).addTo(mymap);
+    L.circle(e.latlng, {radius: circleRadius}).addTo(mymap);
 }
 
 function onLocationError(event) {
