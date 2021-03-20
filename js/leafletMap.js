@@ -5,7 +5,12 @@
 
 let mymap = L.map('myMap').setView([41.49985, -81.6938], 11);
 
-mymap.locate({setView: true, maxZoom: 16}); // Locate user with Geolocation API
+mymap.locate({setView: true, maxZoom: 16}); // Locate user with Geolocation API'
+
+// OpenStreetMap tiles: https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
+// Other map tiles to play arount with - Stamen maps:
+// https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg
+// https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a>',
