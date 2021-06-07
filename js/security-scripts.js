@@ -1,4 +1,5 @@
-$(document).ready(function() {
+window.addEventListener('load', () => {
+    // console.log("window load event fired");
     toastr.options = {
         "progressBar": true,
         "positionClass": "toast-top-center",
