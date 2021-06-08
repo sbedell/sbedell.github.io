@@ -52,15 +52,16 @@ function generateRandomPassword(options) {
   let password = "";
   let totalOptions = 0;
 
-  // TODO - Finish this avoid ambiguous chars:
-  // if (options.avoidAmbiguous) {
-  //   let myreg = /[l|1|I|o|O|0]+/g;
-  //    // Strip out l, 1, I, O, 0, o:
-  //    numbers = numbers.replace("0", "");
-  //    lowercase = lowercase.replace(myreg, "");
-  //    uppercase = uppercase.replace(myreg, "");
-  //    console.log("Uppercase: ", uppercase);
-  // }
+  if (options.avoidAmbiguous) {
+    let myreg = /[l|1|I|o|O|0]+/g;
+    // Strip out l, 1, I, O, 0, o:
+    numbers = numbers.replace(myreg, "");
+    lowercase = lowercase.replace(myreg, "");
+    uppercase = uppercase.replace(myreg, "");
+    // console.log("Uppercase: ", uppercase);
+    // console.log("Lowercase: ", lowercase);
+    // console.log("Numbers: ", numbers);
+  }
 
   if (options.useLower) {
     allChars += lowercase;
@@ -106,20 +107,15 @@ function generateRandomPassword(options) {
 function passwordGen() {
   // Clear output sections:
   clearOutputSections();
-
-  let passLen = parseInt(document.getElementById("pw-length").value);
-  let useUppercase = document.getElementById("uppercaseCb").checked;
-  let useLowercase = document.getElementById("lowercaseCb").checked;
-  let useNums = document.getElementById("numbersCb").checked;
-  let useSpecials = document.getElementById("specialCharsCb").checked;
   
   // use the above values to set an options object, use that to conditionally set the pw values
   let options = {
-    passLength: passLen,
-    useUpper: useUppercase,
-    useLower: useLowercase,
-    useNumbers: useNums,
-    useSpecialChars: useSpecials
+    passLength: parseInt(document.getElementById("pw-length").value),
+    useUpper: document.getElementById("uppercaseCb").checked,
+    useLower: document.getElementById("lowercaseCb").checked,
+    useNumbers: document.getElementById("numbersCb").checked,
+    useSpecialChars: document.getElementById("specialCharsCb").checked,
+    avoidAmbiguous: document.getElementById("ambiguous-cb").checked
   };
 
   let thePassword = generateRandomPassword(options);
