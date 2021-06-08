@@ -52,6 +52,16 @@ function generateRandomPassword(options) {
   let password = "";
   let totalOptions = 0;
 
+  // TODO - Finish this avoid ambiguous chars:
+  // if (options.avoidAmbiguous) {
+  //   let myreg = /[l|1|I|o|O|0]+/g;
+  //    // Strip out l, 1, I, O, 0, o:
+  //    numbers = numbers.replace("0", "");
+  //    lowercase = lowercase.replace(myreg, "");
+  //    uppercase = uppercase.replace(myreg, "");
+  //    console.log("Uppercase: ", uppercase);
+  // }
+
   if (options.useLower) {
     allChars += lowercase;
     password += pickCharactersFromString(lowercase, 1);
@@ -76,15 +86,6 @@ function generateRandomPassword(options) {
     totalOptions++;
   }
 
-  // if (options.avoidAmbiguous) {
-  //   let myreg = /[l|1|I|o|O|0]+/g;
-  //    // Strip out l, 1, O, 0 from the allChars string
-  //    allChars.replace(myreg, "");
-  //    numbers.replace("0", "");
-  //    lowercase.replace(myreg, "");
-  //    console.log("Uppercase: ", uppercase);
-  // }
-
   // console.log("options: ", options);
   
   let len = 12;
@@ -103,6 +104,9 @@ function generateRandomPassword(options) {
 }
 
 function passwordGen() {
+  // Clear output sections:
+  clearOutputSections();
+
   let passLen = parseInt(document.getElementById("pw-length").value);
   let useUppercase = document.getElementById("uppercaseCb").checked;
   let useLowercase = document.getElementById("lowercaseCb").checked;
@@ -120,7 +124,83 @@ function passwordGen() {
 
   let thePassword = generateRandomPassword(options);
 
-  document.getElementById("password-output").textContent = thePassword;
+  // document.getElementById("password-output").innerText = thePassword;
+  document.getElementById("password-box").value = thePassword;
 }
 
+async function checkPwnedPasswordsAPI() {
+  // reset the output:
+  clearOutputSections();
+
+  let password = document.getElementById("password-box").value.trim();
+  
+  if (!password) { 
+    console.warn("Warning: Not checking empty password, please enter a value");
+    return;
+  }
+
+  // First, hash the password with SHA-1
+  let sha1HashedPasswordDigest = await sha1HashAsync(password);
+
+  // console.log("sha1HashedPassword: ", sha1HashedPasswordDigest);
+  console.log(`Checking password '${password}': https://api.pwnedpasswords.com/range/${sha1HashedPasswordDigest.slice(0, 5)}`);
+
+  // Next, search the Have I Been Pwned - PwnedPasswords API for the first 5 chars of the hash digest:
+  // TODO - use the "add-padding" header in this fetch.
+  fetch(`https://api.pwnedpasswords.com/range/${sha1HashedPasswordDigest.slice(0, 5)}`)
+    .then(res => res.text())
+    .then(response => {
+      // console.log(response);
+      // Do your actual processing in here. Maybe throw it to an external function?
+      let match = false;
+      let count = 0;
+      
+      response.split("\n").forEach(line => {
+        // console.log(line.slice(0, line.indexOf(":"))); // DEBUG
+        
+        if (sha1HashedPasswordDigest.slice(5).toUpperCase() == line.slice(0, line.indexOf(":"))) {
+          // console.log("[!!] we have a match!!", line); // DEBUG
+          count = Number(line.slice(line.indexOf(":") + 1));
+          // TODO - Check if count is 0, that's just padding then, throw it out. Although that would be a SHA1 hash collision...
+          match = true;
+        }
+      });
+
+      if (match) {
+        document.getElementById("error-output").innerText = `[!] PWNED - This password has been seen ${count} times before. \n
+          \"This password has previously appeared in a data breach and should never be used. If you've ever used it anywhere before, change it!\"
+          - Troy Hunt`;
+      } else {
+        document.getElementById("api-output").innerText = `Good news! No Pwnage found! \n
+          \"This password wasn't found in any of the Pwned Passwords loaded into Have I Been Pwned. That doesn't necessarily mean it's a good password, merely that it's not indexed on this site.\"
+          - Troy Hunt`;
+      }
+    }).catch(error => {
+      console.error("[!] Error: ", error);
+    });
+}
+
+async function sha1HashAsync(userInput) {
+  if (window.isSecureContext) {
+    // encode as (utf-8) Uint8Array, then hash it.
+    const msgUint8 = new TextEncoder().encode(userInput);
+    const hashBuffer = await crypto.subtle.digest("SHA-1", msgUint8);
+
+    // Convert buffer to byte array
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+
+    // Convert bytes to hex string: (toString(16) is using radix 16)
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    return hashHex;
+  }
+}
+
+function clearOutputSections() {
+  document.getElementById("api-output").innerText = "";
+  document.getElementById("error-output").innerText = "";
+}
+
+// function checkResults(apiResponse) {}
+
 document.getElementById("genPassBtn").addEventListener("click", passwordGen);
+document.getElementById("check-pw-btn").addEventListener("click", checkPwnedPasswordsAPI);
