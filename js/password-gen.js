@@ -139,12 +139,17 @@ async function checkPwnedPasswordsAPI() {
   let sha1HashedPasswordDigest = await sha1HashAsync(password);
 
   // console.log("sha1HashedPassword: ", sha1HashedPasswordDigest);
-  console.log(`Checking password '${password}': https://api.pwnedpasswords.com/range/${sha1HashedPasswordDigest.slice(0, 5)}`);
+  // console.log(`Checking password '${password}': https://api.pwnedpasswords.com/range/${sha1HashedPasswordDigest.slice(0, 5)}`);
 
   // Next, search the Have I Been Pwned - PwnedPasswords API for the first 5 chars of the hash digest:
-  // TODO - use the "add-padding" header in this fetch.
-  fetch(`https://api.pwnedpasswords.com/range/${sha1HashedPasswordDigest.slice(0, 5)}`)
-    .then(res => res.text())
+  fetch(`https://api.pwnedpasswords.com/range/${sha1HashedPasswordDigest.slice(0, 5)}`,
+    {
+      method: "GET",
+      headers: {
+        'Add-Padding': true
+      }
+    }
+    ).then(res => res.text())
     .then(response => {
       // console.log(response);
       // Do your actual processing in here. Maybe throw it to an external function?
