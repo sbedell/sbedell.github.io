@@ -10,45 +10,23 @@ document.getElementById("genPassBtn").addEventListener("click", generatePassword
 document.getElementById("check-pw-btn").addEventListener("click", checkPwnedPasswordsAPI);
 
 /**
- * Credit to: https://jsfiddle.net/Blender/ERCsD/6/
- * for the original skeleton of this code, the "pick" function.
- * 
- * @param {String} inputStr - String to pick characters from.
- * @param {Number} numChars - amount of characters to pick from the string.
- * @returns {String} - Randomly selected characters. 
+ * Fires when "Generate Password" Button is clicked.
+ * Gets options and user input from the HTML elements, and passes it along 
+ * to the actual password generator function. This basically handles all DOM control.
  */
-function pickCharactersFromString(inputStr, numChars = 0) {
-  let chars = "";
-
-  for (let i = 0; i < numChars; i++) {
-    chars += inputStr.charAt(Math.floor(Math.random() * inputStr.length));
-  }
-
-  return chars;
-}
-
-/**
- * Shuffle a string, basically implementation of Fisher–Yates shuffle.
- * Credit to @Christoph: https://stackoverflow.com/a/962890/464744
- *
- * @param {String} inputStr - String to shuffle / randomize.
- * @return {String} - shuffled string.
-*/
-function shuffleString(inputStr) {
-  if (!inputStr) { return ""; }
+function generatePassword() {
+  clearOutputSections();
   
-  let splitString = inputStr.split("");
-  let top = splitString.length;
-  let tmp, current;
+  let options = {
+    passLength: parseInt(document.getElementById("pw-length").value),
+    useUpper: document.getElementById("uppercaseCb").checked,
+    useLower: document.getElementById("lowercaseCb").checked,
+    useNumbers: document.getElementById("numbersCb").checked,
+    useSpecialChars: document.getElementById("specialCharsCb").checked,
+    avoidAmbiguous: document.getElementById("ambiguous-cb").checked
+  };
 
-  while (--top) {
-    current = Math.floor(Math.random() * (top + 1));
-    tmp = splitString[current];
-    splitString[current] = splitString[top];
-    splitString[top] = tmp;
-  }
-
-  return splitString.join("");
+  document.getElementById("password-box").value = generateRandomPassword(options);
 }
 
 /**
@@ -115,26 +93,6 @@ function generateRandomPassword(options) {
   // console.log("password pre shuffle: ", password);
   
   return shuffleString(password);
-}
-
-/**
- * Fires when "Generate Password" Button is clicked.
- * Gets options and user input from the HTML elements, and passes it along 
- * to the actual generator function. This basically handles all DOM control.
- */
- function generatePassword() {
-  clearOutputSections();
-  
-  let options = {
-    passLength: parseInt(document.getElementById("pw-length").value),
-    useUpper: document.getElementById("uppercaseCb").checked,
-    useLower: document.getElementById("lowercaseCb").checked,
-    useNumbers: document.getElementById("numbersCb").checked,
-    useSpecialChars: document.getElementById("specialCharsCb").checked,
-    avoidAmbiguous: document.getElementById("ambiguous-cb").checked
-  };
-
-  document.getElementById("password-box").value = generateRandomPassword(options);
 }
 
 async function checkPwnedPasswordsAPI() {
@@ -216,6 +174,48 @@ async function sha1HashAsync(userInput) {
 function clearOutputSections() {
   document.getElementById("api-output").innerText = "";
   document.getElementById("error-output").innerText = "";
+}
+
+/**
+ * Credit to: https://jsfiddle.net/Blender/ERCsD/6/
+ * for the original skeleton of this code, the "pick" function.
+ * 
+ * @param {String} inputStr - String to pick characters from.
+ * @param {Number} numChars - amount of characters to pick from the string.
+ * @returns {String} - Randomly selected characters. 
+ */
+function pickCharactersFromString(inputStr, numChars = 0) {
+  let chars = "";
+
+  for (let i = 0; i < numChars; i++) {
+    chars += inputStr.charAt(Math.floor(Math.random() * inputStr.length));
+  }
+
+  return chars;
+}
+
+/**
+ * Shuffle a string, basically implementation of Fisher–Yates shuffle.
+ * Credit to @Christoph: https://stackoverflow.com/a/962890/464744
+ *
+ * @param {String} inputStr - String to shuffle / randomize.
+ * @return {String} - shuffled string.
+*/
+function shuffleString(inputStr) {
+  if (!inputStr) { return ""; }
+  
+  let splitString = inputStr.split("");
+  let top = splitString.length;
+  let tmp, current;
+
+  while (--top) {
+    current = Math.floor(Math.random() * (top + 1));
+    tmp = splitString[current];
+    splitString[current] = splitString[top];
+    splitString[top] = tmp;
+  }
+
+  return splitString.join("");
 }
 
 // function checkResults(apiResponse) {}
