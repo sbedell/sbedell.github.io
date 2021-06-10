@@ -1,10 +1,22 @@
 /**
  * Password generator in JS
  * 
- * Credit to: https://jsfiddle.net/Blender/ERCsD/6/
- * for the original skeleton of this code
+ * Uses JS Math.random for randomly selecting characters for the password.
+ * Uses Window.crypto for local SHA-1 Hashing. 
+ * Uses Have I Been Pwned API to check if the password has appeared in a data breach before.
  */
 
+document.getElementById("genPassBtn").addEventListener("click", generatePassword);
+document.getElementById("check-pw-btn").addEventListener("click", checkPwnedPasswordsAPI);
+
+/**
+ * Credit to: https://jsfiddle.net/Blender/ERCsD/6/
+ * for the original skeleton of this code, the "pick" function.
+ * 
+ * @param {String} inputStr - String to pick characters from.
+ * @param {Number} numChars - amount of characters to pick from the string.
+ * @returns {String} - Randomly selected characters. 
+ */
 function pickCharactersFromString(inputStr, numChars = 0) {
   let chars = "";
 
@@ -16,28 +28,35 @@ function pickCharactersFromString(inputStr, numChars = 0) {
 }
 
 /**
-* Shuffle a string, basically implementation of Fisher–Yates shuffle
-* Credit to @Christoph: https://stackoverflow.com/a/962890/464744
+ * Shuffle a string, basically implementation of Fisher–Yates shuffle.
+ * Credit to @Christoph: https://stackoverflow.com/a/962890/464744
+ *
+ * @param {String} inputStr - String to shuffle / randomize.
+ * @return {String} - shuffled string.
 */
 function shuffleString(inputStr) {
-  if (inputStr) {
-    let splitString = inputStr.split("");
-    let top = splitString.length;
-    let tmp, current;
+  if (!inputStr) { return ""; }
+  
+  let splitString = inputStr.split("");
+  let top = splitString.length;
+  let tmp, current;
 
-    while (--top) {
-      current = Math.floor(Math.random() * (top + 1));
-      tmp = splitString[current];
-      splitString[current] = splitString[top];
-      splitString[top] = tmp;
-    }
-
-    return splitString.join("");
-  } else {
-    return "";
+  while (--top) {
+    current = Math.floor(Math.random() * (top + 1));
+    tmp = splitString[current];
+    splitString[current] = splitString[top];
+    splitString[top] = tmp;
   }
+
+  return splitString.join("");
 }
 
+/**
+ * Generate a secure random password using user selections from the HTML checkboxes.
+ * 
+ * @param {Object} options - Options Object that contains all the user selections from the checkboxes.
+ * @returns {String} - Shuffled password.
+ */
 function generateRandomPassword(options) {
   let lowercase = "abcdefghijklmnopqrstuvwxyz";
   let uppercase = lowercase.toUpperCase();
@@ -53,14 +72,11 @@ function generateRandomPassword(options) {
   let totalOptions = 0;
 
   if (options.avoidAmbiguous) {
+    // Remove l, 1, I, O, 0, o:
     let myreg = /[l|1|I|o|O|0]+/g;
-    // Strip out l, 1, I, O, 0, o:
     numbers = numbers.replace(myreg, "");
     lowercase = lowercase.replace(myreg, "");
     uppercase = uppercase.replace(myreg, "");
-    // console.log("Uppercase: ", uppercase);
-    // console.log("Lowercase: ", lowercase);
-    // console.log("Numbers: ", numbers);
   }
 
   if (options.useLower) {
@@ -86,12 +102,9 @@ function generateRandomPassword(options) {
     password += pickCharactersFromString(specialChars, 1);
     totalOptions++;
   }
-
-  // console.log("options: ", options);
   
   let len = 12;
   if (!options.passLength || options.passLength > 99 || options.passLength < 12) {
-    // console.error("Warning: Password length under 12 is insecure and over 99 is usually not widely accepted by all systems. Defaulting to length 12.");
     document.getElementById("error-output").innerText = "Warning: Password length under 12 is insecure and over 99 is usually not widely accepted by all systems. Defaulting to length 12.";
   } else {
     len = options.passLength;
@@ -104,11 +117,14 @@ function generateRandomPassword(options) {
   return shuffleString(password);
 }
 
-function passwordGen() {
-  // Clear output sections:
+/**
+ * Fires when "Generate Password" Button is clicked.
+ * Gets options and user input from the HTML elements, and passes it along 
+ * to the actual generator function. This basically handles all DOM control.
+ */
+ function generatePassword() {
   clearOutputSections();
   
-  // use the above values to set an options object, use that to conditionally set the pw values
   let options = {
     passLength: parseInt(document.getElementById("pw-length").value),
     useUpper: document.getElementById("uppercaseCb").checked,
@@ -118,30 +134,24 @@ function passwordGen() {
     avoidAmbiguous: document.getElementById("ambiguous-cb").checked
   };
 
-  let thePassword = generateRandomPassword(options);
-
-  // document.getElementById("password-output").innerText = thePassword;
-  document.getElementById("password-box").value = thePassword;
+  document.getElementById("password-box").value = generateRandomPassword(options);
 }
 
 async function checkPwnedPasswordsAPI() {
-  // reset the output:
   clearOutputSections();
 
   let password = document.getElementById("password-box").value.trim();
   
   if (!password) { 
-    console.warn("Warning: Not checking empty password, please enter a value");
+    console.warn("Warning: Please enter a password to check.");
     return;
   }
 
   // First, hash the password with SHA-1
   let sha1HashedPasswordDigest = await sha1HashAsync(password);
 
-  // console.log("sha1HashedPassword: ", sha1HashedPasswordDigest);
-  // console.log(`Checking password '${password}': https://api.pwnedpasswords.com/range/${sha1HashedPasswordDigest.slice(0, 5)}`);
-
   // Next, search the Have I Been Pwned - PwnedPasswords API for the first 5 chars of the hash digest:
+  // console.log(`Checking password '${password}': https://api.pwnedpasswords.com/range/${sha1HashedPasswordDigest.slice(0, 5)}`);
   fetch(`https://api.pwnedpasswords.com/range/${sha1HashedPasswordDigest.slice(0, 5)}`,
     {
       method: "GET",
@@ -151,23 +161,19 @@ async function checkPwnedPasswordsAPI() {
     }
     ).then(res => res.text())
     .then(response => {
-      // console.log(response);
       // Do your actual processing in here. Maybe throw it to an external function?
-      let match = false;
       let count = 0;
       
       response.split("\n").forEach(line => {
-        // console.log(line.slice(0, line.indexOf(":"))); // DEBUG
-        
         if (sha1HashedPasswordDigest.slice(5).toUpperCase() == line.slice(0, line.indexOf(":"))) {
           // console.log("[!!] we have a match!!", line); // DEBUG
           count = Number(line.slice(line.indexOf(":") + 1));
-          // TODO - Check if count is 0, that's just padding then, throw it out. Although that would be a SHA1 hash collision...
-          match = true;
+          // Check if count is 0 -> that's padding values, throw it out. Although that would be a SHA1 hash collision...
+          if (count === 0) { console.error("[!] Likely SHA-1 hash collision!!"); }
         }
       });
 
-      if (match) {
+      if (count) {
         document.getElementById("error-output").innerText = `[!] PWNED - This password has been seen ${count} times before. \n
           \"This password has previously appeared in a data breach and should never be used. If you've ever used it anywhere before, change it!\"
           - Troy Hunt`;
@@ -181,8 +187,19 @@ async function checkPwnedPasswordsAPI() {
     });
 }
 
+/**
+ * Hashes a string (password) using the browser's built in 
+ * window.crypto API, using SHA-1 hashing, which is the hashing algorithm 
+ * required for the Have I Been Pwned API.
+ * 
+ * This is based on example code from Mozilla:
+ * https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest
+ *  
+ * @param {String} userInput - Password to hash.
+ * @returns 
+ */
 async function sha1HashAsync(userInput) {
-  if (window.isSecureContext) {
+  if (window.isSecureContext && window.crypto) {
     // encode as (utf-8) Uint8Array, then hash it.
     const msgUint8 = new TextEncoder().encode(userInput);
     const hashBuffer = await crypto.subtle.digest("SHA-1", msgUint8);
@@ -202,6 +219,3 @@ function clearOutputSections() {
 }
 
 // function checkResults(apiResponse) {}
-
-document.getElementById("genPassBtn").addEventListener("click", passwordGen);
-document.getElementById("check-pw-btn").addEventListener("click", checkPwnedPasswordsAPI);
