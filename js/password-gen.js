@@ -95,6 +95,18 @@ function generateRandomPassword(options) {
   return shuffleString(password);
 }
 
+/**
+ * HTTP GET request to Troy Hunt's Have I Been Pwned API.
+ * https://haveibeenpwned.com/API/v3#PwnedPasswords
+ * 
+ * K-Anonymity and SHA-1 Hashing:
+ * https://www.troyhunt.com/ive-just-launched-pwned-passwords-version-2/
+ * https://blog.cloudflare.com/validating-leaked-passwords-with-k-anonymity/
+ * 
+ * Padding:
+ * https://www.troyhunt.com/enhancing-pwned-passwords-privacy-with-padding/
+ * https://blog.cloudflare.com/pwned-passwords-padding-ft-lava-lamps-and-workers/
+ */
 async function checkPwnedPasswordsAPI() {
   clearOutputSections();
 
@@ -154,7 +166,7 @@ async function checkPwnedPasswordsAPI() {
  * https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest
  *  
  * @param {String} userInput - Password to hash.
- * @returns 
+ * @returns {String} - Hex string of the password hash digest.
  */
 async function sha1HashAsync(userInput) {
   if (window.isSecureContext && window.crypto) {

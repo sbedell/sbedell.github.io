@@ -19,15 +19,10 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // Addings some markers to the map, some with popups 
 let clevelandMarker = L.marker([41.49985, -81.6938], {riseOnHover: true}).addTo(mymap);
+clevelandMarker.bindPopup("Cleveland, Ohio", {'autoClose': false, closeOnClick: false});
 
-// let testMarker = L.marker([41.219857, -81.698456]).addTo(mymap);
-// testMarker.bindPopup("<b>Whipps Ledges</b><br>Cleveland Metroparks", {'autoClose': false, closeOnClick: false}).openPopup();
-
-// let testMarker2 = L.marker([41.318818, -81.617775]).addTo(mymap);
-// testMarker2.bindPopup("<b>Brecksville</b><br>Cleveland Metroparks", {'autoClose': false, closeOnClick: false}).openPopup();
-
-let testMarker3 = L.marker([41.222891, -81.510701]).addTo(mymap);
-testMarker3.bindPopup("<b>Virginia Kendall and Ritchie Ledges</b><br>Cuyahoga Valley National Park", 
+let cvnpMarker = L.marker([41.26435, -81.56203]).addTo(mymap);
+cvnpMarker.bindPopup("Cuyahoga Valley National Park", 
     {'autoClose': false, closeOnClick: false})
     .openPopup();
 
@@ -40,15 +35,17 @@ function onMapClick(e) {
 }
 
 function onLocationFound(e) {
+    // console.log(e);
     const circleRadius = Math.round(e.accuracy / 2);
 
     L.marker(e.latlng).addTo(mymap)
-        .bindPopup("You are within " + circleRadius + " meters from this point", {'autoClose': false, closeOnClick: false})
+        .bindPopup(`You are within ${circleRadius} meters from this point`, 
+        {'autoClose': false, closeOnClick: false})
         .openPopup();
 
     L.circle(e.latlng, {radius: circleRadius}).addTo(mymap);
 }
 
-function onLocationError(event) {
-    alert(event.message);
+function onLocationError(e) {
+    console.error(e.message);
 }
