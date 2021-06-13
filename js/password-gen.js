@@ -122,39 +122,46 @@ async function checkPwnedPasswordsAPI() {
 
   // Next, search the Have I Been Pwned - PwnedPasswords API for the first 5 chars of the hash digest:
   // console.log(`Checking password '${password}': https://api.pwnedpasswords.com/range/${sha1HashedPasswordDigest.slice(0, 5)}`);
-  fetch(`https://api.pwnedpasswords.com/range/${sha1HashedPasswordDigest.slice(0, 5)}`,
-    {
-      method: "GET",
-      headers: {
-        'Add-Padding': true
-      }
+  fetch(`https://api.pwnedpasswords.com/range/${sha1HashedPasswordDigest.slice(0, 5)}`, {
+    headers: {
+      "Add-Padding": true
     }
-    ).then(res => res.text())
-    .then(response => {
-      // Do your actual processing in here. Maybe throw it to an external function?
-      let count = 0;
-      
-      response.split("\n").forEach(line => {
-        if (sha1HashedPasswordDigest.slice(5).toUpperCase() == line.slice(0, line.indexOf(":"))) {
-          // console.log("[!!] we have a match!!", line); // DEBUG
-          count = Number(line.slice(line.indexOf(":") + 1));
-          // Check if count is 0 -> that's padding values, throw it out. Although that would be a SHA1 hash collision...
-          if (count === 0) { console.error("[!] Likely SHA-1 hash collision!!"); }
-        }
+  }).then(response => {
+    if (response.ok) {
+      return response.text();
+    } else {
+      return Promise.reject({
+        status: response.status,
+        statusText: response.statusText
       });
+    }
+  }).then(responseText => {
+    checkResponse(responseText, sha1HashedPasswordDigest);
+  }).catch(error => {
+    console.error("[!] Error: ", error);
+  });
+}
 
-      if (count) {
-        document.getElementById("error-output").innerText = `[!] PWNED - This password has been seen ${count} times before. \n
-          \"This password has previously appeared in a data breach and should never be used. If you've ever used it anywhere before, change it!\"
-          - Troy Hunt`;
-      } else {
-        document.getElementById("api-output").innerText = `Good news! No Pwnage found! \n
-          \"This password wasn't found in any of the Pwned Passwords loaded into Have I Been Pwned. That doesn't necessarily mean it's a good password, merely that it's not indexed on this site.\"
-          - Troy Hunt`;
-      }
-    }).catch(error => {
-      console.error("[!] Error: ", error);
-    });
+function checkResponse(response, sha1HashedPasswordDigest) {
+  let count = 0;
+      
+  response.split("\n").forEach(line => {
+    if (sha1HashedPasswordDigest.slice(5).toUpperCase() == line.slice(0, line.indexOf(":"))) {
+      count = Number(line.slice(line.indexOf(":") + 1));
+      // Check if count is 0 -> that's padding values, throw it out. Although that would be a SHA1 hash collision...
+      if (count === 0) { console.error("[!] Likely SHA-1 hash collision!!"); }
+    }
+  });
+
+  if (count) {
+    document.getElementById("error-output").innerText = `[!] PWNED - This password has been seen ${count} times before. \n
+      \"This password has previously appeared in a data breach and should never be used. If you've ever used it anywhere before, change it!\"
+      - Troy Hunt`;
+  } else {
+    document.getElementById("api-output").innerText = `Good news! No Pwnage found! \n
+      \"This password wasn't found in any of the Pwned Passwords loaded into Have I Been Pwned. That doesn't necessarily mean it's a good password, merely that it's not indexed on this site.\"
+      - Troy Hunt`;
+  }
 }
 
 /**
@@ -229,5 +236,3 @@ function shuffleString(inputStr) {
 
   return splitString.join("");
 }
-
-// function checkResults(apiResponse) {}
