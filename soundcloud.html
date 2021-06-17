@@ -5,7 +5,7 @@
 	<title>SoundCloud API Demo</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Soundcloud API Demo where you can search for a genre of music and view the top 10 songs of that genre.">
-	<meta name="keywords" content="Soundcloud, API, CSE, OSU, EDM, Electronic, Music" />
+	<meta name="keywords" content="Soundcloud, API, CSE, EDM, Electronic, Music" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<link rel="stylesheet" href="./css/mainStyles.css">
@@ -19,9 +19,10 @@
 			<p>Search Soundcloud for the top 10 songs of any genre!</p>
 			<br><br>
 
-			<input id="genre" class="input-box" type="text" placeholder="Genre">
+			<input id="genre-input" class="input-box" type="text" placeholder="Genre">
 
-			<button class="my-btn btn-lrg gradient-orange" type="button" onclick="searchGenre()">Search</button><br /><br />
+			<button id="search-btn" class="my-btn btn-lrg gradient-orange" type="button">Search</button>
+			<br><br>
 			
 			<h3>Tracks</h3>
 			<hr>
@@ -30,7 +31,7 @@
 
 		<footer class="main-footer">
 			<hr>
-			<p>&copy; Steve Bedell 2016-2019.</p>
+			<p>&copy; Steve Bedell 2016-2021.</p>
 			<p><a href="https://soundcloud.com/"><img alt="Soundcloud Link" src="//connect.soundcloud.com/2/btn-connect-sc-l.png"></a></p>
 			<p><a class="home-link" href="./">Back to Home</a></p>
 		</footer>
