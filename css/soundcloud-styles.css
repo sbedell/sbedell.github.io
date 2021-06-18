@@ -2,6 +2,10 @@ li {
   margin-bottom: 8px;
 }
 
+ol {
+  padding-left: 20px;
+}
+
 .album-art {
   margin-right: 8px;
   height: 35px;

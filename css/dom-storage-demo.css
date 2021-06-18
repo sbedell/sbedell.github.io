@@ -34,17 +34,16 @@ h1 {
 .wrapper div label,
 .wrapper div input {
 	width: 45%;
+	margin-top: 10px;
 }
 
 input[type="text"] {
-	height: 75px;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	height: 40px;
 }
 
 @media (max-width: 600px) {
-	.wrapper div label,
-    .wrapper div input {
+	.wrapper div label, 
+	.wrapper div input {
 		width: 100%;
 	}
 

@@ -2,12 +2,13 @@ let sessionStore = document.getElementById("sessionstore");
 let bgColorSelector = document.getElementById("bgcolor");
 
 function changeBackgroundColor(color) {
-    if (typeof color === "string") {
+    if (color && typeof color === "string") {
         document.body.style.backgroundColor = color;
     }
 }
 
 // ~~~~~ Loading values if present ~~~~~
+
 if (window.sessionStorage.getItem("autosave")) {
     sessionStore.value = window.sessionStorage.getItem("autosave");
 }
@@ -18,6 +19,7 @@ if (window.localStorage.getItem("bgColor")) {
 }
 
 // ~~~~~ Adding Event Listeners ~~~~~
+
 sessionStore.addEventListener("change", function() {
     // console.log("onChange event fired, autosaving Session Storage");
     window.sessionStorage.setItem("autosave", sessionStore.value);
