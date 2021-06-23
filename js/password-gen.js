@@ -146,7 +146,7 @@ function checkResponse(response, sha1HashedPasswordDigest) {
   let count = 0;
       
   response.split("\n").forEach(line => {
-    if (sha1HashedPasswordDigest.slice(5).toUpperCase() == line.slice(0, line.indexOf(":"))) {
+    if (sha1HashedPasswordDigest.slice(5).toUpperCase() === line.slice(0, line.indexOf(":"))) {
       count = Number(line.slice(line.indexOf(":") + 1));
       // Check if count is 0 -> that's padding values, throw it out. Although that would be a SHA1 hash collision...
       if (count === 0) { console.error("[!] Likely SHA-1 hash collision!!"); }
