@@ -17,21 +17,24 @@ h1, h2, h3 {
   Taking this code directly from Bootstrap:
 */
 .btn {
-    font-family: inherit;
+    border: 1px solid transparent;
+    border-radius: 4px;
     display: inline-block;
+    font-family: inherit;
     padding: 6px 12px;
     margin-bottom: 0;
     font-size: 14px;
     font-weight: 400;
+    letter-spacing: 1px;
     line-height: 1.4;
     text-align: center;
+    text-transform: uppercase;
     touch-action: manipulation;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
-    border: 1px solid transparent;
-    border-radius: 4px;
+    
 }
 
 .btn-primary {
@@ -66,7 +69,7 @@ h1, h2, h3 {
 /* Media queries for tablets */
 @media (min-width: 600px)  {
     .main-container {
-        width: 55vw;
+        width: 60vw;
     }
 }
 

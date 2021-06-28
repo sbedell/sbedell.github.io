@@ -1,11 +1,6 @@
 body {
     padding-bottom: 40px;
-
     overflow-x: hidden;
-}
-
-label {
-    font-weight: normal;
 }
 
 h1, h2, h3 {
@@ -19,14 +14,12 @@ h1, h2, h3 {
     padding: 0px;
 }
 
-.btn {
-    white-space: normal;
-}
-
 /*
   Taking this code directly from Bootstrap:
 */
 .btn {
+    border: 1px solid transparent;
+    border-radius: 4px;
     cursor: pointer;
     font-family: inherit;
     display: inline-block;
@@ -34,14 +27,14 @@ h1, h2, h3 {
     margin-bottom: 0;
     font-size: 14px;
     font-weight: 400;
+    letter-spacing: 1px;
     line-height: 1.4;
     text-align: center;
+    text-transform: uppercase;
     touch-action: manipulation;
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
-    border: 1px solid transparent;
-    border-radius: 4px;
     white-space: normal;
 }
 
