@@ -6,7 +6,7 @@
  * https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/caches
  */ 
 
-const cacheName = 'soundboardPwaCache-v1.4';
+const cacheName = 'soundboardPwaCache-v1.5';
 let appFiles = [
   '/soundboardPWA/',
   '/soundboardPWA/index.html',
@@ -18,14 +18,16 @@ let appFiles = [
 ];
 
 let audioFiles = [
-  '/soundboardPWA/audio/ahahah.mp3',
+  '/soundboardPWA/audio/ah-ah-ah-v2.wav',
   '/soundboardPWA/audio/AIRHORN.mp3',
-  '/soundboardPWA/audio/damnSon.mp3',
-  '/soundboardPWA/audio/handsofengineers.mp3',
+  '/soundboardPWA/audio/damn-son.mp3',
+  '/soundboardPWA/audio/DonaldJigglypuffTrump.mp3',
   '/soundboardPWA/audio/holdontoyourbutts.mp3',
+  '/soundboardPWA/audio/Mario-1up-louder.mp3',
   '/soundboardPWA/audio/multiAirhorn.mp3',
   '/soundboardPWA/audio/nicememe.mp3',
-  '/soundboardPWA/audio/PocketFullOfDubs.mp3',
+  '/soundboardPWA/audio/SFX_GET_ITEM_1.wav',
+  '/soundboardPWA/audio/SFX_GET_KEY_ITEM.wav',
   '/soundboardPWA/audio/SMOKEWEEDEVERYDAY.mp3',
   '/soundboardPWA/audio/Steam-Machine.mp3'
 ];
