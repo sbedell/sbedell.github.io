@@ -83,10 +83,10 @@ function generateRandomPassword(options) {
   
   let len = 12;
   if (!options.passLength || options.passLength > 99 || options.passLength < 12) {
-    document.getElementById("error-output").innerText = "Warning: Password length under 12 is insecure and over 99 is usually not widely accepted by all systems. Defaulting to length 12.";
+    document.getElementById("error-output").textContent = "Warning: Password length under 12 is insecure and over 99 is usually not widely accepted by all systems. Defaulting to length 12.";
   } else {
     len = options.passLength;
-    document.getElementById("error-output").innerText = "";
+    document.getElementById("error-output").textContent = "";
   }
   
   password += pickCharactersFromString(allChars, len - totalOptions);
@@ -154,11 +154,11 @@ function checkResponse(response, sha1HashedPasswordDigest) {
   });
 
   if (count) {
-    document.getElementById("error-output").innerText = `[!] PWNED - This password has been seen ${count} times before. \n
+    document.getElementById("error-output").textContent = `[!] PWNED - This password has been seen ${count} times before. \n
       \"This password has previously appeared in a data breach and should never be used. If you've ever used it anywhere before, change it!\"
       - Troy Hunt`;
   } else {
-    document.getElementById("api-output").innerText = `Good news! No Pwnage found! \n
+    document.getElementById("api-output").textContent = `Good news! No Pwnage found! \n
       \"This password wasn't found in any of the Pwned Passwords loaded into Have I Been Pwned. That doesn't necessarily mean it's a good password, merely that it's not indexed on this site.\"
       - Troy Hunt`;
   }
@@ -191,8 +191,8 @@ async function sha1HashAsync(userInput) {
 }
 
 function clearOutputSections() {
-  document.getElementById("api-output").innerText = "";
-  document.getElementById("error-output").innerText = "";
+  document.getElementById("api-output").textContent = "";
+  document.getElementById("error-output").textContent = "";
 }
 
 /**
