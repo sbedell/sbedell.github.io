@@ -13,8 +13,16 @@ let browserSection = new Vue({
     el: "#browser-section",
     data: {
         userAgent: navigator.userAgent,
-        monitorResolution: `${window.screen.availWidth} x ${window.screen.availHeight}`,
+        monitorResolution: `${window.screen.width} x ${window.screen.height}`,
         browserResolution: `${window.innerWidth} x ${window.innerHeight}`
+    },
+    created() {
+        window.addEventListener("resize", this.updateBrowserSize);
+    },
+    methods: {
+        updateBrowserSize: function() {
+            this.browserResolution = `${window.innerWidth} x ${window.innerHeight}`;
+        }
     }
 });
 
