@@ -30,11 +30,11 @@ function getAndPopulateTracks(genresToSearch) {
 					results += `<img class="album-art" alt="album art" src="${track.artwork_url}">`;
 				}
 				results += `<a target="blank" href="${track.permalink_url}">${track.title}</a></li>`;
-				
-				document.getElementById("results").innerHTML = results;
 			});
+
+			document.getElementById("results").innerHTML = results;
 		} else {
-			document.getElementById("results").innerHTML = "No tracks found.";
+			document.getElementById("results").innerText = "No tracks found.";
 		}
 	});
 }
