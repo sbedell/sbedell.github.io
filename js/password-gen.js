@@ -16,7 +16,7 @@ document.getElementById("check-pw-btn").addEventListener("click", checkPwnedPass
  */
 function generatePassword() {
   clearOutputSections();
-  
+
   let options = {
     passLength: parseInt(document.getElementById("pw-length").value),
     useUpper: document.getElementById("uppercaseCb").checked,
@@ -41,17 +41,13 @@ function generateRandomPassword(options) {
   let numbers = '0123456789';
   let specialChars = "!@#$%^&*-_=+?";
 
-  // const specialCharsExtra = '~!@#$%^&*()_+=-"|\/<>.,?';
-  // const trimmedListOfSpecials = "!@#$%*?_-=.:|";
-  // const govSpecials = "!@#$*_+";
-  
   let allChars = "";
   let password = "";
   let totalOptions = 0;
 
   if (options.avoidAmbiguous) {
     // Remove l, 1, I, O, 0, o:
-    let myreg = /[l|1|I|o|O|0]+/g;
+    const myreg = /[l|1|I|o|O|0]+/g;
     numbers = numbers.replace(myreg, "");
     lowercase = lowercase.replace(myreg, "");
     uppercase = uppercase.replace(myreg, "");
@@ -80,18 +76,21 @@ function generateRandomPassword(options) {
     password += pickCharactersFromString(specialChars, 1);
     totalOptions++;
   }
-  
+
   let len = 12;
   if (!options.passLength || options.passLength > 99 || options.passLength < 12) {
-    document.getElementById("error-output").textContent = "Warning: Password length under 12 is insecure and over 99 is usually not widely accepted by all systems. Defaulting to length 12.";
+    populateErrorSection(`Warning: Password length under 12 is insecure and over 99 is usually not widely accepted
+        by all systems. Defaulting to length 12.`);
+
+    // Force the pw-length input back to 12
+    document.getElementById("pw-length").value = 12;
   } else {
     len = options.passLength;
-    document.getElementById("error-output").textContent = "";
+    clearErrorSection();
   }
-  
+
   password += pickCharactersFromString(allChars, len - totalOptions);
-  // console.log("password pre shuffle: ", password);
-  
+
   return shuffleString(password);
 }
 
@@ -111,8 +110,8 @@ async function checkPwnedPasswordsAPI() {
   clearOutputSections();
 
   let password = document.getElementById("password-box").value.trim();
-  
-  if (!password) { 
+
+  if (!password) {
     console.warn("Warning: Please enter a password to check.");
     return;
   }
@@ -144,7 +143,7 @@ async function checkPwnedPasswordsAPI() {
 
 function checkResponse(response, sha1HashedPasswordDigest) {
   let count = 0;
-      
+
   response.split("\n").forEach(line => {
     if (sha1HashedPasswordDigest.slice(5).toUpperCase() === line.slice(0, line.indexOf(":"))) {
       count = Number(line.slice(line.indexOf(":") + 1));
@@ -154,9 +153,9 @@ function checkResponse(response, sha1HashedPasswordDigest) {
   });
 
   if (count) {
-    document.getElementById("error-output").textContent = `[!] PWNED - This password has been seen ${count} times before. \n
+    populateErrorSection(`[!] PWNED - This password has been seen ${count} times before. \n
       \"This password has previously appeared in a data breach and should never be used. If you've ever used it anywhere before, change it!\"
-      - Troy Hunt`;
+      - Troy Hunt`);
   } else {
     document.getElementById("api-output").textContent = `Good news! No Pwnage found! \n
       \"This password wasn't found in any of the Pwned Passwords loaded into Have I Been Pwned. That doesn't necessarily mean it's a good password, merely that it's not indexed on this site.\"
@@ -190,9 +189,19 @@ async function sha1HashAsync(userInput) {
   }
 }
 
+function populateErrorSection(errorMessage) {
+  document.getElementById("error-output").style.display = "inherit";
+  document.getElementById("error-output").textContent = String(errorMessage);
+}
+
+function clearErrorSection() {
+  document.getElementById("error-output").style.display = "none";
+  document.getElementById("error-output").textContent = "";
+}
+
 function clearOutputSections() {
   document.getElementById("api-output").textContent = "";
-  document.getElementById("error-output").textContent = "";
+  clearErrorSection();
 }
 
 /**
