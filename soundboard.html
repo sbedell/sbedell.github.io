@@ -49,15 +49,18 @@
 			<button class="btn btn-lg btn-block gradient-red" onclick="playAllAudio()">PLAY ALL (WARNING - DUMB)</button> <br>
 			<button class="btn btn-lg btn-block gradient-red" onclick="playRandomClips()">Play 5 Random Clips</button>
 		</main>
-		
+
 		<footer class="main-footer">
 			<hr>
-			<p>&copy; Steve Bedell 2016-2022.</p>
+			<p>&copy; Steve Bedell 2016 - <span id="copyright-date"></span>.</p>
 			<p>Check out the Web App version <a href="./soundboardPWA/">here</a> to install to your home screen!</p>
 			<p class="home-link"><a href="./">Back to Home page</a></p>
 		</footer>
 	</div>
 
 	<script src="soundboardPWA/soundboard.js"></script>
+	<script>
+		document.getElementById("copyright-date").innerText = `${new Date().getFullYear()}`;
+	</script>
 </body>
 </html>
