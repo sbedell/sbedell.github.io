@@ -3,9 +3,11 @@
  * https://leafletjs.com/reference-1.7.1.html
  */
 
-let mymap = L.map('myMap').setView([41.49985, -81.6938], 11);
+const clevelandLatLong = [41.49985, -81.6938];
+let mymap = L.map('myMap').setView(clevelandLatLong, 11);
 
-mymap.locate({setView: true, maxZoom: 16}); // Locate user with Geolocation API'
+// Locate user with Geolocation API
+mymap.locate({setView: true, maxZoom: 16});
 
 // OpenStreetMap tiles: https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
 // Other map tiles to play arount with - Stamen maps:
@@ -18,7 +20,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(mymap);
 
 // Addings some markers to the map, some with popups 
-let clevelandMarker = L.marker([41.49985, -81.6938], {riseOnHover: true}).addTo(mymap);
+let clevelandMarker = L.marker(clevelandLatLong, {riseOnHover: true}).addTo(mymap);
 clevelandMarker.bindPopup("Cleveland, Ohio", {'autoClose': false, closeOnClick: false});
 
 let cvnpMarker = L.marker([41.26435, -81.56203]).addTo(mymap);
