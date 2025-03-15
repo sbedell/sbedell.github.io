@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <title>Steve Bedell's Homepage</title>
-  
   <meta charset="utf-8">
   <meta name="description" content="Steve Bedell's github.io page. Contains information about Steve and various web projects he's made.">
   <meta name="keywords" content="Web Development, Javascript, OSU, Ohio State, CSE, Computer Science, Home page, Github, IBM">
@@ -10,12 +9,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link href="/favicon.ico" rel="icon" type="image/x-icon">
-  
   <link rel="stylesheet" href="./css/mainStyles.css">
 
   <style>
-    .main-footer {
-      margin: 35px 45px;
+    .main-footer,
+    .main-section {
+      margin: 0 20px;
+    }
+
+    @media (min-width: 800px) {
+      .main-footer {
+        margin: 35px 40px;
+      }
+    }
+
+    /* Media query for landscape tablets or laptops / PC */
+    @media (min-width: 1000px) {
+      .main-footer,
+      .main-section {
+        margin: 5px 75px;
+      }
+
+      .main-footer {
+        margin-top: 35px;
+      }
     }
   </style>
 </head>
@@ -27,11 +44,11 @@
       </div>
     </header>
 
-    <main class="extra-padding">
+    <main class="main-section">
       <h2>Progressive Web Apps</h2>
       <p class="info-para"><a href="https://en.wikipedia.org/wiki/Progressive_web_applications">Progressive Web Apps</a> 
           are installable to home screens of Android and iOS mobile devices.</p>
-      
+
       <div class="container-flex">
         <a class="btn-link gradient-blue" role="button" href="./soundboardPWA" target="blank">
           <img class="my-svg" alt="music note icon" src="./img/pageIcons/music-player.svg">
@@ -87,11 +104,15 @@
 
     <footer class="main-footer">
       <hr />
-      <p>&copy; Steve Bedell 2013-2022.</p>
+      <p>&copy; Steve Bedell 2013 - <span id="copyright-date"></span></p>
       <br>
       <p>The color scheme of the buttons is just random colors ;).</p>
       <p>I re-wrote this site without Bootstrap or jQuery, meaning I wrote all the CSS and Javascript on here from scratch. Should vastly improve page load time.</p>
       <div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons" rel="noopener">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon" rel="noopener">www.flaticon.com</a> is licensed by <a href="https://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank" rel="noopener">CC 3.0</a></div>
     </footer>
+
+    <script>
+      document.getElementById("copyright-date").innerText = `${new Date().getFullYear()}`;
+    </script>
 </body>
 </html>

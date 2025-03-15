@@ -55,10 +55,6 @@ p {
     flex-wrap: wrap;
 }
 
-.extra-padding {
-    padding: 2px 15px;
-}
-
 .info-para {
     margin: 5px 15px;
     text-align: center;
@@ -236,9 +232,9 @@ p {
 
     .my-btn,
     .btn-link {
-        width: 45%;        
+        width: 45%;
     }
-    
+
     .my-svg {
         height: 40px;
         width: 40px;
@@ -254,11 +250,11 @@ p {
     .jumbotron h1 {
         font-size: 63px;
     }
-    
+
     .main-container {
         width: 45vw;
     }
-    
+
     .my-svg {
         height: 60px;
         width: 60px;
