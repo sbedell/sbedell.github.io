@@ -7,11 +7,11 @@
 	<meta name="keywords" content="JavaScript, Information Security, web security, cyber, security">
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
   <meta name="viewport" content="width=device-width, initial-scale=1">
-	
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" 
 		integrity="sha384-R334r6kryDNB/GWs2kfB6blAOyWPCxjdHSww/mo7fel+o5TM/AOobJ0QpGRXSDh4"
 		crossorigin="anonymous">
-	
+
 	<link rel="stylesheet" href="./css/mainStyles.css">
 	<link rel="stylesheet" href="./css/security-styles.css">
 </head>
@@ -34,7 +34,7 @@
 				<p>Search for port numbers to find out more information on that port.</p>
 				<input id="port" class="input-box" type="number" value="" placeholder="Port Number" min="0" max="65536" aria-label="Port Number"><br />
 				<button class="my-btn btn-lrg gradient-blue" type="button" v-on:click="searchPortVue">Search Ports</button><br />
-				
+
 				<button class="my-btn btn-lrg gradient-red" type="button" v-on:click="clearResults">Clear Results</button><br /><br />
 
 				<section v-if="apiResponsePort" id="port-results-section">
@@ -61,14 +61,14 @@
 				<p v-if="errorText" class="error-text">{{ errorText }}</p>
 			</section>
 			<hr>
-			
+
 			<div>
 				<h3>Browser Info</h3>
 
 				<div id="findipwidget"></div>
 				<div class="findiplink" id="findipurl">Powered by <a href="http://www.find-ip.net/" target="_blank">Find-IP.net</a></div>
 				<script defer src="https://api.find-ip.net/widget.js?width=240"></script>
-				
+
 				<section id="browser-section">
 					<p><b>User Agent:</b> {{ userAgent }}</p>
 					<p><b>Monitor Resultion:</b> {{ monitorResolution }}</p>
@@ -91,23 +91,23 @@
 		integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh" 
 		crossorigin="anonymous">
 	</script>
-	
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" 
 		integrity="sha384-Si3HKTyQYGU+NC4aAF3ThcOSvK+ZQiyEKlYyfjiIFKMqsnCmfHjGa1VK1kYP9UdS" 
 		crossorigin="anonymous" defer>
 	</script>
 
 		<!-- Vue development version, includes helpful console warnings -->
-		<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" 
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"
 			integrity="sha384-+jvb+jCJ37FkNjPyYLI3KJzQeD8pPFXUra3B/QJFqQ3txYrUPIP1eOfxK4h3cKZP" 
 			crossorigin="anonymous"></script> -->
 
 		<!-- Vue production version, optimized for size and speed -->
-		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0" 
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"
 			integrity="sha384-YEAm3mr8XmojpQCZCOQOZJtqeLMrC0x5bHNZgy1+LKX3NEFh6tK+5GLLevxeQ0qJ" 
 			crossorigin="anonymous">
 		</script>
-		
+
 	<script src="js/security-scripts.js"></script>
 </body>
 </html>
