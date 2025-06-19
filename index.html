@@ -4,7 +4,7 @@
   <title>Steve Bedell's Homepage</title>
   <meta charset="utf-8">
   <meta name="description" content="Steve Bedell's github.io page. Contains information about Steve and various web projects he's made.">
-  <meta name="keywords" content="Web Development, Javascript, OSU, Ohio State, CSE, Computer Science, Home page, Github, IBM">
+  <meta name="keywords" content="Web Development, Javascript, OSU, Ohio State, CSE, Computer Science, Home page, Github">
   <meta name="author" content="Steve Bedell">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,8 +17,13 @@
       margin: 0 20px;
     }
 
+    h2 {
+      text-align: left;
+    }
+
     @media (min-width: 800px) {
-      .main-footer {
+      .main-footer,
+      .main-section {
         margin: 35px 40px;
       }
     }
@@ -27,7 +32,7 @@
     @media (min-width: 1000px) {
       .main-footer,
       .main-section {
-        margin: 5px 75px;
+        margin: 5px 175px;
       }
 
       .main-footer {
@@ -40,73 +45,32 @@
     <header>
       <div class="jumbotron rainbow-anim">
         <h1>Steve Bedell</h1>
-        <p>Web Developer</p>
+        <p>Software Developer</p>
+        <p class="projects-link"><a href="projects.html">💻 Portfolio / Projects</a></p>
       </div>
     </header>
 
     <main class="main-section">
-      <h2>Progressive Web Apps</h2>
-      <p class="info-para"><a href="https://en.wikipedia.org/wiki/Progressive_web_applications">Progressive Web Apps</a> 
-          are installable to home screens of Android and iOS mobile devices.</p>
+      <section class="bio">
+        <div class="bio-content">
+          <p>Hey, I'm Steve Bedell! I'm a Software Developer with over 7 years of experience, specializing in building user-friendly web applications. My background also includes significant experience in software testing, technical writing, and cybersecurity, allowing me to contribute across the software development life cycle from initial design to final deployment.</p>
+          <p>I have a Bachelor's Degree in Computer Science from the Ohio State University.</p>
+          <p>Beyond the keyboard, I'm a lifelong learner with a passion for finding solutions to environmental issues like climate change and the biodiversity crisis, primarily through organic gardening and farming. I also enjoy exploring local parks via hiking and biking, finding inspiration and balance in nature.</p>
+          <p>I'm a husband and proud father of energetic twin toddler boys.</p>
+          <p>Feel free to connect with me through the links below!</p>
+        </div>
+      </section>
 
-      <div class="container-flex">
-        <a class="btn-link gradient-blue" role="button" href="./soundboardPWA" target="blank">
-          <img class="my-svg" alt="music note icon" src="./img/pageIcons/music-player.svg">
-          Soundboard PWA &raquo;
-        </a>
-      </div>
-
-      <h2>Browser Extensions</h2>
-      <div class="container-flex">
-        <a class="btn-link gradient-blue" role="button" href="https://addons.mozilla.org/en-US/firefox/addon/remove-fbclid-and-utm/" target="blank">
-          <img class="my-svg" alt="cross x icon" src="img/pageIcons/cross.svg">
-          FBClid and UTM Query Params Remover &raquo;
-        </a>
-      </div>
-
-      <h2>Demos / Proof of Concepts</h2>
-      <div class="container-flex">    
-        <a class="btn-link gradient-green" role="button" href="./password-generator">
-          <img class="my-svg" alt="password icon" src="img/pageIcons/pin-code-light.svg">
-          Secure Password Generator
-        </a>
-        <a class="btn-link gradient-orange" role="button" href="./security">
-          <img class="my-svg" alt="shield icon" src="./img/pageIcons/shield.svg">
-          Security and Privacy
-        </a>
-        <a class="btn-link gradient-blue" role="button" href="./soundboard">
-          <img class="my-svg" alt="music note icon" src="./img/pageIcons/music-player.svg">
-          Soundboard (HTML5 Audio)
-        </a>
-        <a class="btn-link gradient-purple" role="button" href="./vibrate">
-          <img class="my-svg" alt="phone icon" src="./img/pageIcons/smartphone-call.svg">
-          Vibrate API Demo (HTML5)
-        </a>
-        <a class="btn-link gradient-blue" role="button" href="./storage-demo">
-          <img class="my-svg" alt="database icon" src="./img/pageIcons/database.svg">
-          LocalStorage Demo (HTML5)
-        </a>
-        <a class="btn-link gradient-orange" role="button" href="./soundcloud">
-          <img class="my-svg" alt="chess icon" src="./img/pageIcons/cloud.svg">
-          Soundcloud API Demo</a>
-        <a class="btn-link gradient-green" role="button" href="./map" target="blank">
-          <img class="my-svg" alt="map icon" src="./img/pageIcons/map-location.svg">
-          OpenStreetMap &amp; Leaflet Map Demo &raquo;
-        </a>
-      </div>
-
-      <div class="contact">
-        <h2>Contact</h2>
-        <p><a target="blank" href="https://www.linkedin.com/in/stevebedell">LinkedIn</a></p>
-        <p><a target="blank" href="//github.com/sbedell/">Github</a></p>
-      </div>
+      <section class="contact">
+        <h3>Connect with Me</h3>
+        <p><a href="https://www.linkedin.com/in/stevebedell" target="_blank">LinkedIn</a></p>
+        <p><a href="https://github.com/sbedell" target="_blank">GitHub</a></p>
+      </section>
     </main>
 
     <footer class="main-footer">
       <hr />
       <p>&copy; Steve Bedell 2013 - <span id="copyright-date"></span></p>
-      <br>
-      <p>The color scheme of the buttons is just random colors ;).</p>
       <p>I re-wrote this site without Bootstrap or jQuery, meaning I wrote all the CSS and Javascript on here from scratch. Should vastly improve page load time.</p>
       <div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons" rel="noopener">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon" rel="noopener">www.flaticon.com</a> is licensed by <a href="https://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank" rel="noopener">CC 3.0</a></div>
     </footer>
