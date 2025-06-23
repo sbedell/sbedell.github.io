@@ -81,9 +81,7 @@ p {
 
 .projects-link a,
 .home-link a {
-    color: white;
     font-size: 16px;
-    text-decoration: underline;
 }
 
 .jumbotron p {
