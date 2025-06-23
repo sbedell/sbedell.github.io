@@ -20,7 +20,7 @@ function searchGenre() {
 function getAndPopulateTracks(genresToSearch) {
 	SC.get('/tracks', { genres: genresToSearch }, tracks => {
 		// console.log("tracks: ", tracks);
-		
+
 		if (tracks) {
 			let results = "";
 
