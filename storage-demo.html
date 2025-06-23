@@ -2,44 +2,47 @@
 <html lang="en">
 	<head>
 		<title>Web Storage API example</title>
-		
+
 		<meta charset="utf-8">
-        <meta name="description" content="This is a HTML5 DOM Storage Demo page. Most of the code is from Mozilla Developer Network - MDN.">
-        <meta name="keywords" content="HTML5, Javascript, Mozilla, Firefox, MDN, domStorage, localStorage">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-		
+		<meta name="description" content="This is a HTML5 DOM Storage Demo page. Most of the code is from Mozilla Developer Network - MDN.">
+		<meta name="keywords" content="HTML5, Javascript, Mozilla, Firefox, MDN, domStorage, localStorage">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
 		<link rel="stylesheet" href="./css/mainStyles.css">
 		<link rel="stylesheet" href="css/dom-storage-demo.css">
 	</head>
-<body>
-	<div class="wrapper">
-		<h1>Web Storage Demo</h1>
 
-		<div>
-			<label for="bgcolor">Choose color:</label>
-			<input type="color" id="bgcolor" value="#FF0000">
-		</div>
-		
-		<div>
-			<label for="sessionstore">Session Storage textbox (autosaves):</label>
-			<input type="text" id="sessionstore" value="">
+	<body>
+		<div class="wrapper">
+			<h1>Web Storage Demo</h1>
+
+			<div>
+				<label for="bgcolor">Choose color:</label>
+				<input type="color" id="bgcolor" value="#FF0000">
+			</div>
+
+			<div>
+				<label for="sessionstore">Session Storage textbox (autosaves):</label>
+				<input type="text" id="sessionstore" value="">
+			</div>
+
+			<div>
+				<button class="my-btn btn-lrg gradient-red" type="button" id="deleteButton">Clear Local & Session Storage</button>
+			</div>
+
+			<p>Pick a color for the background of this form and it will be saved in local storage.
+				Anything you type in the textbox will be saved in session storage.</p>
+
+			<footer class="main-footer">
+				<hr>
+				<p>&copy; Steve Bedell 2019 - 2023.</p>
+				<p>Demo page built with code from
+					<a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API">Mozilla's MDN pages.</a>
+				</p>
+				<p class="home-link"><a href="./">Back to Home page</a></p>
+			</footer>
 		</div>
 
-		<div>
-			<button class="my-btn btn-lrg gradient-red" type="button" id="deleteButton">Clear Local & Session Storage</button>
-		</div>
-		
-		<p>Pick a color for the background of this form and it will be saved in local storage.
-			Anything you type in the textbox will be saved in session storage.</p>
-		
-		<footer>
-			<hr>
-			<p>Demo page built with code from 
-				<a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API">Mozilla's MDN pages.</a>
-			</p>
-			<p class="home-link"><a href="./">Back to Home page</a></p>
-    </footer>
-	</div>
-	<script src="js/dom-storage-demo.js"></script>
-</body>
+		<script src="js/dom-storage-demo.js"></script>
+	</body>
 </html>
