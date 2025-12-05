@@ -1,6 +1,6 @@
 /**
  * Password generator in JS
- * 
+ *
  * Uses JS Math.random for randomly selecting characters for the password.
  * Uses Window.crypto for local SHA-1 Hashing. 
  * Uses Have I Been Pwned API to check if the password has appeared in a data breach before.
@@ -97,11 +97,11 @@ function generateRandomPassword(options) {
 /**
  * HTTP GET request to Troy Hunt's Have I Been Pwned API.
  * https://haveibeenpwned.com/API/v3#PwnedPasswords
- * 
+ *
  * K-Anonymity and SHA-1 Hashing:
  * https://www.troyhunt.com/ive-just-launched-pwned-passwords-version-2/
  * https://blog.cloudflare.com/validating-leaked-passwords-with-k-anonymity/
- * 
+ *
  * Padding:
  * https://www.troyhunt.com/enhancing-pwned-passwords-privacy-with-padding/
  * https://blog.cloudflare.com/pwned-passwords-padding-ft-lava-lamps-and-workers/
@@ -147,8 +147,11 @@ function checkResponse(response, sha1HashedPasswordDigest) {
   response.split("\n").forEach(line => {
     if (sha1HashedPasswordDigest.slice(5).toUpperCase() === line.slice(0, line.indexOf(":"))) {
       count = Number(line.slice(line.indexOf(":") + 1));
+
       // Check if count is 0 -> that's padding values, throw it out. Although that would be a SHA1 hash collision...
-      if (count === 0) { console.error("[!] Likely SHA-1 hash collision!!"); }
+      if (count === 0) {
+        console.error("[!] Likely SHA-1 hash collision!!");
+      }
     }
   });
 
@@ -158,7 +161,8 @@ function checkResponse(response, sha1HashedPasswordDigest) {
       - Troy Hunt`);
   } else {
     document.getElementById("api-output").textContent = `Good news! No Pwnage found! \n
-      \"This password wasn't found in any of the Pwned Passwords loaded into Have I Been Pwned. That doesn't necessarily mean it's a good password, merely that it's not indexed on this site.\"
+      \"This password wasn't found in any of the Pwned Passwords loaded into Have I Been Pwned. That doesn't necessarily 
+      mean it's a good password, merely that it's not indexed on this site.\"
       - Troy Hunt`;
   }
 }
@@ -167,10 +171,10 @@ function checkResponse(response, sha1HashedPasswordDigest) {
  * Hashes a string (password) using the browser's built in 
  * window.crypto API, using SHA-1 hashing, which is the hashing algorithm 
  * required for the Have I Been Pwned API.
- * 
+ *
  * This is based on example code from Mozilla:
  * https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest
- *  
+ *
  * @param {String} userInput - Password to hash.
  * @returns {String} - Hex string of the password hash digest.
  */
@@ -186,6 +190,8 @@ async function sha1HashAsync(userInput) {
     // Convert bytes to hex string: (toString(16) is using radix 16)
     const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
     return hashHex;
+  } else {
+    console.warn('window does not have secure context or does not support window.crypto.');
   }
 }
 
@@ -207,10 +213,10 @@ function clearOutputSections() {
 /**
  * Credit to: https://jsfiddle.net/Blender/ERCsD/6/
  * for the original skeleton of this code, the "pick" function.
- * 
+ *
  * @param {String} inputStr - String to pick characters from.
  * @param {Number} numChars - amount of characters to pick from the string.
- * @returns {String} - Randomly selected characters. 
+ * @returns {String} - Randomly selected characters.
  */
 function pickCharactersFromString(inputStr, numChars = 0) {
   let chars = "";
@@ -230,8 +236,10 @@ function pickCharactersFromString(inputStr, numChars = 0) {
  * @return {String} - shuffled string.
 */
 function shuffleString(inputStr) {
-  if (!inputStr) { return ""; }
-  
+  if (!inputStr) {
+    return "";
+  }
+
   let splitString = inputStr.split("");
   let top = splitString.length;
   let tmp, current;
