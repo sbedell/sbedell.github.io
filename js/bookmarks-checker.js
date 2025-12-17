@@ -27,7 +27,7 @@ fileInput.addEventListener("change", function(event) {
 
           let parsedBookmarks = parseBookmarks(bookmarksJson);
           // TODO - Here you'll want to handle this way better. Maybe use Vue?
-          fileContentDisplay.textContent = JSON.stringify(parsedBookmarks);
+          // fileContentDisplay.textContent = JSON.stringify(parsedBookmarks);
         } catch (error) {
           fileContentDisplay.textContent = "Error parsing JSON file: " + error.message;
           console.error("Parsing error: ", error);
@@ -41,8 +41,6 @@ fileInput.addEventListener("change", function(event) {
     };
 
     reader.readAsText(file);
-  } else {
-    fileContentDisplay.textContent = "No file selected.";
   }
 });
 
@@ -61,30 +59,38 @@ function checkBookmarkForIssues(bookmark, folderName) {
     console.log(bookmarkWithInfo);
   } else if (bookmark.uri && bookmark.uri.match(/^https:\/\//)) {
     // checkBookmarkHttpsRequest(bookmark.uri, bookmark.title, folderName);
+  } else if (bookmark.uri && bookmark.uri.match(/^javascript:/)) {
+    // Return here, don't need to do an HTTP request for bookmarklets
+    return bookmarkWithInfo;
   }
+
+  fetchBookmark(bookmark.uri, bookmark.title, folderName);
 
   return bookmarkWithInfo;
 }
 
-function checkBookmarkHttpsRequest(httpsURL, urlTitle="", folderName="") {
+function fetchBookmark(bookmarkURL, urlTitle="", folderName="") {
   const options = {
-    // timeout: 2000 // This is in milliseconds. 2 second timeout.
-    signal: AbortSignal.timeout(2000)
+    // This is in milliseconds. 5 second timeout.
+    signal: AbortSignal.timeout(5000)
   };
+
+  console.log('attempting to fetch: ', bookmarkURL)
 
   const statusCodesToCheck = [400, 401, 404]
 
-  fetch(httpsURL, options)
-  .then(response => {
-    if (response.ok) {
-      return response.text();
-    } else {
-      // idk Returna Promise.reject
-    }
-  }).then(responseText => {
-  }).catch(error => {
-    console.error("[!] Error: ", error);
-  });
+  // fetch(bookmarkURL, options)
+  //   .then(response => {
+  //     if (response.ok) {
+  //       return response.text();
+  //     } else {
+  //       // idk Return a Promise.reject ?
+  //     }
+  //   }).then(responseText => {
+  //     console.log('responseText: ', responseText);
+  //   }).catch(error => {
+  //     console.error("[!] Error: ", error);
+  //   });
 
   //   if (statusCodesToCheck.includes(response.statusCode)) {
   //     console.log(`${httpsURL.substring(0, 100)},${urlTitle.replace(/,/g, " ").substring(0, 80)},${folderName},${response.statusCode}`);
@@ -110,20 +116,26 @@ function parseBookmarks(bookmarks) {
         // Check for Subfolders:
         if (bookmark.children) {
           for (let childBookmark of bookmark.children) {
-            // Extra indentation for more subfolders?
-            //bookmark.children.forEach(childBookmark => {
-              // console.log("Child bookmark: ", childBookmark.title);
-            bookmarkInfo = checkBookmarkForIssues(childBookmark, bookmark.title);
-            //});
+            // console.log('childBookmark: ', childBookmark);
+            // Extra indentation for more subfolders? / or do recursion?
+            if (childBookmark.uri) {
+              bookmarkInfo = checkBookmarkForIssues(childBookmark, bookmark.title);
+            } else {
+              continue;
+            }
           }
         } else {
-          // console.log("Bookmark: ", bookmark.title);
-          bookmarkInfo = checkBookmarkForIssues(bookmark, bookmarksFolder.title);
+          // console.log("Bookmark: ", bookmark);
+          if (bookmark.uri) {
+            bookmarkInfo = checkBookmarkForIssues(bookmark, bookmarksFolder.title);
+          } else {
+            continue;
+          }
         }
 
         if (myBookmarks.hasOwnProperty(bookmarkInfo?.url)) {
-          // dupe detected?
           console.log("potential dupe: ", bookmarkInfo);
+          // bookmarkInfo.dupe = true;
         } else {
           myBookmarks[bookmarkInfo.url] = bookmarkInfo;
         }

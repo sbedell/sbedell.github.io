@@ -7,12 +7,16 @@
   <meta name="description" content="Parse Firefox Bookmarks JSON file">
   <meta name="keywords" content="Bookmarks, Javascript, HTML5">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>Read Local File with JS</title>
+  <title>Analyze Bookmarks</title>
 
   <style>
     body {
       margin: auto;
       width: 90vw;
+    }
+
+    #file-input {
+      margin-bottom: 25px;
     }
   </style>
 </head>
@@ -20,15 +24,13 @@
 <body>
   <h1>Bookmarks Analyzer</h1>
 
-  <!-- Input element to select a file -->
-  <input type="file" id="file-input" accept=".txt, .json">
-  <br>
-  <br>
+  <div>
+    <input type="file" id="file-input" accept=".txt, .json">
+  </div>
 
   <strong>Results:</strong>
   <div id="file-content"></div>
 
-  <!-- Include the JavaScript file -->
   <script src="js/bookmarks-checker.js"></script>
 </body>
 </html>
