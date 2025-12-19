@@ -14,23 +14,24 @@
       margin: auto;
       width: 90vw;
     }
-
-    #file-input {
-      margin-bottom: 25px;
-    }
   </style>
 </head>
 
 <body>
-  <h1>Bookmarks Analyzer</h1>
+  <h1>Bookmarks Analyzer for Firefox</h1>
 
   <div>
     <input type="file" id="file-input" accept=".txt, .json">
   </div>
 
-  <strong>Results:</strong>
-  <div id="file-content"></div>
+  <h3>Results:</h3>
+  <div id="bookmarks-analysis-section"></div>
 
   <script src="js/bookmarks-checker.js"></script>
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue@3.5.26/dist/vue.global.min.js"
+    integrity="sha384-wZxGwq7+P4ZwW/PwiDS7twcPF7mGnkcKWQPgU/QmqEAhNzmcKxTKQp9Fb3Qh87FG"
+    crossorigin="anonymous">
+  </script> -->
 </body>
 </html>

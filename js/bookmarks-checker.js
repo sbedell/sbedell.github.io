@@ -1,5 +1,5 @@
 const fileInput = document.getElementById("file-input");
-const fileContentDisplay = document.getElementById("file-content");
+const fileContentDisplay = document.getElementById("bookmarks-analysis-section");
 
 // Add an event listener to the file input
 fileInput.addEventListener("change", function(event) {
@@ -26,6 +26,7 @@ fileInput.addEventListener("change", function(event) {
           console.log("Successfully parsed JSON object:", bookmarksJson);
 
           let parsedBookmarks = parseBookmarks(bookmarksJson);
+
           // TODO - Here you'll want to handle this way better. Maybe use Vue?
           // fileContentDisplay.textContent = JSON.stringify(parsedBookmarks);
         } catch (error) {
@@ -56,7 +57,7 @@ function checkBookmarkForIssues(bookmark, folderName) {
   if (bookmark.uri && bookmark.uri.match(/^http:\/\//)) {
     // Add the error flag here as Insecure / HTTP
     bookmarkWithInfo.error = "Insecure / HTTP";
-    console.log(bookmarkWithInfo);
+    // console.log(bookmarkWithInfo);
   } else if (bookmark.uri && bookmark.uri.match(/^https:\/\//)) {
     // checkBookmarkHttpsRequest(bookmark.uri, bookmark.title, folderName);
   } else if (bookmark.uri && bookmark.uri.match(/^javascript:/)) {
@@ -64,40 +65,52 @@ function checkBookmarkForIssues(bookmark, folderName) {
     return bookmarkWithInfo;
   }
 
-  fetchBookmark(bookmark.uri, bookmark.title, folderName);
+  let bookmarkFetchResults = fetchBookmark(bookmark);
 
   return bookmarkWithInfo;
 }
 
-function fetchBookmark(bookmarkURL, urlTitle="", folderName="") {
+function fetchBookmark(bookmark) {
   const options = {
-    // This is in milliseconds. 5 second timeout.
-    signal: AbortSignal.timeout(5000)
+    // This is in milliseconds. 10 second timeout.
+    signal: AbortSignal.timeout(10000)
   };
 
-  console.log('attempting to fetch: ', bookmarkURL)
+  console.log('attempting to fetch: ', bookmark.uri)
 
-  const statusCodesToCheck = [400, 401, 404]
+  // Check these via response.status
+  // https://developer.mozilla.org/en-US/docs/Web/API/Response/status
+  const statusCodesToCheck = [400, 401, 403, 404];
 
-  // fetch(bookmarkURL, options)
-  //   .then(response => {
-  //     if (response.ok) {
-  //       return response.text();
-  //     } else {
-  //       // idk Return a Promise.reject ?
-  //     }
-  //   }).then(responseText => {
-  //     console.log('responseText: ', responseText);
-  //   }).catch(error => {
-  //     console.error("[!] Error: ", error);
-  //   });
+  // put ", optons" here to use the options variable
+  fetch(bookmark.uri)
+    .then(response => {
+      console.log("resp:", response);
+      if (response.ok) {
+        // We don't even care about the text. We are just looking for ok or not.
+        // return response.text();
+      } else if (statusCodesToCheck.includes(response.status)) {
+        // def mark it here as a bad bookmark
+        bookmark.httpError = response.status;
+        return bookmark;
+      } else {
+        // idk Return a Promise.reject ?
+        console.error("Response is NOT OK");
+        bookmark.httpStatus = response.status;
+        bookmark.error = response.statusText;
 
-  //   if (statusCodesToCheck.includes(response.statusCode)) {
-  //     console.log(`${httpsURL.substring(0, 100)},${urlTitle.replace(/,/g, " ").substring(0, 80)},${folderName},${response.statusCode}`);
-  //   }
-  // }).on('error', e => {
-  //   console.log(`Error checking ${httpsURL.substring(0, 100)},${urlTitle.replace(/,/g, " ").substring(0, 80)},${folderName},${e}`);
-  // });
+        return Promise.reject({
+          status: response.status,
+          statusText: response.statusText
+        });
+      }
+    })
+    // .then(responseText => {
+    //   console.log('responseText: ', responseText);
+    // })
+    .catch(error => {
+      console.error("[!] Error: ", error);
+    });
 }
 
 function parseBookmarks(bookmarks) {
