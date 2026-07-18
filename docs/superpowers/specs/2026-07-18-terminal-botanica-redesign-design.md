@@ -107,9 +107,9 @@ Grid layout via CSS grid, replacing `.container-flex` percentage widths.
 - Favicon link + consistent `<meta charset>` on every page (currently index-only).
 - Typo fixes (e.g. "Monitor Resultion" in security.html).
 - Consistent indentation (spaces) in touched files.
-- Remove dead/commented markup where it is clearly abandoned (e.g. commented
-  Soundcloud button stays only if the user wants to revive it — default: remove;
-  the commented Steam Machine audio/button in soundboard.html: remove).
+- Remove the commented-out Soundcloud button in projects.html. Keep the
+  commented-out Steam Machine audio/button in soundboard.html (user wants it
+  retained in the codebase).
 - Delete now-unused CSS (gradient classes, jumbotron, rainbow keyframes) after
   all pages are migrated.
 
