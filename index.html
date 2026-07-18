@@ -9,79 +9,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link href="/favicon.ico" rel="icon" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Martian+Mono:wght@400;700&display=swap">
   <link rel="stylesheet" href="./css/mainStyles.css">
-
-  <style>
-    .main-footer,
-    .main-section {
-      margin: 0 20px;
-    }
-
-    h2 {
-      text-align: left;
-    }
-
-    .projects-link a {
-      text-decoration: underline;
-      color: white;
-    }
-
-    @media (min-width: 800px) {
-      .main-footer,
-      .main-section {
-        margin: 35px 40px;
-      }
-    }
-
-    /* Media query for landscape tablets or laptops / PC */
-    @media (min-width: 1000px) {
-      .main-footer,
-      .main-section {
-        margin: 5px 175px;
-      }
-
-      .main-footer {
-        margin-top: 35px;
-      }
-    }
-  </style>
 </head>
 <body>
-    <header>
-      <div class="jumbotron rainbow-anim">
-        <h1>Steve Bedell</h1>
-        <p>Software Developer</p>
-        <p class="projects-link"><a href="projects.html">💻 Portfolio / Projects</a></p>
-      </div>
-    </header>
+  <header class="hero">
+    <p class="hero-prompt">~/steve-bedell $</p>
+    <h1 class="reveal">Steve Bedell</h1>
+    <p class="hero-tagline reveal" style="--delay: 0.1s">grows software &amp; gardens</p>
+    <nav class="hero-nav reveal" style="--delay: 0.2s">
+      <a href="projects.html">./projects &raquo;</a>
+    </nav>
+  </header>
 
-    <main class="main-section">
-      <section class="bio">
-        <div class="bio-content">
-          <p>Hey, I'm Steve Bedell! I'm a Software Developer with over 7 years of experience, specializing in building user-friendly web applications. My background also includes significant experience in software testing, technical writing, and cybersecurity, allowing me to contribute across the software development life cycle from initial design to final deployment.</p>
-          <p>I have a Bachelor's Degree in Computer Science from the Ohio State University.</p>
-          <p>Beyond the keyboard, I'm a lifelong learner with a passion for finding solutions to environmental issues like climate change and the biodiversity crisis, primarily through organic gardening and farming. I also enjoy exploring local parks via hiking and biking, finding inspiration and balance in nature.</p>
-          <p>I'm a husband and proud father of energetic twin toddler boys.</p>
-          <p>Feel free to connect with me through the links below!</p>
-        </div>
-      </section>
+  <main class="page">
+    <section class="bio reveal" style="--delay: 0.3s">
+      <p>Hey, I'm Steve Bedell! I'm a Software Developer with over 7 years of experience, specializing in building user-friendly web applications. My background also includes significant experience in software testing, technical writing, and cybersecurity, allowing me to contribute across the software development life cycle from initial design to final deployment.</p>
+      <p>I have a Bachelor's Degree in Computer Science from the Ohio State University.</p>
+      <p>Beyond the keyboard, I'm a lifelong learner with a passion for finding solutions to environmental issues like climate change and the biodiversity crisis, primarily through organic gardening and farming. I also enjoy exploring local parks via hiking and biking, finding inspiration and balance in nature.</p>
+      <p>I'm a husband and proud father of energetic twin toddler boys.</p>
+      <p>Feel free to connect with me through the links below!</p>
+    </section>
 
-      <section class="contact">
-        <h3>Connect with Me</h3>
-        <p><a href="https://www.linkedin.com/in/stevebedell" target="_blank">LinkedIn</a></p>
-        <p><a href="https://github.com/sbedell" target="_blank">GitHub</a></p>
-      </section>
-    </main>
+    <section class="contact reveal" style="--delay: 0.4s">
+      <h3>Connect with Me</h3>
+      <p><a href="https://www.linkedin.com/in/stevebedell" target="_blank" rel="noopener">LinkedIn</a></p>
+      <p><a href="https://github.com/sbedell" target="_blank" rel="noopener">GitHub</a></p>
+    </section>
 
     <footer class="main-footer">
-      <hr />
+      <hr>
       <p>&copy; Steve Bedell 2013 - <span id="copyright-date"></span></p>
-      <p>I re-wrote this site without Bootstrap or jQuery, meaning I wrote all the CSS and Javascript on here from scratch. Should vastly improve page load time.</p>
+      <p>Hand-written HTML, CSS, and JavaScript — no frameworks, no build step.</p>
       <div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons" rel="noopener">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon" rel="noopener">www.flaticon.com</a> is licensed by <a href="https://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank" rel="noopener">CC 3.0</a></div>
     </footer>
+  </main>
 
-    <script>
-      document.getElementById("copyright-date").innerText = `${new Date().getFullYear()}`;
-    </script>
+  <script>
+    document.getElementById("copyright-date").innerText = `${new Date().getFullYear()}`;
+  </script>
 </body>
 </html>
