@@ -11,6 +11,7 @@
   --text-muted: #9cb29b;
   --accent: #8fd97a;
   --accent-glow: rgba(143, 217, 122, 0.35);
+  --glow-ambient: rgba(143, 217, 122, 0.07);
   --grid-line: rgba(143, 217, 122, 0.045);
   --warn: #e8c468;
   --danger: #e08a68;
@@ -29,7 +30,7 @@
 body {
   background-color: var(--bg);
   background-image:
-    radial-gradient(1100px 500px at 50% -10%, rgba(143, 217, 122, 0.07), transparent 70%),
+    radial-gradient(1100px 500px at 50% -10%, var(--glow-ambient), transparent 70%),
     repeating-linear-gradient(0deg, var(--grid-line) 0 1px, transparent 1px 36px),
     repeating-linear-gradient(90deg, var(--grid-line) 0 1px, transparent 1px 36px);
   color: var(--text);
