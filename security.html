@@ -2,112 +2,76 @@
 <html lang="en-US">
 <head>
 	<title>Security</title>
+	<meta charset="utf-8">
 	<meta name="author" content="Steve Bedell">
 	<meta name="description" content="Information security dashboard which pulls in content, news, and other information into one place.">
 	<meta name="keywords" content="JavaScript, Information Security, web security, cyber, security">
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" 
-		integrity="sha384-R334r6kryDNB/GWs2kfB6blAOyWPCxjdHSww/mo7fel+o5TM/AOobJ0QpGRXSDh4"
-		crossorigin="anonymous">
-
+	<link href="/favicon.ico" rel="icon" type="image/x-icon">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Martian+Mono:wght@400;700&display=swap">
 	<link rel="stylesheet" href="./css/mainStyles.css">
 	<link rel="stylesheet" href="./css/security-styles.css">
 </head>
 <body>
-	<div class="main-container">
+	<header class="hero">
+		<p class="hero-prompt">~/steve-bedell/security $</p>
+		<h1 class="reveal">Security &amp; Privacy</h1>
+		<p class="hero-tagline reveal" style="--delay: 0.1s">SANS ISC lookups &amp; what your browser leaks</p>
+		<nav class="hero-nav reveal" style="--delay: 0.2s"><a href="./">&laquo; cd ~</a></nav>
+	</header>
+
+	<div class="page">
 		<main>
-			<h1>Web Security Informational Page</h1>
-			<a target="blank" href="//isc.sans.edu">
-				<img class="img-responsive" title="Internet Storm Center Infocon Status" 
-					alt="Internet Storm Center Infocon Status" src="//isc.sans.edu/images/status.gif">
+			<a target="_blank" rel="noopener" href="https://isc.sans.edu">
+				<img class="img-responsive" title="Internet Storm Center Infocon Status"
+					alt="Internet Storm Center Infocon Status" src="https://isc.sans.edu/images/status.gif">
 			</a>
 
 			<h3>SANS DShield and ISC Data</h3>
 
-			<section id="search-section-vue">
+			<section id="search-section">
 				<p>Search IP address for potential attacks against that IP address.</p>
-				<input id="ipaddr" class="input-box" type="text" value="" placeholder="IP Address" aria-label="IP Address"><br />
-				<button class="my-btn btn-lrg gradient-blue" type="button" v-on:click="searchIpAddressVue">Search IP Address</button><br /><br />
+				<input id="ipaddr" class="input-box" type="text" placeholder="IP Address" aria-label="IP Address">
+				<button id="search-ip-btn" class="my-btn btn-accent" type="button">Search IP Address</button>
 
 				<p>Search for port numbers to find out more information on that port.</p>
-				<input id="port" class="input-box" type="number" value="" placeholder="Port Number" min="0" max="65536" aria-label="Port Number"><br />
-				<button class="my-btn btn-lrg gradient-blue" type="button" v-on:click="searchPortVue">Search Ports</button><br />
+				<input id="port" class="input-box" type="number" placeholder="Port Number" min="0" max="65535" aria-label="Port Number">
+				<button id="search-port-btn" class="my-btn btn-accent" type="button">Search Ports</button>
 
-				<button class="my-btn btn-lrg gradient-red" type="button" v-on:click="clearResults">Clear Results</button><br /><br />
+				<div>
+					<button id="clear-results-btn" class="my-btn btn-danger" type="button">Clear Results</button>
+				</div>
 
-				<section v-if="apiResponsePort" id="port-results-section">
-					<p><b>Port #:</b> {{ apiResponsePort.number}}</p>
-					<p v-if="apiResponsePort.services.tcp.name"><b>TCP Port Name / Type:</b> {{ apiResponsePort.services.tcp.name }}</p>
-					<p v-if="apiResponsePort.services.tcp.service"><b>TCP Service:</b> {{ apiResponsePort.services.tcp.service }}</p>
-					<p v-if="apiResponsePort.services.udp.name"><b>UDP Port Name / Type:</b> {{ apiResponsePort.services.udp.name }}</p>
-					<p v-if="apiResponsePort.services.udp.service"><b>UDP Service:</b> {{ apiResponsePort.services.udp.service }}</p>
-				</section>
-
-				<section v-if="apiResponseIpAddr">
-					<p><b>IP Address:</b> {{ apiResponseIpAddr.ip.number }}</p>
-					<p><b>Name:</b> {{ apiResponseIpAddr.ip.asname }}</p>
-					<p v-if="apiResponseIpAddr.ip.ascountry"><b>Country:</b> {{ apiResponseIpAddr.ip.ascountry }}</p>
-					<p v-if="apiResponseIpAddr.ip.attacks"><b>Security:</b> {{ apiResponseIpAddr.ip.attacks }} attacks against this IP addr
-						<span v-if="apiResponseIpAddr.ip.mindate && apiResponseIpAddr.ip.maxdate">
-							from {{apiResponseIpAddr.ip.mindate}} to {{ apiResponseIpAddr.ip.maxdate}}
-						</span>
-					</p>
-					<p v-else><b>Security:</b> No recorded / detected attacks against this IP address.</p>
-					<p v-if="apiResponseIpAddr.ip.asabusecontact"><b>Abuse Contact:</b> {{ apiResponseIpAddr.ip.asabusecontact}}</p>
-				</section>
-
-				<p v-if="errorText" class="error-text">{{ errorText }}</p>
+				<p id="lookup-status" class="status-text" hidden></p>
+				<section id="port-results" hidden></section>
+				<section id="ip-results" hidden></section>
+				<p id="lookup-error" class="error-text" hidden></p>
 			</section>
 			<hr>
 
 			<div>
 				<h3>Browser Info</h3>
 
-				<div id="findipwidget"></div>
-				<div class="findiplink" id="findipurl">Powered by <a href="http://www.find-ip.net/" target="_blank">Find-IP.net</a></div>
-				<script defer src="https://api.find-ip.net/widget.js?width=240"></script>
-
 				<section id="browser-section">
-					<p><b>User Agent:</b> {{ userAgent }}</p>
-					<p><b>Monitor Resultion:</b> {{ monitorResolution }}</p>
-					<p><b>Browser Resolution:</b> {{ browserResolution }}</p>
+					<p><b>User Agent:</b> <span id="user-agent"></span></p>
+					<p><b>Monitor Resolution:</b> <span id="monitor-res"></span></p>
+					<p><b>Browser Resolution:</b> <span id="browser-res"></span></p>
 				</section>
 
-				<p><a href="//arstechnica.com/tech-policy/2013/08/in-aclu-lawsuit-scientist-demolishes-nsa-its-just-metadata-excuse/">"It's just metadata"</a>, right?</p>
+				<p><a href="https://arstechnica.com/tech-policy/2013/08/in-aclu-lawsuit-scientist-demolishes-nsa-its-just-metadata-excuse/" target="_blank" rel="noopener">"It's just metadata"</a>, right?</p>
 			</div>
 		</main>
 
 		<footer class="main-footer">
-			<hr />
-			<p id="copyright-section">&copy; Steve Bedell; {{ copyrightDates }}.</p>
-			<p>Built with <a href="//isc.sans.edu/api/">Sans ISC / DShield</a> APIs.</p>
+			<hr>
+			<p>&copy; Steve Bedell <span id="copyright-dates"></span>.</p>
+			<p>Built with <a href="https://isc.sans.edu/api/" target="_blank" rel="noopener">Sans ISC / DShield</a> APIs.</p>
 			<p class="home-link"><a href="./">Back to Home page</a></p>
 		</footer>
 	</div>
-
-	<!-- jquery is needed for toastr -->
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js" 
-		integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh" 
-		crossorigin="anonymous">
-	</script>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" 
-		integrity="sha384-Si3HKTyQYGU+NC4aAF3ThcOSvK+ZQiyEKlYyfjiIFKMqsnCmfHjGa1VK1kYP9UdS" 
-		crossorigin="anonymous" defer>
-	</script>
-
-		<!-- Vue development version, includes helpful console warnings -->
-		<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"
-			integrity="sha384-+jvb+jCJ37FkNjPyYLI3KJzQeD8pPFXUra3B/QJFqQ3txYrUPIP1eOfxK4h3cKZP" 
-			crossorigin="anonymous"></script> -->
-
-		<!-- Vue production version, optimized for size and speed -->
-		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"
-			integrity="sha384-YEAm3mr8XmojpQCZCOQOZJtqeLMrC0x5bHNZgy1+LKX3NEFh6tK+5GLLevxeQ0qJ" 
-			crossorigin="anonymous">
-		</script>
 
 	<script src="js/security-scripts.js"></script>
 </body>

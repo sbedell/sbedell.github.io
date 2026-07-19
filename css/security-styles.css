@@ -1,8 +1,33 @@
-.my-btn {
-  width: 100%;
+main {
+  text-align: center;
+}
+
+main .img-responsive {
+  margin: 0 auto;
+}
+
+#search-section .input-box {
+  max-width: 320px;
+  margin: 4px auto 10px;
+}
+
+#port-results,
+#ip-results {
+  text-align: left;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 16px;
+  margin: 14px auto;
+  max-width: 480px;
+}
+
+#lookup-error {
+  max-width: 480px;
+  margin: 14px auto;
 }
 
 #browser-section {
   margin-top: 20px;
-  line-height: 1.3em;
+  overflow-wrap: anywhere;
 }
