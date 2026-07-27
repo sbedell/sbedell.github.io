@@ -35,3 +35,9 @@ input[type="color"] {
 .hero {
 	background-color: var(--bg);
 }
+
+@media (max-width: 900px) {
+	.page.wrapper {
+		margin: 15px;
+	}
+}
