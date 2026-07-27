@@ -16,11 +16,10 @@
 	<link rel="stylesheet" href="./css/security-styles.css">
 </head>
 <body>
-	<header class="hero">
+	<header class="hero centered">
 		<p class="hero-prompt">~/steve-bedell/security $</p>
 		<h1 class="reveal">Security &amp; Privacy</h1>
 		<p class="hero-tagline reveal" style="--delay: 0.1s">SANS ISC lookups &amp; what your browser leaks</p>
-		<nav class="hero-nav reveal" style="--delay: 0.2s"><a href="./">&laquo; cd ~</a></nav>
 	</header>
 
 	<div class="page">
@@ -54,6 +53,10 @@
 
 			<div>
 				<h3>Browser Info</h3>
+
+				<div id="findipwidget"></div>
+				<div class="findiplink" id="findipurl">Powered by <a href="http://www.find-ip.net/" target="_blank">Find-IP.net</a></div>
+				<script defer src="https://api.find-ip.net/widget.js?width=240"></script>
 
 				<section id="browser-section">
 					<p><b>User Agent:</b> <span id="user-agent"></span></p>

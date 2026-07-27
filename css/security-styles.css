@@ -1,9 +1,19 @@
+/* Fix centering on this page as well */
+
 main {
   text-align: center;
 }
 
 main .img-responsive {
   margin: 0 auto;
+}
+
+.hero {
+  margin-bottom: 25px;
+}
+
+#search-section {
+  margin: auto;
 }
 
 #search-section .input-box {
@@ -30,4 +40,15 @@ main .img-responsive {
 #browser-section {
   margin-top: 20px;
   overflow-wrap: anywhere;
+}
+
+/* Hack to style the find IP widget box thing */
+a#findipinfo {
+  background-color: var(--bg) !important;
+  color: lightgrey !important;
+  margin: auto;
+}
+
+#findipurl {
+  margin: auto;
 }
