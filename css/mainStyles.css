@@ -7,7 +7,7 @@
   --bg: #0d120e;
   --surface: #151d16;
   --border: #2e3d2f;
-  --text: #e4ece2;
+  --text: lightgrey;
   --text-muted: #9cb29b;
   --accent: #8fd97a;
   --accent-glow: rgba(143, 217, 122, 0.35);
@@ -55,6 +55,7 @@ h6 {
 h2 {
   font-size: 1.3rem;
 }
+
 h3 {
   font-size: 1.05rem;
 }
@@ -114,7 +115,11 @@ button {
 .hero {
   max-width: 860px;
   margin: 0 auto;
-  padding: 56px 20px 8px;
+  padding: 30px 20px 8px;
+}
+
+.hero.centered {
+  text-align: center;
 }
 
 .hero-prompt {
