@@ -7,3 +7,7 @@ main .my-btn {
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
+
+main {
+    margin-top: 25px;
+}
