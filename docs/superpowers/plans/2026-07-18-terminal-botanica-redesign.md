@@ -1516,5 +1516,6 @@ These are the loose ends found when auditing the branch against `master`.
 - `.home-link`, `.bio`, `.contact`, and `.findiplink` are used in HTML but defined in no
   stylesheet. They are semantic hooks only — harmless, but nothing styles them.
 
-- [ ] **Final check: run the Task 8 Step 5 click-through** on the current branch tip, since the
-  five tweak commits landed after that verification was last performed.
+- [x] **Final check: Task 8 Step 5 click-through** completed 2026-07-28 against the branch tip
+  (after `f42d591`), covering the tweak commits and the centering/selector consolidation. All
+  pages verified — the redesign is done and the branch is ready to merge.
