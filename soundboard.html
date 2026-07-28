@@ -8,9 +8,14 @@
 	<meta name="keywords" content="HTML5, Mobile, Soundboard, IBM">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
+	<link href="/favicon.ico" rel="icon" type="image/x-icon">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Martian+Mono:wght@400;700&display=swap">
 	<link rel="stylesheet" href="./css/mainStyles.css">
 	<link rel="stylesheet" href="./css/soundboard-styles.css">
 </head>
+
 <body>
 	<audio id="airhorn" src="soundboardPWA/audio/AIRHORN.mp3"></audio>
 	<audio id="multi-airhorn" src="soundboardPWA/audio/multiAirhorn.mp3"></audio>
@@ -31,31 +36,35 @@
 
 	<!-- TODO - Add Spongebob dolphin noise, and DJ rewind sample -->
 
-	<div class="main-container">
-		<main>
-			<h1>Soundboard</h1>
+	<header class="hero centered">
+		<p class="hero-prompt">~/steve-bedell/soundboard $</p>
+		<h1 class="reveal">Soundboard</h1>
+		<p class="hero-tagline reveal" style="--delay: 0.1s">HTML5 Audio meme machine — sound on</p>
+	</header>
 
-			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('airhorn')">AIRHORN</button><br />
-			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('multi-airhorn')">MULTI AIRHORN</button><br />
-			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('damnson')">DAMN SON WHERE'D YOU FIND THIS</button><br />
-			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('smoke')">SMOKE WEED EVERY DAY</button><br />
-			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('niceme')">NICE MEME</button><br />
-			<!-- <button class="btn btn-primary btn-lg btn-block" onclick="playAudio('steam-machine')">STEAM MACHINE</button><br /> -->
-			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('djt')">DONALD JIGGLYPUFF TRUMP</button><br />
-			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('gahdamn')">GAH DAMN</button><br />
-			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('mario-1up')">1 UP</button><br />
-			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('pkmn-item')">Pokemon Item</button><br />
-			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('pkmn-key-item')">Pokemon Key Item</button><br />
-			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('yu-gi-oh')">Time to Duel!</button><br />
-			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('milk')">HE NEEDS SOME MILK!</button><br />
-			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('tuba-meme')">Stewie Tuba</button><br />
+	<div class="page">
+		<main>
+			<button class="my-btn btn-block" onclick="playAudio('airhorn')">AIRHORN</button>
+			<button class="my-btn btn-block" onclick="playAudio('multi-airhorn')">MULTI AIRHORN</button>
+			<button class="my-btn btn-block" onclick="playAudio('damnson')">DAMN SON WHERE'D YOU FIND THIS</button>
+			<button class="my-btn btn-block" onclick="playAudio('smoke')">SMOKE WEED EVERY DAY</button>
+			<button class="my-btn btn-block" onclick="playAudio('niceme')">NICE MEME</button>
+			<!-- <button class="my-btn btn-block" onclick="playAudio('steam-machine')">STEAM MACHINE</button> -->
+			<button class="my-btn btn-block" onclick="playAudio('djt')">DONALD JIGGLYPUFF TRUMP</button>
+			<button class="my-btn btn-block" onclick="playAudio('gahdamn')">GAH DAMN</button>
+			<button class="my-btn btn-block" onclick="playAudio('mario-1up')">1 UP</button>
+			<button class="my-btn btn-block" onclick="playAudio('pkmn-item')">Pokemon Item</button>
+			<button class="my-btn btn-block" onclick="playAudio('pkmn-key-item')">Pokemon Key Item</button>
+			<button class="my-btn btn-block" onclick="playAudio('yu-gi-oh')">Time to Duel!</button>
+			<button class="my-btn btn-block" onclick="playAudio('milk')">HE NEEDS SOME MILK!</button>
+			<button class="my-btn btn-block" onclick="playAudio('tuba-meme')">Stewie Tuba</button>
 
 			<h3>Jurassic Park soundbytes</h3>
-			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('ahahah')">AH AH AH You Didn't Say The Magic Word</button><br />
-			<button class="btn btn-primary btn-lg btn-block" onclick="playAudio('holdon')">HOLD ON TO YOUR BUTTS</button><br />
+			<button class="my-btn btn-block" onclick="playAudio('ahahah')">AH AH AH You Didn't Say The Magic Word</button>
+			<button class="my-btn btn-block" onclick="playAudio('holdon')">HOLD ON TO YOUR BUTTS</button>
 			<hr>
-			<button class="btn btn-lg btn-block gradient-red" onclick="playAllAudio()">PLAY ALL (WARNING - DUMB)</button> <br>
-			<button class="btn btn-lg btn-block gradient-red" onclick="playRandomClips()">Play 5 Random Clips</button>
+			<button class="my-btn btn-danger btn-block" onclick="playAllAudio()">PLAY ALL (WARNING - DUMB)</button>
+			<button class="my-btn btn-danger btn-block" onclick="playRandomClips()">Play 5 Random Clips</button>
 		</main>
 
 		<footer class="main-footer">

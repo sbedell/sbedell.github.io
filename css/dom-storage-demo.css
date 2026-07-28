@@ -1,54 +1,43 @@
-body {
-	margin: auto;
-	padding: 20px;
-	font-family: Arial, sans-serif;
-}
-
-h1 {
-	text-align: center;
-}
-
-.wrapper {
-	margin: auto;
-	width: 90%;
-	max-width: 800px;
-	background-color: white;
-	padding: 1rem;
-	border: 5px solid black;
-}
-
-.my-btn {
-	margin: 20px auto;
-	width: 100%;
-}
-
-.wrapper div {
+.wrapper > div {
 	display: flex;
-	clear: both;
-	margin: 0 auto;
-	width: 70%;
-	padding-top: 0.8rem;
-	padding-bottom: 2rem;
+	align-items: center;
+	gap: 12px;
+	flex-wrap: wrap;
+	margin: 14px 0;
 }
 
-.wrapper div label,
-.wrapper div input {
-	width: 45%;
-	margin-top: 10px;
+.wrapper label {
+	font-family: var(--font-mono);
+	font-size: 0.85rem;
+	color: var(--text-muted);
 }
 
-input[type="text"] {
-	height: 40px;
+.wrapper input[type="text"] {
+	flex: 1;
+	min-width: 200px;
 }
 
-@media (max-width: 600px) {
-	.wrapper div label, 
-	.wrapper div input {
-		width: 100%;
-	}
+input[type="color"] {
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 6px;
+	width: 55px;
+	height: 38px;
+	padding: 3px;
+	cursor: pointer;
+}
 
-	.wrapper div {
-		padding-bottom: 1.5rem;
-		display: block;
+.page.wrapper {
+	background-color: var(--bg);
+	padding-top: 15px;
+}
+
+.hero {
+	background-color: var(--bg);
+}
+
+@media (max-width: 900px) {
+	.page.wrapper {
+		margin: 15px;
 	}
 }

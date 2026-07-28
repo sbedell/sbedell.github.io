@@ -2,24 +2,32 @@
 <html lang="en-US">
 	<head>
 		<title>HTML 5 Vibration Test</title>
+		<meta charset="utf-8">
 		<meta name="author" content="Steve B">
 		<meta name="description" content="HTML 5 Vibration API test page.">
 		<meta name="keywords" content="HTML5, Mobile, Vibration">
-		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
 		<script src="js/html5-vibrate.js"></script>
 
+		<link href="/favicon.ico" rel="icon" type="image/x-icon">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Martian+Mono:wght@400;700&display=swap">
 		<link rel="stylesheet" href="css/mainStyles.css">
 		<link rel="stylesheet" href="css/vibrateStyles.css">
 	</head>
 	<body>
-		<div class="main-container">
-			<h1>HTML 5 Vibration Demo</h1>
+		<header class="hero">
+			<p class="hero-prompt">~/steve-bedell/vibrate $</p>
+			<h1 class="reveal">Vibration Demo</h1>
+			<p class="hero-tagline reveal" style="--delay: 0.1s">navigator.vibrate() — phones only</p>
+		</header>
 
+		<div class="page">
 			<div>
 				<label for="viblen">Vibration Duration (ms):</label>
-				<input id="viblen" class="input-box" type="number" value="500" min="0" required />	
+				<input id="viblen" class="input-box" type="number" value="500" min="0" required />
 			</div>
 
 			<p><strong>Multiple Vibration Options:</strong></p>
@@ -32,14 +40,14 @@
 			<div>
 				<label for="pauselen">Time Between Vibrations (ms):</label>
 				<input id="pauselen" class="input-box" type="number" value="200" min="0" required />
-				<button class="my-btn btn-lrg gradient-green" type="button" onclick="singleVibrate()">Single Vibrate</button>
-				<button class="my-btn btn-lrg gradient-green" type="button" onclick="multipleVibrate()">Multiple Vibrations</button>
-				<button class="my-btn btn-lrg gradient-red" type="button" onclick="stopVibrate()">Stop Vibration(s)</button>
+				<button class="my-btn btn-accent" type="button" onclick="singleVibrate()">Single Vibrate</button>
+				<button class="my-btn btn-accent" type="button" onclick="multipleVibrate()">Multiple Vibrations</button>
+				<button class="my-btn btn-danger" type="button" onclick="stopVibrate()">Stop Vibration(s)</button>
 			</div>
 
 			<hr />
 			<p>Demo page for the new HTML5 Vibration API feature.</p>
-			<p>This only works on Chrome. Firefox disabled support for Vibration API :(.</p> 
+			<p>This only works on Chrome. Firefox disabled support for Vibration API :(.</p>
 			<p>You can read more about it at the Mozilla Developer Network or at the W3. <br />
 				<a href="//developer.mozilla.org/en-US/docs/Web/Guide/API/Vibration">MDN - Vibration API</a><br />
 				<a href="//www.w3.org/TR/vibration/">W3 Vibration API Spec</a>

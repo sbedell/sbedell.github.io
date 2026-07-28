@@ -1,8 +1,48 @@
-.my-btn {
-  width: 100%;
+main .img-responsive {
+  margin: 0 auto;
+}
+
+.hero {
+  margin-bottom: 25px;
+}
+
+#search-section {
+  margin: auto;
+}
+
+#search-section .input-box {
+  max-width: 320px;
+  margin: 4px auto 10px;
+}
+
+#port-results,
+#ip-results {
+  text-align: left;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 16px;
+  margin: 14px auto;
+  max-width: 480px;
+}
+
+#lookup-error {
+  max-width: 480px;
+  margin: 14px auto;
 }
 
 #browser-section {
   margin-top: 20px;
-  line-height: 1.3em;
+  overflow-wrap: anywhere;
+}
+
+/* Hack to style the find IP widget box thing */
+a#findipinfo {
+  background-color: var(--bg) !important;
+  color: lightgrey !important;
+  margin: auto;
+}
+
+#findipurl {
+  margin: auto;
 }

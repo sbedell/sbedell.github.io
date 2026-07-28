@@ -8,14 +8,22 @@
 		<meta name="keywords" content="HTML5, Javascript, Mozilla, Firefox, MDN, domStorage, localStorage">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
+		<link href="/favicon.ico" rel="icon" type="image/x-icon">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Martian+Mono:wght@400;700&display=swap">
 		<link rel="stylesheet" href="./css/mainStyles.css">
 		<link rel="stylesheet" href="css/dom-storage-demo.css">
 	</head>
 
 	<body>
-		<div class="wrapper">
-			<h1>Web Storage Demo</h1>
+		<header class="hero">
+			<p class="hero-prompt">~/steve-bedell/storage-demo $</p>
+			<h1 class="reveal">Web Storage Demo</h1>
+			<p class="hero-tagline reveal" style="--delay: 0.1s">localStorage &amp; sessionStorage, persisted live</p>
+		</header>
 
+		<div class="page wrapper">
 			<div>
 				<label for="bgcolor">Choose color:</label>
 				<input type="color" id="bgcolor" value="#FF0000">
@@ -23,11 +31,11 @@
 
 			<div>
 				<label for="sessionstore">Session Storage textbox (autosaves):</label>
-				<input type="text" id="sessionstore" value="">
+				<input type="text" id="sessionstore" class="input-box" value="">
 			</div>
 
 			<div>
-				<button class="my-btn btn-lrg gradient-red" type="button" id="deleteButton">Clear Local & Session Storage</button>
+				<button class="my-btn btn-danger" type="button" id="deleteButton">Clear Local & Session Storage</button>
 			</div>
 
 			<p>Pick a color for the background of this form and it will be saved in local storage.
@@ -35,7 +43,7 @@
 
 			<footer class="main-footer">
 				<hr>
-				<p>&copy; Steve Bedell 2019 - 2023.</p>
+				<p>&copy; Steve Bedell 2019 - 2026.</p>
 				<p>Demo page built with code from
 					<a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API">Mozilla's MDN pages.</a>
 				</p>
