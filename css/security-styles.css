@@ -1,9 +1,3 @@
-/* Fix centering on this page as well */
-
-main {
-  text-align: center;
-}
-
 main .img-responsive {
   margin: 0 auto;
 }
