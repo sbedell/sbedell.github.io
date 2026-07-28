@@ -110,16 +110,18 @@ button {
   padding: 0 20px 48px;
 }
 
+/* Opt-in modifier for pages that center their whole content column. */
+.hero.centered,
+.page.centered {
+  text-align: center;
+}
+
 /* ---- Hero header ---- */
 
 .hero {
   max-width: 860px;
   margin: 0 auto;
   padding: 30px 20px 8px;
-}
-
-.hero.centered {
-  text-align: center;
 }
 
 .hero-prompt {

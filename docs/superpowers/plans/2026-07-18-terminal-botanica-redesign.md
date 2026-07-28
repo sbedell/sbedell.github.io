@@ -40,7 +40,7 @@ Every page task inserts this block in `<head>` (before the page's stylesheet lin
 - Modify: `css/mainStyles.css` (full rewrite)
 
 **Interfaces:**
-- Produces (used by all later tasks): CSS classes `.hero`, `.hero-prompt`, `.hero-tagline`, `.hero-nav`, `.page`, `.my-btn`, `.btn-accent`, `.btn-danger`, `.btn-block`, `.card-grid`, `.card`, `.card-title`, `.card-desc`, `.input-box`, `.status-text`, `.error-text`, `.main-footer`, `.img-responsive`, `.reveal` (with `--delay` custom property), plus a `/* LEGACY */` block keeping old pages alive until Task 8.
+- Produces (used by all later tasks): CSS classes `.hero`, `.centered` (modifier for `.hero` and `.page`), `.hero-prompt`, `.hero-tagline`, `.hero-nav`, `.page`, `.my-btn`, `.btn-accent`, `.btn-danger`, `.btn-block`, `.card-grid`, `.card`, `.card-title`, `.card-desc`, `.input-box`, `.status-text`, `.error-text`, `.main-footer`, `.img-responsive`, `.reveal` (with `--delay` custom property), plus a `/* LEGACY */` block keeping old pages alive until Task 8.
 
 - [ ] **Step 1: Replace the entire contents of `css/mainStyles.css` with:**
 
@@ -54,10 +54,11 @@ Every page task inserts this block in `<head>` (before the page's stylesheet lin
     --bg: #0d120e;
     --surface: #151d16;
     --border: #2e3d2f;
-    --text: #e4ece2;
+    --text: lightgrey;
     --text-muted: #9cb29b;
     --accent: #8fd97a;
     --accent-glow: rgba(143, 217, 122, 0.35);
+    --glow-ambient: rgba(143, 217, 122, 0.07);
     --grid-line: rgba(143, 217, 122, 0.045);
     --warn: #e8c468;
     --danger: #e08a68;
@@ -76,7 +77,7 @@ Every page task inserts this block in `<head>` (before the page's stylesheet lin
 body {
     background-color: var(--bg);
     background-image:
-        radial-gradient(1100px 500px at 50% -10%, rgba(143, 217, 122, 0.07), transparent 70%),
+        radial-gradient(1100px 500px at 50% -10%, var(--glow-ambient), transparent 70%),
         repeating-linear-gradient(0deg, var(--grid-line) 0 1px, transparent 1px 36px),
         repeating-linear-gradient(90deg, var(--grid-line) 0 1px, transparent 1px 36px);
     color: var(--text);
@@ -146,12 +147,18 @@ button {
     padding: 0 20px 48px;
 }
 
+/* Opt-in modifier for pages that center their whole content column. */
+.hero.centered,
+.page.centered {
+    text-align: center;
+}
+
 /* ---- Hero header ---- */
 
 .hero {
     max-width: 860px;
     margin: 0 auto;
-    padding: 56px 20px 8px;
+    padding: 30px 20px 8px;
 }
 
 .hero-prompt {
@@ -619,7 +626,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
     <h1 class="reveal">Projects</h1>
     <p class="hero-tagline reveal" style="--delay: 0.1s">demos, experiments &amp; small tools</p>
     <nav class="hero-nav reveal" style="--delay: 0.2s">
-      <a href="./">&laquo; cd ~</a>
+      <a href="./">&laquo; cd ~ (go back)</a>
     </nav>
   </header>
 
@@ -757,34 +764,33 @@ Replace the two existing `<link rel="stylesheet" ...>` lines with the FONT+FAVIC
 Replace `<main>` opening through the `<h1>` line:
 
 ```html
-    <header class="hero">
+    <header class="hero centered">
       <p class="hero-prompt">~/steve-bedell/password-generator $</p>
       <h1 class="reveal">Password Generator</h1>
       <p class="hero-tagline reveal" style="--delay: 0.1s">random passwords, checked against known breaches</p>
-      <nav class="hero-nav reveal" style="--delay: 0.2s"><a href="./">&laquo; cd ~</a></nav>
     </header>
 
-    <main class="page">
+    <div class="page centered">
 ```
 
+The hero-nav "cd ~" link is omitted here — the footer's "Back to Home page" link is the only back-nav on this page. The wrapper is a `<div>`, not `<main>`, because the page has no other landmark content.
+
 Then inside the body:
-- Delete the stray `<br>` after `<main>`.
-- On the `#pw-length` input add `class="input-box"`.
+- Delete the stray `<br>` after the opening wrapper.
+- On the `#pw-length` input add `class="input-box"` and set `value="14"`.
 - Change the generate button classes: `class="my-btn btn-lrg gradient-green"` → `class="my-btn btn-accent btn-block"`.
 - Change the check button classes: `class="my-btn btn-lrg"` → `class="my-btn btn-block"`, and delete the `<br>` between the two buttons.
 - On `#password-box` add `class="input-box"`.
 - On `#error-output` add `class="error-text"` (JS shows/hides it via `style.display`; the default `display: none` moves to the page CSS below).
-- Replace `<footer class="footer">` with `<footer class="main-footer">` and move it inside `</main>`'s parent so structure is `<main class="page"> ... <footer class="main-footer">...</footer></main>` — matching index.html.
+- Replace `<footer class="footer">` with `<footer class="main-footer">` and move it inside the wrapper so structure is `<div class="page centered"> ... <footer class="main-footer">...</footer></div>`.
 
 - [ ] **Step 3: Replace the entire contents of `css/password-styles.css` with:**
 
 ```css
-main {
-  text-align: center;
-}
+/* Centering comes from the global `.centered` modifier in mainStyles.css. */
 
-main p {
-  text-align: left;
+.page > div:first-of-type {
+  margin-top: 25px;
 }
 
 #pw-length {
@@ -820,7 +826,7 @@ main p {
 .checkboxes {
   display: inline-block;
   text-align: left;
-  margin: 15px auto 20px;
+  margin: 25px auto 20px;
 }
 
 .checkboxes > div {
@@ -837,7 +843,7 @@ main p {
 }
 
 @media (min-width: 600px) {
-  main p {
+  .page p {
     max-width: 60ch;
     margin-left: auto;
     margin-right: auto;
@@ -852,6 +858,13 @@ main p {
 @media (max-width: 800px) {
   abbr[title]:after {
     content: " (" attr(title) ")";
+  }
+}
+
+@media (min-width: 760px) {
+  .btn-block {
+    width: 40%;
+    margin: 10px auto;
   }
 }
 ```
@@ -892,13 +905,14 @@ In `<body>`:
 - Insert the hero between `<main>`'s parent opening and `<main>`:
 
 ```html
-    <header class="hero">
+    <header class="hero centered">
       <p class="hero-prompt">~/steve-bedell/soundboard $</p>
       <h1 class="reveal">Soundboard</h1>
       <p class="hero-tagline reveal" style="--delay: 0.1s">HTML5 Audio meme machine — sound on</p>
-      <nav class="hero-nav reveal" style="--delay: 0.2s"><a href="./">&laquo; cd ~</a></nav>
     </header>
 ```
+
+The hero-nav "cd ~" link is omitted — the footer's "Back to Home page" link is the only back-nav.
 
 and delete the old `<h1>Soundboard</h1>` inside `<main>`. Move the hero ABOVE the `.page` div so the structure matches other pages (hero, then `<div class="page"><main>…`).
 - Replace every `class="btn btn-primary btn-lg btn-block"` with `class="my-btn btn-block"` (12 buttons + the 2 Jurassic Park ones = 14). Keep the commented-out Steam Machine button line, but update its classes the same way inside the comment.
@@ -917,6 +931,10 @@ h2, h3 {
 main .my-btn {
     text-transform: uppercase;
     letter-spacing: 0.5px;
+}
+
+main {
+    margin-top: 25px;
 }
 ```
 
@@ -960,11 +978,12 @@ In `<body>`:
 			<p class="hero-prompt">~/steve-bedell/vibrate $</p>
 			<h1 class="reveal">Vibration Demo</h1>
 			<p class="hero-tagline reveal" style="--delay: 0.1s">navigator.vibrate() — phones only</p>
-			<nav class="hero-nav reveal" style="--delay: 0.2s"><a href="./">&laquo; cd ~</a></nav>
 		</header>
 
 		<div class="page">
 ```
+
+The hero-nav "cd ~" link is omitted — the footer's "Back to Home" link is the only back-nav.
 
 - Button classes: `my-btn btn-lrg gradient-green` → `my-btn btn-accent`; `my-btn btn-lrg gradient-red` → `my-btn btn-danger`.
 - Footer keeps `class="main-footer"`.
@@ -984,6 +1003,16 @@ label {
     display: block;
     margin-top: 10px;
 }
+
+@media (max-width: 400px) {
+    .input-box {
+        width: 100%;
+    }
+
+    .my-btn {
+        width: 100%;
+    }
+}
 ```
 
 - [ ] **Step 3: Update `storage-demo.html`**
@@ -998,7 +1027,6 @@ In `<body>`:
 			<p class="hero-prompt">~/steve-bedell/storage-demo $</p>
 			<h1 class="reveal">Web Storage Demo</h1>
 			<p class="hero-tagline reveal" style="--delay: 0.1s">localStorage &amp; sessionStorage, persisted live</p>
-			<nav class="hero-nav reveal" style="--delay: 0.2s"><a href="./">&laquo; cd ~</a></nav>
 		</header>
 
 		<div class="page wrapper">
@@ -1039,9 +1067,26 @@ input[type="color"] {
 	padding: 3px;
 	cursor: pointer;
 }
+
+/* Keep the hero and content panel on the base background so the
+   JS-driven body color only shows in the surrounding gutter. */
+.page.wrapper {
+	background-color: var(--bg);
+	padding-top: 15px;
+}
+
+.hero {
+	background-color: var(--bg);
+}
+
+@media (max-width: 900px) {
+	.page.wrapper {
+		margin: 15px;
+	}
+}
 ```
 
-Note: `js/dom-storage-demo.js` sets `document.body.style.backgroundColor` from the color picker. That inline color replaces the dark `--bg` while the semi-transparent grid overlay stays on top — the demo's whole point is a visible background change, so leave the JS alone. Verify the picked color clearly shows through.
+Note: `js/dom-storage-demo.js` sets `document.body.style.backgroundColor` from the color picker — leave the JS alone. The `.page.wrapper` / `.hero` rules above pin those regions to `--bg`, so the picked color reads as a colored frame around a dark content panel rather than washing out the whole page. Verify the picked color is clearly visible in the gutter.
 
 - [ ] **Step 5: Verify in browser**
 
@@ -1091,11 +1136,10 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 	<link rel="stylesheet" href="./css/security-styles.css">
 </head>
 <body>
-	<header class="hero">
+	<header class="hero centered">
 		<p class="hero-prompt">~/steve-bedell/security $</p>
 		<h1 class="reveal">Security &amp; Privacy</h1>
 		<p class="hero-tagline reveal" style="--delay: 0.1s">SANS ISC lookups &amp; what your browser leaks</p>
-		<nav class="hero-nav reveal" style="--delay: 0.2s"><a href="./">&laquo; cd ~</a></nav>
 	</header>
 
 	<div class="page">
@@ -1129,6 +1173,12 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 
 			<div>
 				<h3>Browser Info</h3>
+
+				<div id="findipwidget"></div>
+				<div class="findiplink" id="findipurl">
+					Powered by <a href="https://www.find-ip.net/" target="_blank" rel="noopener">Find-IP.net</a>
+				</div>
+				<script defer src="https://api.find-ip.net/widget.js?width=240"></script>
 
 				<section id="browser-section">
 					<p><b>User Agent:</b> <span id="user-agent"></span></p>
@@ -1296,6 +1346,14 @@ main .img-responsive {
   margin: 0 auto;
 }
 
+.hero {
+  margin-bottom: 25px;
+}
+
+#search-section {
+  margin: auto;
+}
+
 #search-section .input-box {
   max-width: 320px;
   margin: 4px auto 10px;
@@ -1321,6 +1379,18 @@ main .img-responsive {
   margin-top: 20px;
   overflow-wrap: anywhere;
 }
+
+/* The find-ip.net widget ships its own light-theme inline styles;
+   !important is the only lever that reaches them. */
+a#findipinfo {
+  background-color: var(--bg) !important;
+  color: lightgrey !important;
+  margin: auto;
+}
+
+#findipurl {
+  margin: auto;
+}
 ```
 
 - [ ] **Step 4: Verify in browser**
@@ -1331,7 +1401,7 @@ Visit `http://localhost:8000/security.html`. Devtools console must show no error
 - Bad input (`999.1.1.1`, port `70000`) → amber inline error.
 - Clear Results empties everything.
 - Browser Info section shows UA + resolutions; resizing window updates browser resolution.
-- Network tab: no requests to jsdelivr/cloudflare/jquery/find-ip.
+- Network tab: no requests to jsdelivr/cloudflare/jquery. The find-ip.net widget is deliberately kept (it is the one third-party script on this page) — confirm its box renders on the page background, not white.
 
 - [ ] **Step 5: Commit**
 
@@ -1398,3 +1468,53 @@ git commit -m "Remove legacy CSS block and dead buttonStyles.css; map.html favic
 
 Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 ```
+
+---
+
+## Task 9: Pre-merge follow-ups
+
+Tasks 1–8 are implemented and committed on `redesign/terminal-botanica`, followed by five
+hand-tweak commits (`7a9ddcb`..`a4473bd`) that the snippets above have been updated to match.
+These are the loose ends found when auditing the branch against `master`.
+
+**Fixed (one commit, "Consolidate centering modifier…"):**
+
+- [x] **Two competing "centered" conventions.** `password-generator.html` used page-scoped
+  `.hero-centered` / `.page-centered` while other pages used the global `.hero.centered`.
+  Resolved by promoting `.centered` in `mainStyles.css` to a shared modifier
+  (`.hero.centered, .page.centered`), deleting the page-scoped pair, and switching
+  `password-generator.html` to `class="hero centered"` / `class="page centered"`.
+
+- [x] **`rel="noopener"` and `https://` on the find-ip link.** The link was `http://www.find-ip.net/`
+  with `target="_blank"` and no `rel`, violating the Global Constraint above and making a
+  mixed-scheme navigation off an HTTPS Pages site.
+
+- [x] **Over-broad selectors in `css/password-styles.css`.** `.page div:first-child` was a
+  descendant selector, so its 25px top margin also landed on the first checkbox row; it is now
+  `.page > div:first-of-type`. The 25px moved onto `.checkboxes`'s own top margin (`0px` → `25px`)
+  so the rendered gap is unchanged. `div p { max-width: 60vw }` became `.page p { max-width: 60ch }`
+  — scoped to the page, and back to a character-based measure instead of a viewport-based one.
+
+**Decided — intentional, no action:**
+
+- [x] **Hero back-nav removed from the four sub-pages.** password-generator, soundboard, vibrate,
+  and storage-demo intentionally dropped their `« cd ~` nav; the footer "Back to Home page" link
+  plus the browser back button are considered sufficient. index.html and projects.html keep
+  `.hero-nav`. Do not "restore" these.
+
+- [x] **find-ip.net widget on the security page.** Deliberately kept — Task 7's original removal
+  was not wanted. The two `!important` overrides in `security-styles.css` are the accepted cost of
+  dark-theming a third-party widget that ships its own inline light styles.
+
+- [x] **`--text: lightgrey`.** Intentional. Named colors are fine in this codebase.
+
+**Known and accepted (no action):**
+
+- `soundcloud.html` is unlinked from navigation and still references `main-container`, `btn-lrg`,
+  and `gradient-orange`, none of which exist in any stylesheet since the LEGACY block was deleted.
+  It now renders essentially unstyled. Task 8 already accepted this and it stays as-is for now.
+- `.home-link`, `.bio`, `.contact`, and `.findiplink` are used in HTML but defined in no
+  stylesheet. They are semantic hooks only — harmless, but nothing styles them.
+
+- [ ] **Final check: run the Task 8 Step 5 click-through** on the current branch tip, since the
+  five tweak commits landed after that verification was last performed.
