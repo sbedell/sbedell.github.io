@@ -19,19 +19,25 @@
 	<header class="hero centered">
 		<p class="hero-prompt reveal">~/steve-bedell/security $</p>
 		<h1>Security &amp; Privacy</h1>
-		<p class="hero-tagline reveal" style="--delay: 0.15s">SANS ISC lookups &amp; what your browser leaks</p>
+		<p class="hero-tagline reveal" style="--delay: 0.1s">SANS ISC lookups &amp; what your browser leaks</p>
 	</header>
 
 	<div class="page centered">
 		<main>
-			<a target="_blank" rel="noopener" href="https://isc.sans.edu">
+			<a
+				href="https://isc.sans.edu"
+				target="_blank"
+				rel="noopener"
+				class="reveal"
+				style="--delay: 0.15s"
+			>
 				<img class="img-responsive" title="Internet Storm Center Infocon Status"
 					alt="Internet Storm Center Infocon Status" src="https://isc.sans.edu/images/status.gif">
 			</a>
 
-			<h3>SANS DShield and ISC Data</h3>
+			<h3 class="reveal" style="--delay: 0.2s">SANS DShield and ISC Data</h3>
 
-			<section id="search-section">
+			<section id="search-section" class="reveal" style="--delay: 0.3s">
 				<p>Search IP address for potential attacks against that IP address.</p>
 				<input id="ipaddr" class="input-box" type="text" placeholder="IP Address" aria-label="IP Address">
 				<button id="search-ip-btn" class="my-btn btn-accent" type="button">Search IP Address</button>
@@ -51,7 +57,7 @@
 			</section>
 			<hr>
 
-			<div>
+			<div class="reveal" style="--delay: 0.4s">
 				<h3>Browser Info</h3>
 
 				<div id="findipwidget"></div>
