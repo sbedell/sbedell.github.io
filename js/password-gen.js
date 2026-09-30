@@ -2,7 +2,7 @@
  * Password generator in JS
  *
  * Uses JS Math.random for randomly selecting characters for the password.
- * Uses Window.crypto for local SHA-1 Hashing. 
+ * Uses Window.crypto for local SHA-1 Hashing.
  * Uses Have I Been Pwned API to check if the password has appeared in a data breach before.
  */
 
@@ -11,7 +11,7 @@ document.getElementById("check-pw-btn").addEventListener("click", checkPwnedPass
 
 /**
  * Fires when "Generate Password" Button is clicked.
- * Gets options and user input from the HTML elements, and passes it along 
+ * Gets options and user input from the HTML elements, and passes it along
  * to the actual password generator function. This basically handles all DOM control.
  */
 function generatePassword() {
@@ -31,7 +31,7 @@ function generatePassword() {
 
 /**
  * Generate a secure random password using user selections from the HTML checkboxes.
- * 
+ *
  * @param {Object} options - Options Object that contains all the user selections from the checkboxes.
  * @returns {String} - Shuffled password.
  */
@@ -161,15 +161,15 @@ function checkResponse(response, sha1HashedPasswordDigest) {
       - Troy Hunt`);
   } else {
     document.getElementById("api-output").textContent = `Good news! No Pwnage found! \n
-      \"This password wasn't found in any of the Pwned Passwords loaded into Have I Been Pwned. That doesn't necessarily 
+      \"This password wasn't found in any of the Pwned Passwords loaded into Have I Been Pwned. That doesn't necessarily
       mean it's a good password, merely that it's not indexed on this site.\"
       - Troy Hunt`;
   }
 }
 
 /**
- * Hashes a string (password) using the browser's built in 
- * window.crypto API, using SHA-1 hashing, which is the hashing algorithm 
+ * Hashes a string (password) using the browser's built in
+ * window.crypto API, using SHA-1 hashing, which is the hashing algorithm
  * required for the Have I Been Pwned API.
  *
  * This is based on example code from Mozilla:
@@ -184,12 +184,18 @@ async function sha1HashAsync(userInput) {
     const msgUint8 = new TextEncoder().encode(userInput);
     const hashBuffer = await crypto.subtle.digest("SHA-1", msgUint8);
 
+    if (Uint8Array.prototype.toHex) {
+      // Use toHex function if supported.
+      return new Uint8Array(hashBuffer).toHex(); // Convert ArrayBuffer to hex string.
+    }
+
+    // If toHex() is not supported, fall back to an alternative (older) implementation.
+
     // Convert buffer to byte array
     const hashArray = Array.from(new Uint8Array(hashBuffer));
 
     // Convert bytes to hex string: (toString(16) is using radix 16)
-    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-    return hashHex;
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
   } else {
     console.warn('window does not have secure context or does not support window.crypto.');
   }
